@@ -6,12 +6,12 @@ This repository will contain all progress and updates on the SOEN 341 Project fo
 web development. The project will host the following core features: login/logout system, (to be taken from the project description folder) 
 
 # Team members and roles
-Magy Gerges  Magy2211, Team lead <br />
+Magy Gerges  (Magy2211), Team lead <br />
 Skills: <br />
 Programming: JAVA, C#, C++. (Individual and collaborative projects)<br />
         Soft skills: Good Communication, Good team player, time management, <br />
         leadership skills through leading extracurricular projects at the University. <br /> <br />
-Rana Gohar   RanaGohar, Frontend <br /> 
+Rana Gohar   (RanaGohar), Frontend <br /> 
 Skills: <br />
 Programming skills : C#, JAVA. <br /> 
 Soft skills: Communication skills, Collaboration, Organization <br /> <br />
@@ -21,9 +21,9 @@ Skills: <br />
 Programming skills : C#, JAVA. <br />
 Soft skills: Time management, multitasking, good communication skills, collaboration. <br /> <br />
 
-Ibrahim      himacion, Reviewer <br />
-Kirollos     Kirollos-Georgy, Backend <br />
-Laurie       P4SS3-P4RT0UT, Backend <br />
+Ibrahim      (himacion), Reviewer <br />
+Kirollos     (Kirollos-Georgy), Backend <br />
+Laurie       (P4SS3-P4RT0UT), Backend <br />
 
 # Language Used 
 
