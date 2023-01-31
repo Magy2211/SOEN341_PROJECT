@@ -16,7 +16,7 @@ Skills: <br />
 Programming skills : C#, JAVA. <br /> 
 Soft skills: Communication skills, Collaboration, Organization <br /> <br />
 
-Monika Moanes       MonikaMoanes, Frontend <br />
+Monika Moanes       (MonikaMoanes), Frontend <br />
 Skills: <br />
 Programming skills : C#, JAVA. <br />
 Soft skills: Time management, multitasking, good communication skills, collaboration. <br /> <br />
