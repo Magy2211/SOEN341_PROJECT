@@ -11,7 +11,6 @@ Ibrahim      himacion, Reviewer
 Kirollos     Kirollos-Georgy, Backend
 Laurie       P4SS3-P4RT0UT, Backend 
 
-User stories ( each member includes one): 
 
 
 
