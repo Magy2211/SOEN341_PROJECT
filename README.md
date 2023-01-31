@@ -10,7 +10,7 @@ Skills: Programming: JAVA, C#, C++. (Individual and collaborative projects)<br /
         leadership skills through leading extracurricular projects at the University. <br />
 Rana Gohar   RanaGohar, Frontend <br />
 Skills: <br />
-<dd> Programming skills : C#, JAVA. </dd> <br />
+Programming skills : C#, JAVA. <br />
 Soft skills: Communication skills, Collaboration, Organization <br />
 
 Monica       MonikaMoanes, Frontend <br />
