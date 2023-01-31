@@ -5,7 +5,8 @@ web development. This project is written in C# for ease of use with web developm
 
 # Team members
 Magy Gerges  Magy2211, Team lead <br />
-Skills: Programming: JAVA, C#, C++. (Individual and collaborative projects)<br />
+Skills: <br />
+Programming: JAVA, C#, C++. (Individual and collaborative projects)<br />
         Soft skills: Good Communication, Good team player, time management, <br />
         leadership skills through leading extracurricular projects at the University. <br />
 Rana Gohar   RanaGohar, Frontend <br />
