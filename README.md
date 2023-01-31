@@ -24,6 +24,9 @@ Soft skills: Time management, multitasking, good communication skills, collabora
 Ibrahim      (himacion), Reviewer <br />
 Kirollos     (Kirollos-Georgy), Backend <br />
 Laurie       (P4SS3-P4RT0UT), Backend <br />
+Skills: <br />
+Programming: C++, JAVA, MATLAB. <br />
+Soft skills: Teamwork, Work ethic, Problem solving
 
 # Language Used 
 
