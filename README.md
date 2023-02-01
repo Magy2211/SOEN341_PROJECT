@@ -22,6 +22,7 @@ Programming skills : C#, JAVA. <br />
 Soft skills: Time management, multitasking, good communication skills, collaboration. <br /> <br />
 
 Ibrahim      (himacion), Reviewer <br />
+Skills:
 Programing: C++, Java, C#. <br />
 Soft skills: Communication, Organization, Punctuality. <br /> <br />
 
