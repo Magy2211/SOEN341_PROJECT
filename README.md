@@ -3,7 +3,7 @@
 # Description of the Project 
 
 This repository will contain all progress and updates on the SOEN 341 Project for Winter 2023. The project consists of creating a career planning platform through 
-web development. The project will host the following core features: login/logout system, (to be taken from the project description folder) 
+web development. 
 
 # Team members and roles
 Magy Gerges  (Magy2211), Team lead <br />
@@ -35,6 +35,9 @@ Laurie       (P4SS3-P4RT0UT), Backend <br />
 Skills: <br />
 Programming: C++, JAVA, MATLAB. <br />
 Soft skills: Teamwork, Work ethic, Problem solving
+
+# Core feature 
+The project will host the following core features: login/logout system, (to be taken from the project description folder) 
 
 # Language Used 
 
