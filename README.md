@@ -41,7 +41,7 @@ The project will host the following core features: login/logout system, (to be t
 
 # Language Used 
 
-This project is written in C# for ease of use with web development.
+This project is written in Java and HTML for ease of use with web development.
 
 
 
