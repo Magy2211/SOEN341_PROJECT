@@ -37,12 +37,12 @@ Programming: C++, JAVA, MATLAB. <br />
 Soft skills: Teamwork, Work ethic, Problem solving
 
 # Core feature 
-The project will host the following core features: login/logout system, (to be taken from the project description folder) 
+The project will host the following core features: account creation, login/logout system, (to be taken from the project description folder), profile personalization.
 
 # Language Used 
 
 This project is written in Java and HTML for ease of use with web development.
 
+# Database
 
-
-
+MySQL will be used as database management system.
