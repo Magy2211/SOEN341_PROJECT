@@ -36,7 +36,7 @@ public class DeleteUserServlet extends HttpServlet {
 
         try {
             Statement statement = connection.createStatement();
-            int result = statement.executeUpdate("delete from users where email='"+email+"' AND password = '"+password+"'");
+            int result = statement.executeUpdate("delete from login_information where email='"+email+"' AND password = '"+password+"'");
             PrintWriter out = response.getWriter();
             if (result > 0) {
                 out.print("<H1>Account deleted</H1");

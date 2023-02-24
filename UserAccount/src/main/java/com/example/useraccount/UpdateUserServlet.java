@@ -35,7 +35,7 @@ public class UpdateUserServlet extends HttpServlet {
 
         try {
             Statement statement = connection.createStatement();
-            int result = statement.executeUpdate("update users set password = '"+password+"' where email = '"+email+"'");
+            int result = statement.executeUpdate("update login_information set password = '"+password+"' where email = '"+email+"'");
 
             PrintWriter out = response.getWriter();
             if (result > 0)

@@ -33,13 +33,18 @@ public class CreateUserServlet extends HttpServlet {
 
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from users where email = '"+email+"'");
+            ResultSet resultSet = statement.executeQuery("select * from login_information where email = '"+email+"'");
             if(!resultSet.next()) {
-                int result = statement.executeUpdate("insert into users values ('" + firstName + "', '" + lastName + "', '" + email + "', '" + password + "')");
+                int result = statement.executeUpdate("insert into login_information values ('" + email + "', '" + password + "')");
 
                 PrintWriter out = response.getWriter();
-                if (result > 0)
-                    out.print("<H1>Account created</H1>");
+                if (result > 0) {
+                   // response.sendRedirect("CreatingUserProfile.html?email=" + email);
+                    RequestDispatcher view = request.getRequestDispatcher("/CreatingUserProfile.html");
+                    view.forward(request, response);
+
+                }
+                    //out.print("<H1>Account created</H1>");
                 else
                     out.print("<H1> Error creating the account </H1>");
             }

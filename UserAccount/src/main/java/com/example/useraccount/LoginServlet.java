@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from users where email = '"+email+"' AND password = '"+password+"'");
+            ResultSet resultSet = statement.executeQuery("select * from login_information where email = '"+email+"' AND password = '"+password+"'");
             PrintWriter out = response.getWriter();
 
             if (resultSet.next())
