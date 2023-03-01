@@ -36,8 +36,14 @@ public class LoginServlet extends HttpServlet {
             ResultSet resultSet = statement.executeQuery("select * from login_information where email = '"+email+"' AND password = '"+password+"'");
             PrintWriter out = response.getWriter();
 
-            if (resultSet.next())
+            if (resultSet.next()) {
                 out.print("<H1>Successful Login </H1>");
+            // If login is successful, go to student home page
+
+            RequestDispatcher view = request.getRequestDispatcher("/StudentHomePage.html");
+            view.forward(request, response);
+            }
+            
             else{
                 RequestDispatcher view = request.getRequestDispatcher("/InvalidLoginPage.html");
                 view.forward(request, response);

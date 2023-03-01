@@ -24,19 +24,19 @@ public class CreateUserServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
     }
-
+    
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-
+     
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("select * from login_information where email = '"+email+"'");
             if(!resultSet.next()) {
-                int result = statement.executeUpdate("insert into login_information values ('" + email + "', '" + password + "')");
-
+                int result = statement.executeUpdate("insert into login_information (email, password) values ('" + email + "', '" + password + "')");
+                
                 PrintWriter out = response.getWriter();
                 if (result > 0) {
                    // response.sendRedirect("CreatingUserProfile.html?email=" + email);
