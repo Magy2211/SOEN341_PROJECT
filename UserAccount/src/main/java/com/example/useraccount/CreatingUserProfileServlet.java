@@ -17,6 +17,7 @@ import java.io.PrintWriter;
 import java.sql.*;
 
 @WebServlet(name = "createUserProfileServlet", value = "/createUserProfileServlet")
+@MultipartConfig
 public class CreatingUserProfileServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private Connection connection;
@@ -61,10 +62,15 @@ public class CreatingUserProfileServlet extends HttpServlet {
             statement.setBlob(6, inputStreamTranscript);
             statement.setString(7, email);
             statement.setBlob(8, inputStreamPic);
+            		
             PrintWriter out = response.getWriter();
             int result = statement.executeUpdate();
-            if (result > 0)
+            if (result > 0) {
                 out.print("<H1>Profile created</H1>");
+            //Go back to student home page
+            RequestDispatcher view = request.getRequestDispatcher("/StudentHomePage.html");
+            view.forward(request, response);
+            }
             else
                 out.print("<H1> Error creating the profile </H1>");
 
