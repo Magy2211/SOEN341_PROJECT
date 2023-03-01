@@ -3,31 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <title>Account Registration</title>
+  <link rel="stylesheet" type="text/css" href="CreatingUserProfile.css">
 </head>
 <body>
-<h1>Account Registration:</h1>
-<form method="post" action="createUserServlet">
-  <table>
+  <div class="container">
+  <div class="header">
+    <h1>Account Registration:</h1>
+  </div>
+  <form method="post" action="createUserServlet">
+    <table>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input name="email" id="email" required />
+      </tr>
+      </div>
     <tr>
-      <td>First Name:</td>
-      <td><input name="firstName" /></td>
-    </tr>
-    <tr>
-      <td>Last Name :</td>
-      <td><input name="lastName" /></td>
-    </tr>
-    <tr>
-      <td>Email:</td>
-      <td><input name="email" /></td>
-    </tr>
-    <tr>
-      <td>Password:</td>
-      <td><input name="password" type="password" /></td>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input name="password" type="password" id="password" required />
+      </div>
     </tr>
     <tr>
       <td />
-      <td><input type="submit" value="Create account" /></td>
+      <button type="submit" class="submit-btn">Create Account</button>
   </table>
 </form>
+  </div>
 </body>
 </html>

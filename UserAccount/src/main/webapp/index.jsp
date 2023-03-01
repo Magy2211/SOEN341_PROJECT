@@ -1,15 +1,20 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Home Page</title>
+    <link rel="stylesheet" type="text/css" href="CreatingUserProfile.css">
 </head>
 <body>
+<div class="container">
+    <div class="header">
 <h1><%= "Home Page" %>
+    </div>
 </h1>
 <br/>
-<a href="CreateUser.html">Create a new account<br></a>
-<a href="UpdateUser.html">Change account password<br></a>
-<a href="LoginPage.html">Login</a>
+    <div class="form-group">
+        <label><a href="CreateUser.html">Create a new account<br></a></label>
+        <label><a href="LoginPage.html">Login</a></label>
+    </div>
+</div>
 </body>
 </html>

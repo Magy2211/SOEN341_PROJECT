@@ -2,25 +2,34 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Home page</title>
+  <title>Login page</title>
+  <link rel="stylesheet" type="text/css" href="CreatingUserProfile.css">
 </head>
 <body>
-<h1>Actions</h1>
-<form method="post" action="loginServlet">
-  <table>
-    <tr>
-      <td>Email:</td>
-      <td><input name="email" /></td>
-    </tr>
+<div class="container">
+  <div class="header">
+    <h1>Login</h1>
+  </div>
+  <form method="post" action="loginServlet">
+    <table>
+      <tr>
+        <div class="form-group">
+          <td>Email:</td>
+          <td><input name="email" /></td>
+        </div>
+      </tr>
 
-    <tr>
-      <td>Password:</td>
-      <td><input name="password" type="password" /></td>
-    </tr>
-    <tr>
-      <td />
-      <td><input type="submit" value="Login" /></td>
-  </table>
-</form>
+      <tr>
+        <div class="form-group">
+          <td>Password:</td>
+          <td><input name="password" type="password" /></td>
+        </div>
+      </tr>
+      <tr>
+        <td />
+        <button type="submit" class="submit-btn">Login</button>
+    </table>
+  </form>
+</div>
 </body>
 </html>

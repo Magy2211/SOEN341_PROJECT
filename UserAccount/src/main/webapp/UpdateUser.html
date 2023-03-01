@@ -3,24 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <title>Change password</title>
+  <link rel="stylesheet" type="text/css" href="CreatingUserProfile.css">
 </head>
 <body>
+<div class="container">
+  <div class="header">
 <h1>Change Password:</h1>
+  </div>
 <form method="post" action="updateUserServlet">
   <table>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input name="email" id="email" required />
+      </tr>
+    </div>
     <tr>
-      <td>Email:</td>
-      <td><input name="email" /></td>
-    </tr>
-
-    <tr>
-      <td>Password:</td>
-      <td><input name="password" type="password" /></td>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input name="password" type="password" id="password" required />
+      </div>
     </tr>
     <tr>
       <td />
-      <td><input type="submit" value="Change password" /></td>
+      <button type="submit" class="submit-btn">Change Password</button>
   </table>
 </form>
+</div>
 </body>
 </html>
