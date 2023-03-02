@@ -27,19 +27,25 @@ public class ViewUserProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = (String) request.getSession().getAttribute("email");
         try {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from profile_information where email '"+email+"' ");
-            request.setAttribute("firstName", resultSet.getString(1));
-            request.setAttribute("lastName", resultSet.getString(2));
-            request.setAttribute("engineeringField", resultSet.getString(3));
-            request.setAttribute("resume", resultSet.getBlob(4));
-            request.setAttribute("coverLetter", resultSet.getBlob(5));
-            request.setAttribute("transcript", resultSet.getBlob(6));
-            request.setAttribute("email", resultSet.getString(7));
-            request.setAttribute("profilePic", resultSet.getBlob(8));
-            //RequestDispatcher view = request.getRequestDispatcher("/StudentHomePage.jsp");
-            //view.forward(request, response);
-            response.sendRedirect("StudentHomePage.jsp");
+            //Statement statement = connection.createStatement();
+            //ResultSet resultSet = statement.executeQuery("select * from profile_information where email '"+email+"' ");
+            PreparedStatement statement = connection.prepareStatement("select * from profile_information where email = ?");
+            statement.setString(1, email);
+            ResultSet resultSet = statement.executeQuery();
+            RequestDispatcher view = request.getRequestDispatcher("/StudentHomePage.jsp");
+            view.forward(request, response);
+            if(resultSet.next()){
+                request.getSession().setAttribute("firstName", resultSet.getString(1));
+                request.getSession().setAttribute("lastName", resultSet.getString(2));
+                request.getSession().setAttribute("engineeringField", resultSet.getString(3));
+                request.getSession().setAttribute("resume", resultSet.getBlob(4));
+                request.getSession().setAttribute("coverLetter", resultSet.getBlob(5));
+                request.getSession().setAttribute("transcript", resultSet.getBlob(6));
+                request.getSession().setAttribute("email", resultSet.getString(7));
+                request.getSession().setAttribute("profilePic", resultSet.getBlob(8));
+            }
+            response.sendRedirect("/StudentHomePage.jsp");
+            //response.sendRedirect("StudentHomePage.jsp");
             //request.getRequestDispatcher("/StudentHomePage.jsp").forward(request, response);
             /*PrintWriter out = response.getWriter();
             out.print("<h3>First Name:" + resultSet.getString(1) +"</h3>\n" +

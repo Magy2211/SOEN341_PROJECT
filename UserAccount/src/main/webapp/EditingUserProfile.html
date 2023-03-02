@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Update User Profile</title>
+  <link rel="stylesheet" type="text/css" href="CreatingUserProfile.css">
+</head>
+<body>
+<form action="editUserProfileServlet" method="post" enctype="multipart/form-data">
+
+  <div class="container">
+    <div class="header">
+      <h1>Update User Profile</h1>
+      <p>Please fill out the form below</p>
+    </div>
+
+    <div class="form-group">
+      <label for="profile-pic">Profile Picture:</label>
+      <input type="file" id="profile-pic" name="profile-pic">
+    </div>
+    <div class="form-group">
+      <label for="first-name">First Name:</label>
+      <input type="text" id="first-name" name="first-name">
+    </div>
+    <div class="form-group">
+      <label for="last-name">Last Name:</label>
+      <input type="text" id="last-name" name="last-name">
+    </div>
+    <div class="form-group">
+      <label for="engineering-field">Engineering Field:</label>
+      <select id="engineering-field" name="engineering-field">
+        <option value="" selected disabled>Select Engineering Field</option>
+        <option value="aerospace-engineering">Aerospace Engineering</option>
+        <option value="building-engineering">Building Engineering</option>
+        <option value="computer-engineering">Computer Engineering</option>
+        <option value="civil-engineering">Civil Engineering</option>
+        <option value="electrical-engineering">Electrical Engineering</option>
+        <option value="industrial-engineering">Industrial Engineering</option>
+        <option value="mechanical-engineering">Mechanical Engineering</option>
+        <option value="software-engineering">Software Engineering</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="resume">Resume:</label>
+      <input type="file" id="resume" name="resume">
+    </div>
+    <div class="form-group">
+      <label for="cover-letter">Cover Letter:</label>
+      <input type="file" id="cover-letter" name="cover-letter">
+    </div>
+    <div class="form-group">
+      <label for="transcript">Unofficial Transcript:</label>
+      <input type="file" id="transcript" name="transcript">
+    </div>
+    <button type="submit" class="submit-btn">Update</button>
+
+  </div>
+  <script src="script.js"></script>
+</form>
+</body>
+</html>

@@ -39,10 +39,14 @@ public class LoginServlet extends HttpServlet {
             if (resultSet.next()) {
                 out.print("<H1>Successful Login </H1>");
             // If login is successful, go to student home page
-                RequestDispatcher view = request.getRequestDispatcher("/StudentHomePage.jsp");
+                /*RequestDispatcher view = request.getRequestDispatcher("/StudentHomePage.jsp");
                 //RequestDispatcher view = getServletContext().getRequestDispatcher("/viewUserProfileServlet");
                 view.forward(request, response);
                 //request.getSession().setAttribute("email", email);
+                request.getSession().setAttribute("email", email);*/
+                //response.sendRedirect("ViewUserProfileServlet");
+                RequestDispatcher view = request.getRequestDispatcher("/StudentHomePage.jsp");
+                view.forward(request, response);
                 request.getSession().setAttribute("email", email);
                 response.sendRedirect("ViewUserProfileServlet");
 
