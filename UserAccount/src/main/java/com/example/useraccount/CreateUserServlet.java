@@ -26,8 +26,6 @@ public class CreateUserServlet extends HttpServlet {
     }
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String firstName = request.getParameter("firstName");
-        String lastName = request.getParameter("lastName");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
      
@@ -35,22 +33,23 @@ public class CreateUserServlet extends HttpServlet {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("select * from login_information where email = '"+email+"'");
             if(!resultSet.next()) {
-                int result = statement.executeUpdate("insert into login_information (email, password) values ('" + email + "', '" + password + "')");
+                int result = statement.executeUpdate("insert into login_information values ('" + email + "', '" + password + "')");
                 
                 PrintWriter out = response.getWriter();
                 if (result > 0) {
-                   // response.sendRedirect("CreatingUserProfile.html?email=" + email);
                     RequestDispatcher view = request.getRequestDispatcher("/CreatingUserProfile.html");
                     view.forward(request, response);
+                    request.getSession().setAttribute("email", email);
+                    response.sendRedirect("CreatingUserProfileServlet");
 
                 }
-                    //out.print("<H1>Account created</H1>");
                 else
                     out.print("<H1> Error creating the account </H1>");
             }
             else {
                 RequestDispatcher view = request.getRequestDispatcher("/InvalidCreatingUser.html");
                 view.forward(request, response);
+
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
