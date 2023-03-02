@@ -18,7 +18,6 @@
           <td><input name="email" /></td>
         </div>
       </tr>
-
       <tr>
         <div class="form-group">
           <td>Password:</td>
@@ -26,12 +25,23 @@
         </div>
       </tr>
       <tr>
+      <div class="form-group">
+      <label for="user-type">Select user type:</label>
+      <select id="user-type" name="user-type" required>
+        <option value="" selected disabled>Select User Type</option>
+        <option value="Student">Student</option>
+        <option value="Employer">Employer</option>
+        <option value="Admin">Admin</option>
+      </select>
+   		</div>
+	  </tr>
+      <tr>
         <td />
         <button type="submit" class="submit-btn">Login</button>
     </table>
   </form>
   <div class="header">
-    <h2>Invalid email or password!</h2>
+    <h2>Invalid email, password or user type!</h2>
   </div>
 </div>
 </body>

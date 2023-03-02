@@ -30,10 +30,11 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        String userType = request.getParameter("user-type");
 
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from login_information where email = '"+email+"' AND password = '"+password+"'");
+            ResultSet resultSet = statement.executeQuery("select * from login_information where email = '"+email+"' AND password = '"+password+"' AND userType = '" +userType+"'");
             PrintWriter out = response.getWriter();
 
             if (resultSet.next()) {
@@ -45,11 +46,18 @@ public class LoginServlet extends HttpServlet {
                 //request.getSession().setAttribute("email", email);
                 request.getSession().setAttribute("email", email);*/
                 //response.sendRedirect("ViewUserProfileServlet");
+                if(userType.equals("Student")) {
                 RequestDispatcher view = request.getRequestDispatcher("/StudentHomePage.jsp");
                 view.forward(request, response);
                 request.getSession().setAttribute("email", email);
                 response.sendRedirect("ViewUserProfileServlet");
-
+                }
+                if(userType.equals("Employer")) {
+                    RequestDispatcher view = request.getRequestDispatcher("/EmployerHomePage.jsp");
+                    view.forward(request, response);
+                    request.getSession().setAttribute("email", email);
+                    //response.sendRedirect("ViewUserProfileServlet");
+                    }
             }
             
             else{

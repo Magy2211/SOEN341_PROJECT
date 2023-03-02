@@ -12,19 +12,33 @@
   </div>
   <form method="post" action="createUserServlet">
     <table>
+     <tr>
+       <div class="form-group">
+      <label for="user-type">Select user type:</label>
+      <select id="user-type" name="user-type" required>
+        <option value="" selected disabled>Select User Type</option>
+        <option value="Student">Student</option>
+        <option value="Employer">Employer</option>
+        <option value="Admin">Admin</option>
+      </select>
+   		</div>
+	  </tr>
+    <tr>
       <div class="form-group">
-        <label for="email">Email:</label>
+       <td><label for="email">Email:</label>
         <input name="email" id="email" required />
-      </tr>
+        </td>
       </div>
-    <tr>
-      <div class="form-group">
-        <label for="password">Password:</label>
+     </tr>
+     <tr>
+       <div class="form-group">
+        </td><label for="password">Password:</label>
         <input name="password" type="password" id="password" required />
+        </td>
       </div>
-    </tr>
+     </tr>
     <tr>
-      <td />
+        <td />
       <button type="submit" class="submit-btn">Create Account</button>
   </table>
 </form>

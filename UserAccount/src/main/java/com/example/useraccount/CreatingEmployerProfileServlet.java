@@ -1,0 +1,86 @@
+package com.example.useraccount;
+
+import com.sun.net.httpserver.HttpServer;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
+import java.sql.*;
+
+@WebServlet(name = "createEmployerProfileServlet", value = "/createEmployerProfileServlet")
+@MultipartConfig
+public class CreatingEmployerProfileServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+    private Connection connection;
+
+    public void init(){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "root1234");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String email = (String) request.getSession().getAttribute("email");
+        String firstName = request.getParameter("first-name");
+        String lastName = request.getParameter("last-name");
+        String company = request.getParameter("company");
+        Part jobPosting = request.getPart("job-posting");
+        
+        InputStream inputStreamJobPosting = jobPosting.getInputStream();
+
+        try {
+            /*Statement statement = connection.createStatement();
+            int result = statement.executeUpdate("insert into profile_information values ('" + firstName + "', '" + lastName + "', '" + fieldOfStudy + "', '" + inputStreamResume + "','" + inputStreamLetter + "', '" + inputStreamTranscript + "', '" + email + "', '" + inputStreamPic + "')");
+
+            */
+            PreparedStatement statement = connection.prepareStatement("insert into employer_profile_information values (?, ?, ?, ?, ?)");
+            statement.setString(1, firstName);
+            statement.setString(2, lastName);
+            statement.setString(3, company);
+            statement.setString(4, email);
+            statement.setBlob(5, inputStreamJobPosting);
+            		
+            PrintWriter out = response.getWriter();
+            int result = statement.executeUpdate();
+            if (result > 0) {
+                out.print("<H1>Profile created</H1>");
+                //Go back to student home page
+                /*
+                RequestDispatcher view = request.getRequestDispatcher("/StudentHomePage.jsp");
+                view.forward(request, response);
+                request.getSession().setAttribute("email", email);
+                response.sendRedirect("ViewUserProfileServlet");
+                */
+            }
+            
+            else
+                out.print("<H1> Error creating the profile </H1>");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public void destroy() {
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
