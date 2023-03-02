@@ -46,3 +46,6 @@ This project is written in Java and HTML for ease of use with web development.
 # Database
 
 MySQL will be used as database management system.
+
+#Sprint 2 demo 
+https://liveconcordia-my.sharepoint.com/:v:/g/personal/m_gegres_live_concordia_ca/Edjs-E-xuRRDrgdJ4tE78iIBpxP6whBrYR0P6I8OO7LyZA?e=cA1syC
