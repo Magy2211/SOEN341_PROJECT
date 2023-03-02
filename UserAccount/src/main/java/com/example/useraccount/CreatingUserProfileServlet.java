@@ -34,7 +34,7 @@ public class CreatingUserProfileServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email = "test@gmail.co";
+        String email = (String) request.getSession().getAttribute("email");
         Part picturePart = request.getPart("profile-pic");
         String firstName = request.getParameter("first-name");
         String lastName = request.getParameter("last-name");
@@ -67,9 +67,11 @@ public class CreatingUserProfileServlet extends HttpServlet {
             int result = statement.executeUpdate();
             if (result > 0) {
                 out.print("<H1>Profile created</H1>");
-            //Go back to student home page
-            RequestDispatcher view = request.getRequestDispatcher("/StudentHomePage.html");
-            view.forward(request, response);
+                //Go back to student home page
+                RequestDispatcher view = request.getRequestDispatcher("/StudentHomePage.jsp");
+                view.forward(request, response);
+                request.getSession().setAttribute("email", email);
+                response.sendRedirect("ViewUserProfileServlet");
             }
             else
                 out.print("<H1> Error creating the profile </H1>");
