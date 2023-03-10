@@ -34,32 +34,28 @@ public class LoginServlet extends HttpServlet {
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("select * from login_information where email = '"+email+"' AND password = '"+password+"'");
+            PrintWriter out = response.getWriter();
 
             if (resultSet.next()) {
+                out.print("<H1>Successful Login </H1>");
+            // If login is successful, go to student home page
+                /*RequestDispatcher view = request.getRequestDispatcher("/StudentHomePage.jsp");
+                //RequestDispatcher view = getServletContext().getRequestDispatcher("/viewUserProfileServlet");
+                view.forward(request, response);
+                //request.getSession().setAttribute("email", email);
+                request.getSession().setAttribute("email", email);*/
+                //response.sendRedirect("ViewUserProfileServlet");
+                RequestDispatcher view = request.getRequestDispatcher("/StudentHomePage.jsp");
+                view.forward(request, response);
+                request.getSession().setAttribute("email", email);
+                response.sendRedirect("ViewUserProfileServlet");
 
-                String userType = resultSet.getString(3);
-                //if(userType.equals("Student")) {
-
-                    request.getSession().setAttribute("email", email);
-                    request.getSession().setAttribute("userType", userType);
-                    RequestDispatcher view = request.getRequestDispatcher("/viewUserProfileServlet");
-                    view.forward(request, response);
-                    //response.sendRedirect("/viewUserProfileServlet");
-                //}
-                /*if(userType.equals("Employer")) {
-
-                    request.getSession().setAttribute("email", email);
-                    RequestDispatcher view = request.getRequestDispatcher("/viewEmployerProfileServlet");
-                    view.forward(request, response);
-                   // response.sendRedirect("/viewEmployerProfileServlet");
-
-                    }*/
             }
             
             else{
                 RequestDispatcher view = request.getRequestDispatcher("/InvalidLoginPage.html");
                 view.forward(request, response);
-
+                //out.print("<H1> Invalid email or password </H1>");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
