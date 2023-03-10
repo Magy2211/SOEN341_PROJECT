@@ -46,7 +46,9 @@ public class LoginServlet extends HttpServlet {
                 //request.getSession().setAttribute("email", email);
                 request.getSession().setAttribute("email", email);*/
                 //response.sendRedirect("ViewUserProfileServlet");
+
                 if(userType.equals("Student")) {
+
                 RequestDispatcher view = request.getRequestDispatcher("/StudentHomePage.jsp");
                 view.forward(request, response);
                 request.getSession().setAttribute("email", email);
