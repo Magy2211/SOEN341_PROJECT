@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Profile</title>
@@ -10,12 +11,14 @@
     <h1><%= "Home Page" %>
 </div>
 </h1>
-<form method="post" action="viewUserProfileServlet">
+<form method="get" action="viewEmployerProfileServlet">
     <div class="form-group">
 <h3>First Name: ${firstName}</h3>
     <h3>Last Name: ${lastName}</h3>
     <h3>Email: ${email}</h3>
     <h3>Company: ${company}</h3>
+        <<h3>Job Posting:</h3>
+        <iframe src="data:application/pdf;base64,${jobPosting}" width="100%" height="500px"></iframe>
    <!-- <label><a href="EditingEmployerProfile.html">Edit Profile Information<br></a></label> -->
     </div>
 </form>

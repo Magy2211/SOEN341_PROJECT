@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Profile</title>
@@ -10,15 +11,19 @@
     <h1><%= "Home Page" %>
 </div>
 </h1>
-<form method="post" action="viewUserProfileServlet">
+<form method="get" action="viewUserProfileServlet">
     <div class="form-group">
 <h3>First Name: ${firstName}</h3>
     <h3>Last Name: ${lastName}</h3>
     <h3>Email: ${email}</h3>
-    <h3>Profile picture: ${profilePic}</h3>
-    <h3>Resume: ${resume}</h3>
-    <h3>Cover Letter: ${coverLetter}</h3>
-    <h3>Transcript: ${transcript}</h3>
+        <h3>Profile picture: </h3>
+        <img src="data:image/jpeg;base64,${javax.xml.bind.DatatypeConverter.printBase64Binary(profilePic)}" width="240" height="300"/>
+        <<h3>Resume:</h3>
+        <iframe src="data:application/pdf;base64,${resume}" width="100%" height="500px"></iframe>
+        <<h3>Cover Letter:</h3>
+        <iframe src="data:application/pdf;base64,${coverLetter}" width="100%" height="500px"></iframe>
+        <<h3>Transcript:</h3>
+        <iframe src="data:application/pdf;base64,${transcript}" width="100%" height="500px"></iframe>
     <h3>Engineering field of study: ${engineeringField}</h3>
     <label><a href="EditingUserProfile.html">Edit Profile Information<br></a></label>
     </div>
