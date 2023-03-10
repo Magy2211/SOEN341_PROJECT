@@ -11,24 +11,41 @@
     <h1>Account Registration:</h1>
     <h2>Email is already in use!</h2>
   </div>
-  <form method="post" action="createUserServlet">
-    <table>
-      <div class="form-group">
-        <td>Email:</td>
-        <td><input name="email" /></td>
-        </tr>
-      </div>
-      <tr>
+</div>
+<form method="post" action="createUserServlet">
+  <table>
+    <tr>
+      <td>
         <div class="form-group">
-          <td>Password:</td>
-          <td><input name="password" type="password" /></td>
+          <label for="user-type">Select user type:</label>
+          <select id="user-type" name="user-type" required>
+            <option value="" selected disabled>Select User Type</option>
+            <option value="Student">Student</option>
+            <option value="Employer">Employer</option>
+            <option value="Admin">Admin</option>
+          </select>
         </div>
-      </tr>
-      <tr>
-        <td />
+      </td>
+    </tr>
+    <tr>
+      <div class="form-group">
+        <td><label for="email">Email:</label></td>
+        <td><input name="email" id="email" required /></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="form-group">
+        <td><label for="password">Password:</label></td>
+        <td><input name="password" type="password" id="password" required /></td>
+      </div>
+    </tr>
+    <tr>
+      <td>
         <button type="submit" class="submit-btn">Create Account</button>
-    </table>
-  </form>
+      </td>
+    </tr>
+  </table>
+</form>
 </div>
 </body>
 </html>
