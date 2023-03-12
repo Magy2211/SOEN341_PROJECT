@@ -8,8 +8,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 
-@WebServlet(name = "jobPostingsServlet", value = "/jobPostingsServlet")
-public class JobPostingsServlet extends HttpServlet {
+@WebServlet(name = "addJobPostingsServlet", value = "/addJobPostingsServlet")
+public class AddJobPostingsServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     private Connection connection;
@@ -35,11 +35,10 @@ public class JobPostingsServlet extends HttpServlet {
             PrintWriter out = response.getWriter();
 
                 if (result > 0) {
-                    /*RequestDispatcher view = request.getRequestDispatcher("/CreatingUserProfile.html");
-                    view.forward(request, response);
                     request.getSession().setAttribute("email", email);
-                    response.sendRedirect("CreatingUserProfileServlet");*/
-                    out.print("<H1> Job posting created </H1>");
+                    request.getSession().setAttribute("userType", "Employer");
+                    RequestDispatcher view = request.getRequestDispatcher("/viewUserProfileServlet");
+                    view.forward(request, response);
                 } else
                     out.print("<H1> Error creating job posting </H1>");
             } catch (SQLException e) {

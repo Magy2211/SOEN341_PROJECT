@@ -10,13 +10,15 @@
     <div class="header">
         <h1>Adding a job posting:</h1>
     </div>
-    <form method="post" action="jobPostingsServlet">
+    <form method="post" action="addJobPostingsServlet">
         <table>
             <tr>
-                <div class="form-group">
-                    <td><label for="positionTitle">Title:</label></td>
-                    <td><input name="positionTitle" id="positionTitle" required /></td>
-                </div>
+                <td>
+                    <div class="form-group">
+                        <label for="positionTitle">Title:</label>
+                        <input name="positionTitle" id="positionTitle" required />
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -28,7 +30,7 @@
             </tr>
             <tr>
                 <td>
-                    <button type="submit" class="submit-btn">Create Account</button>
+                    <button type="submit" class="submit-btn">Add Job Posting</button>
                 </td>
             </tr>
         </table>
