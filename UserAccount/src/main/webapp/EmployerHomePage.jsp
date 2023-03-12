@@ -17,9 +17,10 @@
     <h3>Last Name: ${lastName}</h3>
     <h3>Email: ${email}</h3>
     <h3>Company: ${company}</h3>
-        <<h3>Job Posting:</h3>
-        <iframe src="data:application/pdf;base64,${jobPosting}" width="100%" height="500px"></iframe>
+        <%--<<h3>Job Posting:</h3>
+        <iframe src="data:application/pdf;base64,${jobPosting}" width="100%" height="500px"></iframe>--%>
    <!-- <label><a href="EditingEmployerProfile.html">Edit Profile Information<br></a></label> -->
+        <label><a href="AddJobPosting.html">Add a job posting<br></a></label>
     </div>
 </form>
 </div>
