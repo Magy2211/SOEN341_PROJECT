@@ -13,30 +13,30 @@
   <form method="post" action="createUserServlet">
     <table>
         <tr>
-            <td>
-                <div class="form-group">
-                    <label for="user-type">Select user type:</label>
-                    <select id="user-type" name="user-type" required>
-                        <option value="" selected disabled>Select User Type</option>
-                        <option value="Student">Student</option>
-                        <option value="Employer">Employer</option>
-                        <option value="Admin">Admin</option>
-                    </select>
-                </div>
-            </td>
+            <div class="form-group">
+                <td><label for="email">Email:</label></td>
+                <td><input name="email" id="email" required /></td>
+            </div>
         </tr>
      <tr>
          <div class="form-group">
-             <td><label for="email">Email:</label></td>
-             <td><input name="email" id="email" required /></td>
+             <td><label for="password">Password:</label></td>
+             <td><input name="password" type="password" id="password" required /></td>
          </div>
 	  </tr>
     <tr>
-        <div class="form-group">
-            <td><label for="password">Password:</label></td>
-            <td><input name="password" type="password" id="password" required /></td>
-        </div>
-     </tr>
+        <td>
+            <div class="form-group">
+                <label for="user-type">Select user type:</label>
+                <select id="user-type" name="user-type" required>
+                    <option value="" selected disabled>Select User Type</option>
+                    <option value="Student">Student</option>
+                    <option value="Employer">Employer</option>
+                    <option value="Admin">Admin</option>
+                </select>
+            </div>
+        </td>
+        </tr>
     <tr>
         <td>
       <button type="submit" class="submit-btn">Create Account</button>

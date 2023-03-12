@@ -49,10 +49,6 @@ public class CreatingUserProfileServlet extends HttpServlet {
         InputStream inputStreamTranscript = transcriptPart.getInputStream();
 
         try {
-            /*Statement statement = connection.createStatement();
-            int result = statement.executeUpdate("insert into profile_information values ('" + firstName + "', '" + lastName + "', '" + fieldOfStudy + "', '" + inputStreamResume + "','" + inputStreamLetter + "', '" + inputStreamTranscript + "', '" + email + "', '" + inputStreamPic + "')");
-
-            */
             PreparedStatement statement = connection.prepareStatement("insert into profile_information values (?, ?, ?, ?, ?, ?, ?, ?)");
             statement.setString(1, firstName);
             statement.setString(2, lastName);
@@ -66,12 +62,11 @@ public class CreatingUserProfileServlet extends HttpServlet {
             PrintWriter out = response.getWriter();
             int result = statement.executeUpdate();
             if (result > 0) {
-                out.print("<H1>Profile created</H1>");
                 //Go back to student home page
-                RequestDispatcher view = request.getRequestDispatcher("/StudentHomePage.jsp");
-                view.forward(request, response);
                 request.getSession().setAttribute("email", email);
-                response.sendRedirect("ViewUserProfileServlet");
+                request.getSession().setAttribute("userType", "Student");
+                RequestDispatcher view = request.getRequestDispatcher("/viewUserProfileServlet");
+                view.forward(request, response);
             }
             else
                 out.print("<H1> Error creating the profile </H1>");

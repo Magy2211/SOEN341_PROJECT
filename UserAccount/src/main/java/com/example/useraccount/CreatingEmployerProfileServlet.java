@@ -38,33 +38,21 @@ public class CreatingEmployerProfileServlet extends HttpServlet {
         String firstName = request.getParameter("first-name");
         String lastName = request.getParameter("last-name");
         String company = request.getParameter("company");
-        Part jobPosting = request.getPart("job-posting");
-        
-        InputStream inputStreamJobPosting = jobPosting.getInputStream();
 
         try {
-            /*Statement statement = connection.createStatement();
-            int result = statement.executeUpdate("insert into profile_information values ('" + firstName + "', '" + lastName + "', '" + fieldOfStudy + "', '" + inputStreamResume + "','" + inputStreamLetter + "', '" + inputStreamTranscript + "', '" + email + "', '" + inputStreamPic + "')");
-
-            */
-            PreparedStatement statement = connection.prepareStatement("insert into employer_profile_information values (?, ?, ?, ?, ?)");
+            PreparedStatement statement = connection.prepareStatement("insert into employer_profile_information values (?, ?, ?, ?)");
             statement.setString(1, firstName);
             statement.setString(2, lastName);
             statement.setString(3, company);
             statement.setString(4, email);
-            statement.setBlob(5, inputStreamJobPosting);
             		
             PrintWriter out = response.getWriter();
             int result = statement.executeUpdate();
             if (result > 0) {
-                out.print("<H1>Profile created</H1>");
-                //Go back to student home page
-                /*
-                RequestDispatcher view = request.getRequestDispatcher("/StudentHomePage.jsp");
-                view.forward(request, response);
                 request.getSession().setAttribute("email", email);
-                response.sendRedirect("ViewUserProfileServlet");
-                */
+                request.getSession().setAttribute("userType", "Employer");
+                RequestDispatcher view = request.getRequestDispatcher("/viewUserProfileServlet");
+                view.forward(request, response);
             }
             
             else

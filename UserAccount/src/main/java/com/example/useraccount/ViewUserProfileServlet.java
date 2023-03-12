@@ -43,25 +43,26 @@ public class ViewUserProfileServlet extends HttpServlet {
                     request.getSession().setAttribute("firstName", resultSet.getString(1));
                     request.getSession().setAttribute("lastName", resultSet.getString(2));
                     request.getSession().setAttribute("engineeringField", resultSet.getString(3));
-                    //request.getSession().setAttribute("resume", resultSet.getBlob(4));
+
+                    // read resume as a PDF file
                     Blob resumeBlob = resultSet.getBlob(4);
                     byte[] resumeData = resumeBlob.getBytes(1, (int)resumeBlob.length());
                     String resumeBase64 = Base64.getEncoder().encodeToString(resumeData);
                     request.getSession().setAttribute("resume", resumeBase64);
+
+                    // read cover letter as a PDF file
                     Blob coverLetterBlob = resultSet.getBlob(5);
                     byte[] coverLetterData = coverLetterBlob.getBytes(1, (int)coverLetterBlob.length());
                     String coverLetterBase64 = Base64.getEncoder().encodeToString(coverLetterData);
                     request.getSession().setAttribute("coverLetter", coverLetterBase64);
+
                     // read transcript as a PDF file
                     Blob transcriptBlob = resultSet.getBlob(6);
                     byte[] transcriptData = transcriptBlob.getBytes(1, (int)transcriptBlob.length());
                     String transcriptBase64 = Base64.getEncoder().encodeToString(transcriptData);
                     request.getSession().setAttribute("transcript", transcriptBase64);
 
-                    //request.getSession().setAttribute("coverLetter", resultSet.getBlob(5));
-                    //request.getSession().setAttribute("transcript", resultSet.getBlob(6));
                     request.getSession().setAttribute("email", resultSet.getString(7));
-                    //request.getSession().setAttribute("profilePic", resultSet.getBlob(8));
                     InputStream imageData = resultSet.getBinaryStream(8);
 
 
@@ -86,10 +87,6 @@ public class ViewUserProfileServlet extends HttpServlet {
                     request.getSession().setAttribute("lastName", resultSet.getString(2));
                     request.getSession().setAttribute("company", resultSet.getString(3));
                     request.getSession().setAttribute("email", resultSet.getString(4));
-                    Blob resumeBlob = resultSet.getBlob(5);
-                    byte[] resumeData = resumeBlob.getBytes(1, (int)resumeBlob.length());
-                    String resumeBase64 = Base64.getEncoder().encodeToString(resumeData);
-                    request.getSession().setAttribute("jobPosting", resumeBase64);
                 }
                 RequestDispatcher view = request.getRequestDispatcher("/EmployerHomePage.jsp");
                 view.forward(request, response);
