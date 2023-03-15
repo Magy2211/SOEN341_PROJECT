@@ -22,9 +22,7 @@ public class EditUserProfileServlet extends HttpServlet {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "root1234");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
@@ -45,11 +43,7 @@ public class EditUserProfileServlet extends HttpServlet {
         InputStream inputStreamTranscript = transcriptPart.getInputStream();
 
         try {
-            /*Statement statement = connection.createStatement();
-            int result = statement.executeUpdate("insert into profile_information values ('" + firstName + "', '" + lastName + "', '" + fieldOfStudy + "', '" + inputStreamResume + "','" + inputStreamLetter + "', '" + inputStreamTranscript + "', '" + email + "', '" + inputStreamPic + "')");
-
-            */
-            PreparedStatement statement = connection.prepareStatement("update profile_information set firstName=?, lastName=?, fieldOfStudy=?, resume=?, coverLetter=?, unofficialTranscript=?/*, profilePicture=?*/ where email = ?");
+            PreparedStatement statement = connection.prepareStatement("update profile_information set firstName=?, lastName=?, fieldOfStudy=?, resume=?, coverLetter=?, unofficialTranscript=?, profilePicture=? where email = ?");
             statement.setString(1, firstName);
             statement.setString(2, lastName);
             statement.setString(3, fieldOfStudy);
@@ -57,7 +51,7 @@ public class EditUserProfileServlet extends HttpServlet {
             statement.setBlob(5, inputStreamLetter);
             statement.setBlob(6, inputStreamTranscript);
             statement.setString(7, email);
-            //statement.setBlob(8, inputStreamPic);
+            statement.setBlob(8, inputStreamPic);
 
             PrintWriter out = response.getWriter();
             int result = statement.executeUpdate();

@@ -18,9 +18,7 @@ public class AddJobPostingsServlet extends HttpServlet {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "root1234");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
@@ -46,7 +44,7 @@ public class AddJobPostingsServlet extends HttpServlet {
         }
     }
 
-        public void destroy() {
+    public void destroy() {
         try {
             connection.close();
         } catch (SQLException e) {
