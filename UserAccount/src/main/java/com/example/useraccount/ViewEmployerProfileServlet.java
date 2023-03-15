@@ -40,10 +40,7 @@ public class ViewEmployerProfileServlet extends HttpServlet {
                 request.getSession().setAttribute("lastName", resultSet.getString(2));
                 request.getSession().setAttribute("company", resultSet.getString(3));
                 request.getSession().setAttribute("email", resultSet.getString(4));
-                Blob resumeBlob = resultSet.getBlob(5);
-                byte[] resumeData = resumeBlob.getBytes(1, (int)resumeBlob.length());
-                String resumeBase64 = Base64.getEncoder().encodeToString(resumeData);
-                request.getSession().setAttribute("jobPosting", resumeBase64);
+
             }
             RequestDispatcher view = request.getRequestDispatcher("/EmployerHomePage.jsp");
             view.forward(request, response);

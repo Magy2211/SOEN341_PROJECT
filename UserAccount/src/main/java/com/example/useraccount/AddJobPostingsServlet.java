@@ -46,7 +46,7 @@ public class AddJobPostingsServlet extends HttpServlet {
         }
     }
 
-        public void destroy() {
+    public void destroy() {
         try {
             connection.close();
         } catch (SQLException e) {
