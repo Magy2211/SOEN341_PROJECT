@@ -8,7 +8,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.*;
 
 @WebServlet(name = "loginServlet", value = "/loginServlet")
@@ -20,9 +19,7 @@ public class LoginServlet extends HttpServlet {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "root1234");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
@@ -36,24 +33,19 @@ public class LoginServlet extends HttpServlet {
             ResultSet resultSet = statement.executeQuery("select * from login_information where email = '"+email+"' AND password = '"+password+"'");
 
             if (resultSet.next()) {
-
                 String userType = resultSet.getString(3);
-                //if(userType.equals("Student")) {
-
+                if(userType.equals("Student")) {
                     request.getSession().setAttribute("email", email);
                     request.getSession().setAttribute("userType", userType);
                     RequestDispatcher view = request.getRequestDispatcher("/viewUserProfileServlet");
                     view.forward(request, response);
-                    //response.sendRedirect("/viewUserProfileServlet");
-                //}
-                /*if(userType.equals("Employer")) {
-
+                }
+                if(userType.equals("Employer")) {
                     request.getSession().setAttribute("email", email);
-                    RequestDispatcher view = request.getRequestDispatcher("/viewEmployerProfileServlet");
+                    request.getSession().setAttribute("userType", userType);
+                    RequestDispatcher view = request.getRequestDispatcher("/viewUserProfileServlet");
                     view.forward(request, response);
-                   // response.sendRedirect("/viewEmployerProfileServlet");
-
-                    }*/
+                }
             }
             
             else{

@@ -16,18 +16,15 @@ public class ViewAJobPostingServlet extends HttpServlet {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "root1234");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String title = (String) request.getParameter("title");
+        String title = request.getParameter("title");
         String description = "";
-        String emailEmployer = "";
-        String emailStudent = "";
+        String emailEmployer;
         String company = "";
         String firstNameEmployer = "";
         String lastNameEmployer = "";

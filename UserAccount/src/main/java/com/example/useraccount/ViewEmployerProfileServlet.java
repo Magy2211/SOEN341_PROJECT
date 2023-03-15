@@ -1,16 +1,14 @@
 package com.example.useraccount;
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
-import java.util.Base64;
 
 @WebServlet(name = "viewEmployerProfileServlet", value = "/viewEmployerProfileServlet")
 public class ViewEmployerProfileServlet extends HttpServlet {
@@ -22,9 +20,7 @@ public class ViewEmployerProfileServlet extends HttpServlet {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "root1234");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
@@ -40,7 +36,6 @@ public class ViewEmployerProfileServlet extends HttpServlet {
                 request.getSession().setAttribute("lastName", resultSet.getString(2));
                 request.getSession().setAttribute("company", resultSet.getString(3));
                 request.getSession().setAttribute("email", resultSet.getString(4));
-
             }
             RequestDispatcher view = request.getRequestDispatcher("/EmployerHomePage.jsp");
             view.forward(request, response);
