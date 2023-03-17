@@ -34,6 +34,7 @@
 <h3>First Name: ${firstName}</h3>
     <h3>Last Name: ${lastName}</h3>
     <h3>Email: ${email}</h3>
+        <h3>Engineering field of study: ${engineeringField}</h3>
         <h3>Profile picture: </h3>
         <img src="data:image/jpeg;base64,${javax.xml.bind.DatatypeConverter.printBase64Binary(profilePic)}" width="240" height="300"/>
         <<h3>Resume:</h3>
@@ -42,11 +43,11 @@
         <iframe src="data:application/pdf;base64,${coverLetter}" width="100%" height="500px"></iframe>
         <<h3>Transcript:</h3>
         <iframe src="data:application/pdf;base64,${transcript}" width="100%" height="500px"></iframe>
-    <h3>Engineering field of study: ${engineeringField}</h3>
     <label><a href="EditingUserProfile.html">Edit Profile Information<br></a></label>
         <label><a href="viewJobPostingsServlet">View job postings<br></a></label>
     </div>
 </form>
 </div>
+</form>
 </body>
 </html>
