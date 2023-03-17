@@ -1,18 +1,37 @@
+
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Employee Profile</title>
-  <link rel="stylesheet" type="text/css" href="CreatingUserProfile.css">
+<html lang="en">
+<head>   
+  
+      <link rel="stylesheet" type="text/css" href="CreatingEmployerProfile.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    <style media="screen">
+    
+    </style>
+
+   
 </head>
+  
+
 <body>
-<form action="createEmployerProfileServlet" method="post" enctype="multipart/form-data">
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+      <form method="post" action="createEmployerProfileServlet">
 
-  <div class="container">
-  <div class="header">
-    <h1>Employer Profile</h1>
-    <p>Please fill out the form below</p>
-  </div>
-
+      
+        <h3 style="color:orange;">Employer Profile</h3>
+         <p style="color:white;">Please fill out the form below</p>
+         
+        
+        
+<div class="container">
+<br/>
+   <form method="post" action="createEmployerProfileServlet">
     <div class="form-group">
       <label for="first-name">First Name:</label>
       <input type="text" id="first-name" name="first-name" required>
@@ -30,5 +49,13 @@
 </div>
 <script src="script.js"></script>
 </form>
+  
+  
+  
+  
+  
+</div>
+          
+          
 </body>
 </html>

@@ -1,17 +1,35 @@
+
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Delete User</title>
-  <link rel="stylesheet" type="text/css" href="CreatingUserProfile.css">
-</head>
+<html lang="en">
+<head>   
+  
+      <link rel="stylesheet" type="text/css" href="Index.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    <style media="screen">
+    
+    </style>
+
+   </head>
+  
+
 <body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+      <form method="post" action="deleteUserServlet">
+
+      
+        <h3 style="color:orange;">Delete User </h3>
+         
+        
+        
 <div class="container">
-  <div class="header">
-<h1>Delete User:</h1>
-  </div>
-<form method="post" action="deleteUserServlet">
-  <table>
+<br/>
+<form method="post" action="deleteUserServlet">    <table>
     <div class="form-group">
       <label for="email">Email:</label>
       <input name="email" id="email" required />
@@ -27,7 +45,14 @@
       <td />
       <button type="submit" class="submit-btn">Delete Account</button>
   </table>
-</form>
+  </form>
+  
+  
+  
+  
+  
 </div>
+          
+          
 </body>
 </html>
