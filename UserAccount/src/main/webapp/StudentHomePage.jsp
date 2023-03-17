@@ -48,6 +48,7 @@
    <h1>Engineering field of study: ${engineeringField}</h1>
     <label>
        <label><a href="EditingUserProfile.html">Edit Profile Information<br></a></label>
+       <label><a href="viewJobPostingsServlet?studentEmail=${email}">View job postings<br></a></label>
 
     </div>
 </form>  
