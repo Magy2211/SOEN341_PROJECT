@@ -28,10 +28,12 @@ public class AddJobPostingsServlet extends HttpServlet {
         String title = request.getParameter("positionTitle");
         String description = request.getParameter("description");
         try {
-            Statement statement = connection.createStatement();
-            int result = statement.executeUpdate("insert into job_postings values ('" + title + "', '" + description + "', '" + email + "')");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO job_postings (Title, Description, email) VALUES (?, ?, ?)");
+            statement.setString(1, title);
+            statement.setString(2, description);
+            statement.setString(3, email);
+            int result = statement.executeUpdate();
             PrintWriter out = response.getWriter();
-
                 if (result > 0) {
                     request.getSession().setAttribute("email", email);
                     request.getSession().setAttribute("userType", "Employer");

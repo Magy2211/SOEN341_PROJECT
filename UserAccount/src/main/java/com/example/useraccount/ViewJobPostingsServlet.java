@@ -29,6 +29,8 @@ public class ViewJobPostingsServlet extends HttpServlet {
         String description;
         String emailEmployer;
         String company = "";
+        String studentEmail =request.getParameter("studentEmail");
+        int id;
         try {
             PreparedStatement statement = connection.prepareStatement("select * from job_postings");
             ResultSet resultSet = statement.executeQuery();
@@ -38,6 +40,7 @@ public class ViewJobPostingsServlet extends HttpServlet {
                 title = resultSet.getString("Title");
                 description = resultSet.getString("Description");
                 emailEmployer = resultSet.getString("email");
+                id = resultSet.getInt("id");
 
                 PreparedStatement statement1 = connection.prepareStatement("select * from employer_profile_information where email = ?");
                 statement1.setString(1, emailEmployer);
@@ -45,9 +48,10 @@ public class ViewJobPostingsServlet extends HttpServlet {
                 if(resultSet1.next()) {
                     company = resultSet1.getString(3);
                 }
-                jobPostings.add(new JobPostings(title, description, company));
+                jobPostings.add(new JobPostings(id, title, description, company));
             }
             request.setAttribute("jobPostings", jobPostings);
+            request.setAttribute("studentEmail", studentEmail);
             RequestDispatcher view = request.getRequestDispatcher("/viewJobPostings.jsp");
             view.forward(request, response);
         } catch (SQLException e) {
