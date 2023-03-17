@@ -19,6 +19,7 @@
     <h3>Company: ${company}</h3>
     <label><a href="EditingEmployerProfile.html">Edit Profile Information<br></a></label>
         <label><a href="AddJobPosting.html">Add a job posting<br></a></label>
+        <label><a href="viewCreatedJobPostingsServlet?employerEmail=${email}">View job postings created<br></a></label>
     </div>
 </form>
 </div>
