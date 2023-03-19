@@ -9,9 +9,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@WebServlet(name = "viewCreatedJobPostingsServlet", value = "/viewCreatedJobPostingsServlet")
+public class ViewCreatedJobPostingsServlet extends HttpServlet {
 
-@WebServlet(name = "viewJobPostingsServlet", value = "/viewJobPostingsServlet")
-public class ViewJobPostingsServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private Connection connection;
 
@@ -23,36 +23,31 @@ public class ViewJobPostingsServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
     }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String title;
-        String description;
-        String emailEmployer;
-        String company = "";
-        String studentEmail =request.getParameter("studentEmail");
+        String employerEmail = request.getParameter("employerEmail");
         int id;
+        String title;
+        String description = "";
+        String company = "";
+
         try {
-            PreparedStatement statement = connection.prepareStatement("select * from job_postings");
+            PreparedStatement statement = connection.prepareStatement("select * from job_postings where email = ?");
+            statement.setString(1, employerEmail);
             ResultSet resultSet = statement.executeQuery();
             List<JobPostings> jobPostings = new ArrayList<>();
             while (resultSet.next())
             {
                 title = resultSet.getString("Title");
-                description = resultSet.getString("Description");
-                emailEmployer = resultSet.getString("email");
+                employerEmail = resultSet.getString("email");
                 id = resultSet.getInt("id");
 
-                PreparedStatement statement1 = connection.prepareStatement("select * from employer_profile_information where email = ?");
-                statement1.setString(1, emailEmployer);
-                ResultSet resultSet1 = statement1.executeQuery();
-                if(resultSet1.next()) {
-                    company = resultSet1.getString(3);
-                }
                 jobPostings.add(new JobPostings(id, title, description, company));
             }
             request.setAttribute("jobPostings", jobPostings);
-            request.setAttribute("studentEmail", studentEmail);
-            RequestDispatcher view = request.getRequestDispatcher("/viewJobPostings.jsp");
+            request.setAttribute("employerEmail", employerEmail);
+            RequestDispatcher view = request.getRequestDispatcher("/ViewCreatedJobPostings.jsp");
             view.forward(request, response);
         } catch (SQLException e) {
             throw new RuntimeException(e);

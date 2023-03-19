@@ -22,15 +22,17 @@ public class ViewAJobPostingServlet extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String title = request.getParameter("title");
+        String title = "";
+        int id = Integer.parseInt(request.getParameter("id"));
         String description = "";
         String emailEmployer;
         String company = "";
         String firstNameEmployer = "";
         String lastNameEmployer = "";
+        String studentEmail =request.getParameter("studentEmail");
         try {
-            PreparedStatement statement = connection.prepareStatement("select * from job_postings where Title = ?");
-            statement.setString(1, title);
+            PreparedStatement statement = connection.prepareStatement("select * from job_postings where id = ?");
+            statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next())
             {
@@ -52,6 +54,8 @@ public class ViewAJobPostingServlet extends HttpServlet {
             request.getSession().setAttribute("organization", company);
             request.getSession().setAttribute("employerFirstName", firstNameEmployer);
             request.getSession().setAttribute("employerLastName", lastNameEmployer);
+            request.getSession().setAttribute("id", id);
+            request.setAttribute("studentEmail", studentEmail);
             RequestDispatcher view = request.getRequestDispatcher("/ViewAJobPosting.jsp");
             view.forward(request, response);
         } catch (SQLException e) {
