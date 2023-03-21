@@ -14,8 +14,8 @@
 <iframe src="data:application/pdf;base64,${studentInformation.getCoverLetterBase64()}" width="100%" height="500px"></iframe>
 <<h3>Transcript:</h3>
 <iframe src="data:application/pdf;base64,${studentInformation.getTranscriptBase64()}" width="100%" height="500px"></iframe>
-<%--<form action="applyForAJobPostingServlet?id=${id}&studentEmail=${studentEmail}" method="post">
-  <input type="submit" value="Apply">
-</form>--%>
+<form action="selectStudentForInterviewServlet?jobPostingID=${jobPostingID}&studentEmail=${studentEmail}&employerEmail=${employerEmail}" method="post">
+  <input type="submit" value="Select for an interview">
+</form>
 </body>
 </html>

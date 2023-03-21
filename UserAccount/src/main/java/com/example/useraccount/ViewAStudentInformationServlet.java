@@ -31,9 +31,11 @@ public class ViewAStudentInformationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String studentEmail = request.getParameter("studentEmail");
+        String employerEmail = request.getParameter("employerEmail");
         String studentFirstName;
         String studentLastName;
         String fieldOfStudy;
+        int jobPostingID = Integer.parseInt(request.getParameter("jobPostingID"));
 
         try {
             PreparedStatement statement = connection.prepareStatement("select * from profile_information where email = ?");
@@ -63,8 +65,11 @@ public class ViewAStudentInformationServlet extends HttpServlet {
                 byte[] imageBytes = imageData.readAllBytes();
                 ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
                 BufferedImage img = ImageIO.read(bis);
-                request.setAttribute("studentInformation", new StudentInformation(studentFirstName, studentLastName, "", fieldOfStudy, resumeBase64, coverLetterBase64, transcriptBase64, img));
+                request.setAttribute("studentInformation", new StudentInformation(studentFirstName, studentLastName, studentEmail, fieldOfStudy, resumeBase64, coverLetterBase64, transcriptBase64, img));
             }
+            request.setAttribute("jobPostingID", jobPostingID);
+            request.setAttribute("employerEmail", employerEmail);
+            request.setAttribute("studentEmail", studentEmail);
             RequestDispatcher view = request.getRequestDispatcher("/ViewAStudentInformation.jsp");
             view.forward(request, response);
         } catch (SQLException e) {

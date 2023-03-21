@@ -30,6 +30,7 @@ public class ViewJobPostingsServlet extends HttpServlet {
         String emailEmployer;
         String company = "";
         String studentEmail =request.getParameter("studentEmail");
+        String status = "";
         int id;
         try {
             PreparedStatement statement = connection.prepareStatement("select * from job_postings");
@@ -41,6 +42,7 @@ public class ViewJobPostingsServlet extends HttpServlet {
                 description = resultSet.getString("Description");
                 emailEmployer = resultSet.getString("email");
                 id = resultSet.getInt("id");
+                status = resultSet.getString("Status");
 
                 PreparedStatement statement1 = connection.prepareStatement("select * from employer_profile_information where email = ?");
                 statement1.setString(1, emailEmployer);
@@ -48,7 +50,15 @@ public class ViewJobPostingsServlet extends HttpServlet {
                 if(resultSet1.next()) {
                     company = resultSet1.getString(3);
                 }
-                jobPostings.add(new JobPostings(id, title, description, company));
+                PreparedStatement statement2 =connection.prepareStatement("select * from applications where studentEmail = ? AND jobPostingID = ?");
+                statement2.setString(1, studentEmail);
+                statement2.setInt(2, id);
+                ResultSet resultSet2 = statement2.executeQuery();
+
+                if (resultSet2.next()) {
+                    status = resultSet2.getString("Status");
+                }
+                jobPostings.add(new JobPostings(id, title, description, company, status));
             }
             request.setAttribute("jobPostings", jobPostings);
             request.setAttribute("studentEmail", studentEmail);

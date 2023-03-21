@@ -55,6 +55,8 @@ public class ViewStudentApplicationsServlet extends HttpServlet {
                 }
             }
             request.setAttribute("studentInformation", studentInformation);
+            request.setAttribute("jobPostingID", jobPostingID);
+            request.setAttribute("employerEmail", employerEmail);
             RequestDispatcher view = request.getRequestDispatcher("/ViewStudentApplications.jsp");
             view.forward(request, response);
         } catch (SQLException e) {

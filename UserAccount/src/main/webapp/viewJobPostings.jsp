@@ -11,6 +11,7 @@
       <tr>
         <th><b>Title</b></th>
         <th><b>Organization</b></th>
+        <th><b>Status</b></th>
       </tr>
 
       <%
@@ -19,6 +20,7 @@
       <tr>
         <td><label><a href="viewAJobPostingServlet?id=<%=jobPosting.getId()%>&studentEmail=${studentEmail}" ><%=jobPosting.getTitle()%><br></a></label></td>
         <td><%=jobPosting.getCompany()%></td>
+        <td><%=jobPosting.getStatus()%></td>
       </tr>
       <%}%>
   </table>

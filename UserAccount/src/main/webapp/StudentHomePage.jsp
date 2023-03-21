@@ -44,7 +44,7 @@
         <<h3>Transcript:</h3>
         <iframe src="data:application/pdf;base64,${transcript}" width="100%" height="500px"></iframe>
     <label><a href="EditingUserProfile.html">Edit Profile Information<br></a></label>
-        <label><a href="viewJobPostingsServlet">View job postings<br></a></label>
+        <label><a href="viewJobPostingsServlet?studentEmail=${email}">View job postings<br></a></label>
     </div>
 </form>
 </div>
