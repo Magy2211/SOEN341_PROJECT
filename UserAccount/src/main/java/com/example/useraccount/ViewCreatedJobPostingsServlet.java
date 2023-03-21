@@ -43,7 +43,7 @@ public class ViewCreatedJobPostingsServlet extends HttpServlet {
                 employerEmail = resultSet.getString("email");
                 id = resultSet.getInt("id");
 
-                jobPostings.add(new JobPostings(id, title, description, company));
+                jobPostings.add(new JobPostings(id, title, description, company, ""));
             }
             request.setAttribute("jobPostings", jobPostings);
             request.setAttribute("employerEmail", employerEmail);

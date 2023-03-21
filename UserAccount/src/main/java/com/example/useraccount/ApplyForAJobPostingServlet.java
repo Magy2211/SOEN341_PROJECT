@@ -32,9 +32,10 @@ public class ApplyForAJobPostingServlet extends HttpServlet {
         int jobPostingID = Integer.parseInt(request.getParameter("id"));
         String studentEmail = request.getParameter("studentEmail");
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO applications (jobPostingID, studentEmail) VALUES (?, ?)");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO applications (jobPostingID, studentEmail, Status) VALUES (?, ?, ?)");
             statement.setInt(1, jobPostingID);
             statement.setString(2, studentEmail);
+            statement.setString(3, "Applied to");
             int result = statement.executeUpdate();
             PrintWriter out = response.getWriter();
             if (result > 0) {

@@ -5,17 +5,21 @@ public class JobPostings {
     private String description;
     private String company;
     private int id;
+    private String status;
 
     public JobPostings(){
         title = "";
         description = "";
         company = "";
+        status = "";
+        id = 0;
     }
-    public JobPostings(int id, String title, String description, String company){
+    public JobPostings(int id, String title, String description, String company, String status){
         this.title = title;
         this.description = description;
         this.company = company;
         this.id = id;
+        this.status = status;
     }
 
     public void setDescription(String description) {
@@ -34,6 +38,10 @@ public class JobPostings {
         this.id = id;
     }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public String getTitle(){
         return title;
     }
@@ -48,5 +56,9 @@ public class JobPostings {
 
     public int getId() {
         return id;
+    }
+
+    public String getStatus() {
+        return status;
     }
 }
