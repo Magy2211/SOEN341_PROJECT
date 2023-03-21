@@ -6,7 +6,7 @@
 <html>
 <head>
 	<title>Job Posting Website</title>
-	<link rel="stylesheet" type="text/css" href="f.css">
+	<link rel="stylesheet" type="text/css" href="viewJobPostings.css">
 </head>
 <body>
 	<header>
