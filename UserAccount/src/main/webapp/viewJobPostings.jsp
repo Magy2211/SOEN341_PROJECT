@@ -59,6 +59,7 @@
 		<div class="job-box">
 			<h2><a href="viewAJobPostingServlet?id=<%=jobPosting.getId()%>&studentEmail=${studentEmail}" ><%=jobPosting.getTitle()%></a></h2>
 			<p><strong>Company:</strong> <%=jobPosting.getCompany()%></p>
+			<p><strong>Status:</strong> <%=jobPosting.getStatus()%></p>
 			<p><%=jobPosting.getDescription()%></p>
 		</div>
 	<%}%>
