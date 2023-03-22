@@ -29,7 +29,13 @@ public class ViewAJobPostingServlet extends HttpServlet {
         String company = "";
         String firstNameEmployer = "";
         String lastNameEmployer = "";
+        
+        String salary ="";
+        String jobLocation="";
+        String deadline="";
+        
         String studentEmail = (String) request.getSession().getAttribute("studentEmail");
+        
         try {
             PreparedStatement statement = connection.prepareStatement("select * from job_postings where id = ?");
             statement.setInt(1, id);
@@ -39,6 +45,10 @@ public class ViewAJobPostingServlet extends HttpServlet {
                 title = resultSet.getString("Title");
                 description = resultSet.getString("Description");
                 emailEmployer = resultSet.getString("email");
+                
+                salary = resultSet.getString("salary");
+                deadline = resultSet.getString("deadline");
+                jobLocation = resultSet.getString("jobLocation");
 
                 PreparedStatement statement1 = connection.prepareStatement("select * from employer_profile_information where email = ?");
                 statement1.setString(1, emailEmployer);
@@ -47,6 +57,7 @@ public class ViewAJobPostingServlet extends HttpServlet {
                     firstNameEmployer = resultSet1.getString(1);
                     lastNameEmployer = resultSet1.getString(2);
                     company = resultSet1.getString(3);
+     
                 }
             }
             request.getSession().setAttribute("jobTitle", title);
@@ -54,7 +65,9 @@ public class ViewAJobPostingServlet extends HttpServlet {
             request.getSession().setAttribute("organization", company);
             request.getSession().setAttribute("employerFirstName", firstNameEmployer);
             request.getSession().setAttribute("employerLastName", lastNameEmployer);
-            request.getSession().setAttribute("id", id);
+            request.getSession().setAttribute("salary", salary);
+            request.getSession().setAttribute("jobLocation", jobLocation);
+            request.getSession().setAttribute("deadline", deadline);
             request.setAttribute("studentEmail", studentEmail);
             RequestDispatcher view = request.getRequestDispatcher("/ViewAJobPosting.jsp");
             view.forward(request, response);

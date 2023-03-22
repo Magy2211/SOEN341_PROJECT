@@ -41,7 +41,7 @@ public class SelectStudentForInterviewServlet extends HttpServlet {
 
             request.getSession().setAttribute("email", employerEmail);
             request.getSession().setAttribute("userType", "Employer");
-            RequestDispatcher view = request.getRequestDispatcher("/viewUserProfileServlet");
+            RequestDispatcher view = request.getRequestDispatcher("/viewEmployerProfileServlet");
             view.forward(request, response);
 
         } catch (SQLException e) {

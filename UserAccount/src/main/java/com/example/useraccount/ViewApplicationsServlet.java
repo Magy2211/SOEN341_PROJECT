@@ -30,7 +30,13 @@ public class ViewApplicationsServlet extends HttpServlet {
         String company = "";
         String studentEmail = (String) request.getSession().getAttribute("studentEmail");
         String status;
+        
+        String salary;
+        String deadline;
+        String jobLocation;
+        
         int id;
+        
         try {
             PreparedStatement statement = connection.prepareStatement("select * from job_postings");
             ResultSet resultSet = statement.executeQuery();
@@ -42,6 +48,10 @@ public class ViewApplicationsServlet extends HttpServlet {
                 emailEmployer = resultSet.getString("email");
                 id = resultSet.getInt("id");
                 status = resultSet.getString("Status");
+                
+                salary = resultSet.getString("salary");
+                deadline = resultSet.getString("deadline");
+                jobLocation = resultSet.getString("jobLocation");
 
                 PreparedStatement statement1 = connection.prepareStatement("select * from employer_profile_information where email = ?");
                 statement1.setString(1, emailEmployer);
@@ -56,7 +66,7 @@ public class ViewApplicationsServlet extends HttpServlet {
 
                 if (resultSet2.next()) {
                     status = resultSet2.getString("Status");
-                    jobPostings.add(new JobPostings(id, title, description, company, status));
+                    jobPostings.add(new JobPostings(id, title, description, company, status, salary, deadline, jobLocation));
                 }
             }
             request.setAttribute("jobPostings", jobPostings);
