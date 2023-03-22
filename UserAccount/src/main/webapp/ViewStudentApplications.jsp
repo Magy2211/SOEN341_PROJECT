@@ -18,7 +18,7 @@
   <tr>
     <td><%=studentInformation.getFirstName()%> <%=studentInformation.getLastName()%></td>
     <td><%=studentInformation.getFieldOfStudy()%></td>
-    <td><label><a href="viewAStudentInformationServlet?studentEmail=<%=studentInformation.getEmail()%>&jobPostingID=${jobPostingID}&employerEmail=${employerEmail}">View student full information<br></a></label></td>
+    <td><label><a href="viewAStudentInformationServlet?studentEmail=<%=studentInformation.getEmail()%>&jobPostingID=${jobPostingID}">View student full information<br></a></label></td>
   </tr>
   <%}%>
 </table>
