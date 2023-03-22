@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 body{
-    background-color:white;
+    background-color: white;
 }
 .background{
     width: 430px;
@@ -28,7 +28,7 @@ body{
         #1845ad,
         #23a2f6
     );
-    left: -100px;
+    left: -80px;
     top: -80px;
 }
 .shape:last-child{
@@ -37,15 +37,15 @@ body{
         #ff512f,
         #f09819
     );
-    right: -100px;
-    bottom: -50px;
+    right: -30px;
+    bottom: -80px;
 }
 
 
 form{
     height: 520px;
-    width: 500px;
-    background-color: rgba(255,255,255,0.13);
+    width: 400px;
+    background-color:  rgba(255,255,255,0.13);
     position: absolute;
     transform: translate(-50%,-50%);
     top: 50%;
@@ -58,7 +58,7 @@ form{
 }
 form *{
     font-family: 'Poppins',sans-serif;
-    color:black;
+    color: black;
     letter-spacing: 0.5px;
     outline: none;
     border: none;
@@ -70,29 +70,29 @@ form h3{
     line-height: 42px;
     text-align: center;
 }
-
-label{
+select{
     display: block;
-    margin-top: 30px;
-    font-size: 16px;
-    font-weight: 500;
-}
-textarea{
-  display: block;
-    height: 100px;
+    height: 50px;
     width: 100%;
-    background-color: #e2e4e9;
+    background-color:  #e2e4e9;
+    color: black;
     border-radius: 3px;
     padding: 0 10px;
     margin-top: 8px;
     font-size: 14px;
     font-weight: 300;
 }
+label{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
 input{
     display: block;
     height: 50px;
     width: 100%;
-    background-color: #e2e4e9;
+    background-color:  #e2e4e9;
     border-radius: 3px;
     padding: 0 10px;
     margin-top: 8px;
@@ -106,8 +106,8 @@ input{
 button{
     margin-top: 50px;
     width: 100%;
-    background-color: green;
-    color: white;
+    background-color: #ffffff;
+    color: #080710;
     padding: 15px 0;
     font-size: 18px;
     font-weight: 600;
@@ -117,6 +117,17 @@ button{
 .social{
   margin-top: 30px;
   display: flex;
+}
+button{
+    margin-top: 50px;
+    width: 100%;
+    background-color: green;
+    color: white;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
 }
 .social div{
   background: red;
@@ -140,3 +151,8 @@ title {
   color: green;
 }
 
+ label {
+    text-align:center;
+    line-height:150%;
+ 
+}
