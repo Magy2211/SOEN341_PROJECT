@@ -384,3 +384,19 @@ title {
   color: green;
 }
 
+#inputStreet {
+  width: 100%;
+}
+
+#inputCity {
+  width: 50%;
+}
+
+#inputState {
+  width: 30%;
+}
+
+#inputZip {
+  width: 28%;
+}
+
