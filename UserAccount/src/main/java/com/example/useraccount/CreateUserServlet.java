@@ -41,14 +41,14 @@ public class CreateUserServlet extends HttpServlet {
                 	if(userType.equals("Student")) {
                     RequestDispatcher view = request.getRequestDispatcher("/CreatingUserProfile.html");
                     view.forward(request, response);
-                    request.getSession().setAttribute("email", email);
+                    request.getSession().setAttribute("studentEmail", email);
                     response.sendRedirect("CreatingUserProfileServlet");
                 	}
                 	
                 	if(userType.equals("Employer")) {
                         RequestDispatcher view = request.getRequestDispatcher("/CreatingEmployerProfile.html");
                         view.forward(request, response);
-                        request.getSession().setAttribute("email", email);
+                        request.getSession().setAttribute("employerEmail", email);
                         response.sendRedirect("CreatingEmployerProfileServlet");
                     	}
                 	
