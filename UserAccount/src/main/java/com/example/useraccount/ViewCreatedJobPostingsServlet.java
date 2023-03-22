@@ -26,6 +26,7 @@ public class ViewCreatedJobPostingsServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String employerEmail = (String) request.getSession().getAttribute("employerEmail");
+        String interview = request.getParameter("interview");
         int id;
         String title;
         String description = "";
@@ -43,7 +44,6 @@ public class ViewCreatedJobPostingsServlet extends HttpServlet {
             while (resultSet.next())
             {
                 title = resultSet.getString("Title");
-                employerEmail = resultSet.getString("email");
                 id = resultSet.getInt("id");
                 
                 salary = resultSet.getString("salary");
@@ -53,7 +53,7 @@ public class ViewCreatedJobPostingsServlet extends HttpServlet {
                 jobPostings.add(new JobPostings(id, title, description, company, "", salary, deadline, jobLocation));
             }
             request.setAttribute("jobPostings", jobPostings);
-            request.setAttribute("employerEmail", employerEmail);
+            request.setAttribute("interview", interview);
             RequestDispatcher view = request.getRequestDispatcher("/ViewCreatedJobPostings.jsp");
             view.forward(request, response);
         } catch (SQLException e) {

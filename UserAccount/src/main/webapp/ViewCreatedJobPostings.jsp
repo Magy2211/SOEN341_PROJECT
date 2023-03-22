@@ -16,7 +16,7 @@
       ArrayList<JobPostings> std = (ArrayList<JobPostings>)request.getAttribute("jobPostings");
       for(JobPostings jobPosting:std){%>
     <tr>
-      <td><label><a href="viewStudentApplicationsServlet?jobPostingID=<%=jobPosting.getId()%>&employerEmail=${employerEmail}" ><%=jobPosting.getTitle()%><br></a></label></td>
+      <td><label><a href="viewStudentApplicationsServlet?jobPostingID=<%=jobPosting.getId()%>&interview=${interview}" ><%=jobPosting.getTitle()%><br></a></label></td>
     </tr>
     <%}%>
   </table>

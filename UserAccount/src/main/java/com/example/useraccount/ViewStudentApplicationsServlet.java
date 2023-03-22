@@ -29,7 +29,8 @@ public class ViewStudentApplicationsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int jobPostingID = Integer.parseInt(request.getParameter("jobPostingID"));
-        String employerEmail = request.getParameter("employerEmail");
+        String interview = request.getParameter("interview");
+        String employerEmail = (String) request.getSession().getAttribute("employerEmail");
         String studentEmail;
         String studentFirstName;
         String studentLastName;
@@ -38,9 +39,19 @@ public class ViewStudentApplicationsServlet extends HttpServlet {
         try {
             List<StudentInformation> studentInformation = new ArrayList<>();
 
-            PreparedStatement statement2 = connection.prepareStatement("select * from applications where jobPostingID = ?");
-            statement2.setInt(1, jobPostingID);
-            ResultSet resultSet2 = statement2.executeQuery();
+            ResultSet resultSet2;
+            PreparedStatement statement2;
+
+            if (interview.equals("false")){
+                statement2 = connection.prepareStatement("select * from applications where jobPostingID = ?");
+                statement2.setInt(1, jobPostingID);
+            }
+            else {
+                statement2 = connection.prepareStatement("select * from applications where jobPostingID = ? AND Status = ?");
+                statement2.setInt(1, jobPostingID);
+                statement2.setString(2, "Selected for an interview");
+            }
+            resultSet2 = statement2.executeQuery();
             while(resultSet2.next()){
                 studentEmail = resultSet2.getString("studentEmail");
                 PreparedStatement statement1 = connection.prepareStatement("select * from profile_information where email = ?");
@@ -57,6 +68,7 @@ public class ViewStudentApplicationsServlet extends HttpServlet {
             request.setAttribute("studentInformation", studentInformation);
             request.setAttribute("jobPostingID", jobPostingID);
             request.setAttribute("employerEmail", employerEmail);
+            request.getSession().setAttribute("interview", interview);
             RequestDispatcher view = request.getRequestDispatcher("/ViewStudentApplications.jsp");
             view.forward(request, response);
         } catch (SQLException e) {
@@ -66,7 +78,7 @@ public class ViewStudentApplicationsServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doGet(request,response);
     }
 
     public void destroy() {

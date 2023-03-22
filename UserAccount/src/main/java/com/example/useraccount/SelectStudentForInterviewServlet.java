@@ -27,9 +27,8 @@ public class SelectStudentForInterviewServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int jobPostingID = Integer.parseInt(request.getParameter("jobPostingID"));
+        String interview = (String) request.getSession().getAttribute("interview");
         String studentEmail = request.getParameter("studentEmail");
-        String employerEmail = request.getParameter("employerEmail");
-        //String status;
 
         try {
             PreparedStatement statement = connection.prepareStatement("UPDATE applications SET Status = ? WHERE studentEmail = ? AND jobPostingID = ?");
@@ -41,7 +40,8 @@ public class SelectStudentForInterviewServlet extends HttpServlet {
 
             request.getSession().setAttribute("email", employerEmail);
             request.getSession().setAttribute("userType", "Employer");
-            RequestDispatcher view = request.getRequestDispatcher("/viewEmployerProfileServlet");
+            RequestDispatcher view = request.getRequestDispatcher("/viewStudentApplicationsServlet?interview=${interview}");
+
             view.forward(request, response);
 
         } catch (SQLException e) {

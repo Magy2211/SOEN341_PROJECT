@@ -31,11 +31,11 @@ public class ViewAStudentInformationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String studentEmail = request.getParameter("studentEmail");
-        String employerEmail = request.getParameter("employerEmail");
         String studentFirstName;
         String studentLastName;
         String fieldOfStudy;
         int jobPostingID = Integer.parseInt(request.getParameter("jobPostingID"));
+        String status = "";
 
         try {
             PreparedStatement statement = connection.prepareStatement("select * from profile_information where email = ?");
@@ -66,10 +66,19 @@ public class ViewAStudentInformationServlet extends HttpServlet {
                 ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
                 BufferedImage img = ImageIO.read(bis);
                 request.setAttribute("studentInformation", new StudentInformation(studentFirstName, studentLastName, studentEmail, fieldOfStudy, resumeBase64, coverLetterBase64, transcriptBase64, img));
+
+
+                PreparedStatement statement1 = connection.prepareStatement("select * from applications where jobPostingID = ? AND studentEmail = ?");
+                statement1.setInt(1, jobPostingID);
+                statement1.setString(2, studentEmail);
+                ResultSet resultSet1 = statement1.executeQuery();
+                if (resultSet1.next()){
+                    status = resultSet1.getString("Status");
+                }
             }
             request.setAttribute("jobPostingID", jobPostingID);
-            request.setAttribute("employerEmail", employerEmail);
             request.setAttribute("studentEmail", studentEmail);
+            request.setAttribute("status", status);
             RequestDispatcher view = request.getRequestDispatcher("/ViewAStudentInformation.jsp");
             view.forward(request, response);
         } catch (SQLException e) {
@@ -79,7 +88,7 @@ public class ViewAStudentInformationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doGet(request,response);
     }
 
     public void destroy() {
