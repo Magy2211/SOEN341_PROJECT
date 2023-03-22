@@ -31,6 +31,10 @@ public class ViewCreatedJobPostingsServlet extends HttpServlet {
         String title;
         String description = "";
         String company = "";
+        
+        String salary;
+        String deadline;
+        String jobLocation;
 
         try {
             PreparedStatement statement = connection.prepareStatement("select * from job_postings where email = ?");
@@ -41,8 +45,12 @@ public class ViewCreatedJobPostingsServlet extends HttpServlet {
             {
                 title = resultSet.getString("Title");
                 id = resultSet.getInt("id");
+                
+                salary = resultSet.getString("salary");
+                deadline = resultSet.getString("deadline");
+                jobLocation = resultSet.getString("jobLocation");
 
-                jobPostings.add(new JobPostings(id, title, description, company, ""));
+                jobPostings.add(new JobPostings(id, title, description, company, "", salary, deadline, jobLocation));
             }
             request.setAttribute("jobPostings", jobPostings);
             request.setAttribute("interview", interview);

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <html>
@@ -43,27 +42,49 @@
         <div class="shape"></div>
     </div>
      <form method="post" action="addJobPostingsServlet">
-       
         <table>
           <h3 style="color:black"> Add Job Posting </h3>
             <tr>
                 <td>
                     <div class="form-group">
-                        <label for="positionTitle">Title:</label>
+                        <label for="positionTitle">Position title:</label>
                         <input name="positionTitle" id="positionTitle" required />
+                    </div>
+                </td>
+            </tr>
+              <tr>
+              <tr>
+                <td>
+                <div class="form-group">
+                <label for="jobLocation">Job location:</label>
+                <textarea rows="5" cols = "60" name = "jobLocation" id = "jobLocation" required></textarea>
+                </td>
+            </tr>
+            <tr>
+              <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="salary">Salary:</label>
+				        <input name="salary" id="salary" required />
+                    </div>
+                </td>
+            </tr>
+              <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="deadline">Deadline to apply:</label>
+				         <input name="deadline" id="deadline" required />
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                  
                     <div class="form-group">
                         <label for="description">Job posting details:</label>
 <textarea rows="5" cols = "60" name = "description" id = "description" required></textarea>
                     </div>
                 </td>
             </tr>
-            <tr>
                 <td>
                     <button type="submit" class="submit-btn">Add Job Posting</button>
                 </td>

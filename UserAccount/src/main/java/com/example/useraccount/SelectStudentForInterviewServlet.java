@@ -38,7 +38,10 @@ public class SelectStudentForInterviewServlet extends HttpServlet {
 
             int rowsAffected = statement.executeUpdate();
 
+            request.getSession().setAttribute("email", employerEmail);
+            request.getSession().setAttribute("userType", "Employer");
             RequestDispatcher view = request.getRequestDispatcher("/viewStudentApplicationsServlet?interview=${interview}");
+
             view.forward(request, response);
 
         } catch (SQLException e) {
