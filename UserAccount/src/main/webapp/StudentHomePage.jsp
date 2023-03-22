@@ -45,6 +45,8 @@
         <iframe src="data:application/pdf;base64,${transcript}" width="100%" height="500px"></iframe>
     <label><a href="EditingUserProfile.html">Edit Profile Information<br></a></label>
         <label><a href="viewJobPostingsServlet?studentEmail=${email}">View job postings<br></a></label>
+        <label><a href="viewApplicationsServlet?studentEmail=${email}">Applications<br></a></label>
+        <label><a href="viewInterviewsServlet?studentEmail=${email}">Interviews<br></a></label>
     </div>
 </form>
 </div>
