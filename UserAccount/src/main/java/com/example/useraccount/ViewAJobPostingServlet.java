@@ -29,7 +29,7 @@ public class ViewAJobPostingServlet extends HttpServlet {
         String company = "";
         String firstNameEmployer = "";
         String lastNameEmployer = "";
-        String studentEmail =request.getParameter("studentEmail");
+        String studentEmail = (String) request.getSession().getAttribute("studentEmail");
         try {
             PreparedStatement statement = connection.prepareStatement("select * from job_postings where id = ?");
             statement.setInt(1, id);

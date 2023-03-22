@@ -26,16 +26,19 @@ public class ViewEmployerProfileServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email = (String) request.getSession().getAttribute("email");
+        String employerEmail = (String) request.getSession().getAttribute("employerEmail");
+        String employerFirstName;
+        String employerLastName;
+        String company;
         try {
             PreparedStatement statement = connection.prepareStatement("select * from employer_profile_information where email = ?");
-            statement.setString(1, email);
+            statement.setString(1, employerEmail);
             ResultSet resultSet = statement.executeQuery();
             if(resultSet.next()){
-                request.getSession().setAttribute("firstName", resultSet.getString(1));
-                request.getSession().setAttribute("lastName", resultSet.getString(2));
-                request.getSession().setAttribute("company", resultSet.getString(3));
-                request.getSession().setAttribute("email", resultSet.getString(4));
+                employerFirstName = resultSet.getString(1);
+                employerLastName = resultSet.getString(2);
+                company = resultSet.getString(3);
+                request.setAttribute("employerInformation", new EmployerInformation(employerFirstName, employerLastName, company, employerEmail));
             }
             RequestDispatcher view = request.getRequestDispatcher("/EmployerHomePage.jsp");
             view.forward(request, response);
@@ -45,7 +48,7 @@ public class ViewEmployerProfileServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doGet(request,response);
     }
 
     public void destroy() {

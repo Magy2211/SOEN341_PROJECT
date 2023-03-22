@@ -14,8 +14,8 @@
 			<h1>Job Posting Website</h1>
 			<nav>
 				<ul>
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Jobs</a></li>
+					<li><a href="viewUserProfileServlet">Home</a></li>
+					<li><a href="viewJobPostingsServlet">Jobs</a></li>
 					<li><a href="#">Employers</a></li>
 					<li><a href="#">About</a></li>
 					<li><a href="#">Contact</a></li>
@@ -57,7 +57,7 @@
         ArrayList<JobPostings> std = (ArrayList<JobPostings>)request.getAttribute("jobPostings");
         for(JobPostings jobPosting:std){%>
 		<div class="job-box">
-			<h2><a href="viewAJobPostingServlet?id=<%=jobPosting.getId()%>&studentEmail=${studentEmail}" ><%=jobPosting.getTitle()%></a></h2>
+			<h2><a href="viewAJobPostingServlet?id=<%=jobPosting.getId()%>" ><%=jobPosting.getTitle()%></a></h2>
 			<p><strong>Company:</strong> <%=jobPosting.getCompany()%></p>
 			<p><strong>Status:</strong> <%=jobPosting.getStatus()%></p>
 			<p><%=jobPosting.getDescription()%></p>

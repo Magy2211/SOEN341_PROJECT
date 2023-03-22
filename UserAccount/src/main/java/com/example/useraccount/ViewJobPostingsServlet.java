@@ -23,14 +23,14 @@ public class ViewJobPostingsServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
     }
-    @Override
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String title;
         String description;
         String emailEmployer;
         String company = "";
-        String studentEmail =request.getParameter("studentEmail");
-        String status = "";
+        String studentEmail = (String) request.getSession().getAttribute("studentEmail");
+        String status;
         int id;
         try {
             PreparedStatement statement = connection.prepareStatement("select * from job_postings");
@@ -71,7 +71,7 @@ public class ViewJobPostingsServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doGet(request,response);
     }
 
     public void destroy() {

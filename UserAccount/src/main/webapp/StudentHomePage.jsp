@@ -33,7 +33,7 @@
     <div class="form-group">
 <h3>First Name: ${firstName}</h3>
     <h3>Last Name: ${lastName}</h3>
-    <h3>Email: ${email}</h3>
+    <h3>Email: ${studentEmail}</h3>
         <h3>Engineering field of study: ${engineeringField}</h3>
         <h3>Profile picture: </h3>
         <img src="data:image/jpeg;base64,${javax.xml.bind.DatatypeConverter.printBase64Binary(profilePic)}" width="240" height="300"/>
@@ -44,9 +44,9 @@
         <<h3>Transcript:</h3>
         <iframe src="data:application/pdf;base64,${transcript}" width="100%" height="500px"></iframe>
     <label><a href="EditingUserProfile.html">Edit Profile Information<br></a></label>
-        <label><a href="viewJobPostingsServlet?studentEmail=${email}">View job postings<br></a></label>
-        <label><a href="viewApplicationsServlet?studentEmail=${email}">Applications<br></a></label>
-        <label><a href="viewInterviewsServlet?studentEmail=${email}">Interviews<br></a></label>
+        <label><a href="viewJobPostingsServlet">View job postings<br></a></label>
+        <label><a href="viewApplicationsServlet?">Applications<br></a></label>
+        <label><a href="viewInterviewsServlet?">Interviews<br></a></label>
     </div>
 </form>
 </div>

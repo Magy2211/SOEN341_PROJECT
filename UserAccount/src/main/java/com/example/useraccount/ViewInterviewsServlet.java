@@ -28,7 +28,7 @@ public class ViewInterviewsServlet extends HttpServlet {
         String description;
         String emailEmployer;
         String company = "";
-        String studentEmail =request.getParameter("studentEmail");
+        String studentEmail = (String) request.getSession().getAttribute("studentEmail");
         String status;
         int id;
         try {
