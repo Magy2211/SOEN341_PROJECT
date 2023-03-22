@@ -61,9 +61,8 @@ public class ViewUserProfileServlet extends HttpServlet {
                     request.getSession().setAttribute("transcript", transcriptBase64);
 
                     request.getSession().setAttribute("email", resultSet.getString(7));
+
                     InputStream imageData = resultSet.getBinaryStream(8);
-
-
                     byte[] imageBytes = imageData.readAllBytes();
                     ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
                     BufferedImage img = ImageIO.read(bis);
