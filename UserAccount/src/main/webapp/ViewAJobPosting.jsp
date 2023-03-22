@@ -11,8 +11,11 @@
     <h3>Salary: ${salary}</h3>
     <h3>Deadline to apply: ${deadline}</h3>
   <h3>Job Description: ${jobDescription}</h3>
-    <form action="applyForAJobPostingServlet?id=${id}&studentEmail=${studentEmail}" method="post">
+    <%--<form action="applyForAJobPostingServlet?id=${id}" method="post">
         <input type="submit" value="Apply">
-    </form>
+    </form>--%>
+  <form action="ApplyForAJobPosting.html" method="post">
+      <input type="submit" value="Apply">
+  </form>
 </body>
 </html>

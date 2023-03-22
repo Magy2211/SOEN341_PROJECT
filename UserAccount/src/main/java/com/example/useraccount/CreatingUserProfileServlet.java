@@ -33,7 +33,7 @@ public class CreatingUserProfileServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email = (String) request.getSession().getAttribute("email");
+        String email = (String) request.getSession().getAttribute("studentEmail");
         Part picturePart = request.getPart("profile-pic");
         String firstName = request.getParameter("first-name");
         String lastName = request.getParameter("last-name");
