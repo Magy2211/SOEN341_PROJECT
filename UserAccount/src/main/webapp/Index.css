@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 body{
-    background-color: #080710;
+    background-color: white;
 }
 .background{
     width: 430px;
@@ -45,7 +45,7 @@ body{
 form{
     height: 520px;
     width: 400px;
-    background-color: rgba(255,255,255,0.13);
+    background-color:  rgba(255,255,255,0.13);
     position: absolute;
     transform: translate(-50%,-50%);
     top: 50%;
@@ -58,7 +58,7 @@ form{
 }
 form *{
     font-family: 'Poppins',sans-serif;
-    color: grey;
+    color: black;
     letter-spacing: 0.5px;
     outline: none;
     border: none;
@@ -70,7 +70,18 @@ form h3{
     line-height: 42px;
     text-align: center;
 }
-
+select{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color:  #e2e4e9;
+    color: black;
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
 label{
     display: block;
     margin-top: 30px;
@@ -81,7 +92,7 @@ input{
     display: block;
     height: 50px;
     width: 100%;
-    background-color: rgba(255,255,255,0.07);
+    background-color:  #e2e4e9;
     border-radius: 3px;
     padding: 0 10px;
     margin-top: 8px;
@@ -139,4 +150,5 @@ button{
 title {
   color: green;
 }
+
 
