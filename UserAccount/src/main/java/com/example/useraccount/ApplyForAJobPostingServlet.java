@@ -30,7 +30,7 @@ public class ApplyForAJobPostingServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int jobPostingID = Integer.parseInt(request.getParameter("id"));
-        String studentEmail = request.getParameter("studentEmail");
+        String studentEmail = (String) request.getSession().getAttribute("studentEmail");
         try {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO applications (jobPostingID, studentEmail, Status) VALUES (?, ?, ?)");
             statement.setInt(1, jobPostingID);
@@ -39,9 +39,7 @@ public class ApplyForAJobPostingServlet extends HttpServlet {
             int result = statement.executeUpdate();
             PrintWriter out = response.getWriter();
             if (result > 0) {
-                request.getSession().setAttribute("email", studentEmail);
-                request.getSession().setAttribute("userType", "Student");
-                RequestDispatcher view = request.getRequestDispatcher("/viewUserProfileServlet");
+                RequestDispatcher view = request.getRequestDispatcher("/viewJobPostingsServlet");
                 view.forward(request, response);
             } else
                 out.print("<H1> Error applying for the job </H1>");

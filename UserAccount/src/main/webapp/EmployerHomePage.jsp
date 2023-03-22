@@ -12,8 +12,8 @@
 			<h1>Job Posting Website</h1>
 			<nav>
 				<ul>
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Profile</a></li>
+					<li><a href="viewCreatedJobPostingsServlet?employerEmail=${employerEmail}">Home</a></li>
+					<li><a href="viewEmployerProfileServlet">Profile</a></li>
 					<li><a href="#">Interviews</a></li>
 					<li><a href="#">About</a></li>
 					
@@ -49,13 +49,13 @@
 
                
     <div class="form-group">
-<label>First Name: ${firstName}</label>
-    <label>Last Name: ${lastName}</label>
-    <label>Email: ${email}</label>
-    <label>Company: ${company}</label>
+<label>First Name: ${employerInformation.getFirstName()}</label>
+    <label>Last Name: ${employerInformation.getLastName()}</label>
+    <label>Email: ${employerInformation.getEmail()}</label>
+    <label>Company: ${employerInformation.getCompany()}</label>
        <label><a style="color:blue;" href="EditingEmployerProfile.html">Edit Profile Information<br></a></label>
         <label><a style="color:blue;" href="AddJobPosting.html">Add a job posting<br></a></label>
-        <label><a style="color:blue;" href="viewCreatedJobPostingsServlet?employerEmail=${email}">View job postings created<br></a></label>
+        <label><a style="color:blue;" href="viewCreatedJobPostingsServlet?employerEmail=${employerEmail}">View job postings created<br></a></label>
     			</div>
 		</form> 
 

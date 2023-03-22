@@ -35,15 +35,15 @@ public class LoginServlet extends HttpServlet {
             if (resultSet.next()) {
                 String userType = resultSet.getString(3);
                 if(userType.equals("Student")) {
-                    request.getSession().setAttribute("email", email);
-                    request.getSession().setAttribute("userType", userType);
-                    RequestDispatcher view = request.getRequestDispatcher("/viewUserProfileServlet");
+                    request.getSession().setAttribute("studentEmail", email);
+                    //RequestDispatcher view = request.getRequestDispatcher("/viewUserProfileServlet");
+                    RequestDispatcher view = request.getRequestDispatcher("/viewJobPostingsServlet");
                     view.forward(request, response);
                 }
-                if(userType.equals("Employer")) {
-                    request.getSession().setAttribute("email", email);
-                    request.getSession().setAttribute("userType", userType);
-                    RequestDispatcher view = request.getRequestDispatcher("/viewUserProfileServlet");
+                else if(userType.equals("Employer")) {
+                    request.getSession().setAttribute("employerEmail", email);
+                    RequestDispatcher view = request.getRequestDispatcher("/viewEmployerProfileServlet");
+                    //RequestDispatcher view = request.getRequestDispatcher("/viewCreatedJobPostingsServlet");
                     view.forward(request, response);
                 }
             }

@@ -28,8 +28,8 @@ public class ViewApplicationsServlet extends HttpServlet {
         String description;
         String emailEmployer;
         String company = "";
-        String studentEmail =request.getParameter("studentEmail");
-        String status = "";
+        String studentEmail = (String) request.getSession().getAttribute("studentEmail");
+        String status;
         int id;
         try {
             PreparedStatement statement = connection.prepareStatement("select * from job_postings");
