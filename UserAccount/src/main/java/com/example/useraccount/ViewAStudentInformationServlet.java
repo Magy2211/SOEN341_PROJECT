@@ -36,6 +36,9 @@ public class ViewAStudentInformationServlet extends HttpServlet {
         String fieldOfStudy;
         int jobPostingID = Integer.parseInt(request.getParameter("jobPostingID"));
         String status = "";
+        String resumeBase64 = "";
+        String coverLetterBase64 = "";
+        String transcriptBase64 = "";
 
         try {
             PreparedStatement statement = connection.prepareStatement("select * from profile_information where email = ?");
@@ -47,26 +50,10 @@ public class ViewAStudentInformationServlet extends HttpServlet {
                 studentLastName = resultSet.getString("lastName");
                 fieldOfStudy = resultSet.getString("fieldOfStudy");
 
-                Blob resumeBlob = resultSet.getBlob(4);
-                byte[] resumeData = resumeBlob.getBytes(1, (int)resumeBlob.length());
-                String resumeBase64 = Base64.getEncoder().encodeToString(resumeData);
-
-                // read cover letter as a PDF file
-                Blob coverLetterBlob = resultSet.getBlob(5);
-                byte[] coverLetterData = coverLetterBlob.getBytes(1, (int)coverLetterBlob.length());
-                String coverLetterBase64 = Base64.getEncoder().encodeToString(coverLetterData);
-
-                // read transcript as a PDF file
-                Blob transcriptBlob = resultSet.getBlob(6);
-                byte[] transcriptData = transcriptBlob.getBytes(1, (int)transcriptBlob.length());
-                String transcriptBase64 = Base64.getEncoder().encodeToString(transcriptData);
-
                 InputStream imageData = resultSet.getBinaryStream(8);
                 byte[] imageBytes = imageData.readAllBytes();
                 ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
                 BufferedImage img = ImageIO.read(bis);
-                request.setAttribute("studentInformation", new StudentInformation(studentFirstName, studentLastName, studentEmail, fieldOfStudy, resumeBase64, coverLetterBase64, transcriptBase64, img));
-
 
                 PreparedStatement statement1 = connection.prepareStatement("select * from applications where jobPostingID = ? AND studentEmail = ?");
                 statement1.setInt(1, jobPostingID);
@@ -74,7 +61,23 @@ public class ViewAStudentInformationServlet extends HttpServlet {
                 ResultSet resultSet1 = statement1.executeQuery();
                 if (resultSet1.next()){
                     status = resultSet1.getString("Status");
+
+                    Blob resumeBlob = resultSet1.getBlob(5);
+                    byte[] resumeData = resumeBlob.getBytes(1, (int)resumeBlob.length());
+                    resumeBase64 = Base64.getEncoder().encodeToString(resumeData);
+
+                    // read cover letter as a PDF file
+                    Blob coverLetterBlob = resultSet1.getBlob(6);
+                    byte[] coverLetterData = coverLetterBlob.getBytes(1, (int)coverLetterBlob.length());
+                    coverLetterBase64 = Base64.getEncoder().encodeToString(coverLetterData);
+
+                    // read transcript as a PDF file
+                    Blob transcriptBlob = resultSet1.getBlob(7);
+                    byte[] transcriptData = transcriptBlob.getBytes(1, (int)transcriptBlob.length());
+                    transcriptBase64 = Base64.getEncoder().encodeToString(transcriptData);
                 }
+
+                request.setAttribute("studentInformation", new StudentInformation(studentFirstName, studentLastName, studentEmail, fieldOfStudy, resumeBase64, coverLetterBase64, transcriptBase64, img));
             }
             request.setAttribute("jobPostingID", jobPostingID);
             request.setAttribute("studentEmail", studentEmail);

@@ -61,6 +61,7 @@
 	</style>
 </head>
 <body>
+
 		<div class="job-box">
 			<h2>${jobTitle}</h2>
 			<p><strong>Company:</strong> ${company}</p>
@@ -71,9 +72,13 @@
 			<p>${description} </p>
 		</div>
 		
-		 <form action="applyForAJobPostingServlet?id=${id}&studentEmail=${studentEmail}" method="post">
+		 <form action="applyForAJobPostingServlet?id=${id}" method="post">
+
         <input type="submit" value="Apply">
-    </form>
+    </form>--%>
+  <form action="ApplyForAJobPosting.html" method="post">
+      <input type="submit" value="Apply">
+  </form>
 </body>
 </html>
      

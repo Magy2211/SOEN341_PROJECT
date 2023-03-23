@@ -60,15 +60,15 @@ public class ViewAJobPostingServlet extends HttpServlet {
      
                 }
             }
-            request.getSession().setAttribute("jobTitle", title);
-            request.getSession().setAttribute("jobDescription", description);
-            request.getSession().setAttribute("organization", company);
-            request.getSession().setAttribute("employerFirstName", firstNameEmployer);
-            request.getSession().setAttribute("employerLastName", lastNameEmployer);
-            request.getSession().setAttribute("salary", salary);
-            request.getSession().setAttribute("jobLocation", jobLocation);
-            request.getSession().setAttribute("deadline", deadline);
-            request.setAttribute("studentEmail", studentEmail);
+            request.setAttribute("jobTitle", title);
+            request.setAttribute("jobDescription", description);
+            request.setAttribute("organization", company);
+            request.setAttribute("employerFirstName", firstNameEmployer);
+            request.setAttribute("employerLastName", lastNameEmployer);
+            request.setAttribute("salary", salary);
+            request.setAttribute("jobLocation", jobLocation);
+            request.setAttribute("deadline", deadline);
+            request.getSession().setAttribute("id", id);
             RequestDispatcher view = request.getRequestDispatcher("/ViewAJobPosting.jsp");
             view.forward(request, response);
         } catch (SQLException e) {

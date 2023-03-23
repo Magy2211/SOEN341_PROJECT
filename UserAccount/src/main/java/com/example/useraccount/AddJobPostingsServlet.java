@@ -28,11 +28,11 @@ public class AddJobPostingsServlet extends HttpServlet {
         String email = (String) request.getSession().getAttribute("employerEmail");
         String title = request.getParameter("positionTitle");
         String description = request.getParameter("description");
-        
+
         String salary = request.getParameter("salary");
         String deadline = request.getParameter("deadline");
         String jobLocation = request.getParameter("jobLocation");
-        
+
         try {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO job_postings (Title, Description, email, Status, salary, deadline, jobLocation) VALUES (?, ?, ?, ?, ?, ?, ?)");
             statement.setString(1, title);
@@ -45,7 +45,7 @@ public class AddJobPostingsServlet extends HttpServlet {
             int result = statement.executeUpdate();
             PrintWriter out = response.getWriter();
                 if (result > 0) {
-                    RequestDispatcher view = request.getRequestDispatcher("/viewEmployerProfileServlet");
+                    RequestDispatcher view = request.getRequestDispatcher("/viewCreatedJobPostingsServlet");
                     view.forward(request, response);
                 } else
                     out.print("<H1> Error creating job posting </H1>");
