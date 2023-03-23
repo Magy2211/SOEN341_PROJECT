@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>   
+
   
       <link rel="stylesheet" type="text/css" href="Index2.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -23,8 +24,9 @@
       <form method="post" action="loginServlet">
 
       
-        <h3 style="color:Orange;">Welcome</h3>
+        <h3 style="color:Orange;">Welcome to Jobify</h3>
          
+        
         
         
 <div class="container">
