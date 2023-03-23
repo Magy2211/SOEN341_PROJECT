@@ -3,13 +3,13 @@
 <html lang="en">
   <html>
 <head>
-	<title>Job Posting Website</title>
+	<title> Jobify </title>
 	<link rel="stylesheet" type="text/css" href="EmployerHomePage.css">
 </head>
 <body>
 	<header>
 		<div class="container">
-			<h1>Job Posting Website</h1>
+			<h1>Jobify</h1>
 			<nav>
 				<ul>
 					<li><a href="viewCreatedJobPostingsServlet">Home</a></li>
@@ -44,15 +44,15 @@
     </div>
       <form method="get" action="viewEmployerProfileServlet">
       
-        <h3 style="color:black;">Welcome </h3>
+        <h3 style="color:#f09819;">Welcome </h3>
             <link rel="stylesheet" type="text/css" href="index.css">
 
                
     <div class="form-group">
-<label>First Name: ${employerInformation.getFirstName()}</label>
-    <label>Last Name: ${employerInformation.getLastName()}</label>
-    <label>Email: ${employerInformation.getEmail()}</label>
-    <label>Company: ${employerInformation.getCompany()}</label>
+<label style="color:black;">First Name: ${employerInformation.getFirstName()}</label>
+    <label style="color:black;">Last Name: ${employerInformation.getLastName()}</label>
+    <label style="color:black;">Email: ${employerInformation.getEmail()}</label>
+    <label style="color:black;">Company: ${employerInformation.getCompany()}</label>
        <label><a style="color:blue;" href="EditingEmployerProfile.html">Edit Profile Information<br></a></label>
         <label><a style="color:blue;" href="AddJobPosting.html">Add a job posting<br></a></label>
         <label><a style="color:blue;" href="viewCreatedJobPostingsServlet?interview=false">View job postings created<br></a></label>
