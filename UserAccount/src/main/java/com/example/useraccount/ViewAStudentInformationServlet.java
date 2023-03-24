@@ -28,8 +28,8 @@ public class ViewAStudentInformationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String studentEmail = request.getParameter("studentEmail");
-        String studentFirstName;
-        String studentLastName;
+        String studentFirstName = "";
+        String studentLastName = "";
         String fieldOfStudy;
         int jobPostingID = Integer.parseInt(request.getParameter("jobPostingID"));
         String status = "";
@@ -78,6 +78,8 @@ public class ViewAStudentInformationServlet extends HttpServlet {
 
                 request.setAttribute("studentInformation", new StudentInformation(studentFirstName, studentLastName, studentEmail, fieldOfStudy, resumeBase64, coverLetterBase64, transcriptBase64, base64Image));
             }
+            request.setAttribute("studentFirstName", studentFirstName);
+            request.setAttribute("studentLastName", studentLastName);
             request.setAttribute("jobPostingID", jobPostingID);
             request.setAttribute("studentEmail", studentEmail);
             request.setAttribute("status", status);
