@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 
-  <link rel="stylesheet" type="text/css" href="CreateUser2.css">
+  <link rel="stylesheet" type="text/css" href="styles.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
@@ -24,17 +24,22 @@
 <form action="applyForAJobPostingServlet" method="post" enctype="multipart/form-data">
 
 
-  <h3 style="color:orange;">Apply for the job</h3>
-
 
 
   <div class="container">
     <br/>
+    <h3 style="color:orange;">Apply for the job</h3>
     <form method="post" action="applyForAJobPostingServlet">
       <table>
-        <input type="checkbox" name="default" value="defaultResume">Default resume<br>
-        <input type="checkbox" name="default" value="defaultCoverLetter">Default cover letter<br>
-        <input type="checkbox" name="default" value="defaultTranscript">Default transcript<br>
+        <label>
+          <input type="checkbox" name="default" value="defaultResume">Default resume<br>
+        </label>
+        <label>
+         <input type="checkbox" name="default" value="defaultCoverLetter">Default cover letter<br>
+        </label>
+        <label>
+          <input type="checkbox" name="default" value="defaultTranscript">Default transcript<br>
+        </label>
         <div class="form-group">
           <label for="resume">Resume:</label>
           <input type="file" id="resume" name="resume">
