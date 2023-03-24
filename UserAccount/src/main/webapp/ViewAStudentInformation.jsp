@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 	<title>Jobify</title>
 	<link rel="stylesheet" type="text/css" href="viewJobPostings.css">
 </head>
