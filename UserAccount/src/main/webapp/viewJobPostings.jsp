@@ -11,14 +11,14 @@
 <body>
 	<header>
 		<div class="container">
-			<h1>Jobify</h1>
+			<h1>Job Posting Website</h1>
 			<nav>
 				<ul>
-					<li><a href="viewJobPostingsServlet">Home</a></li>
-					<li><a href="viewUserProfileServlet">Profile</a></li>
-					<li><a href="viewApplicationsServlet">Applications</a></li>
-					<li><a href="viewInterviewsServlet">Interviews</a></li>
-					<li><a href="AboutPage.jsp?account=student">About</a></li>
+					<li><a href="viewUserProfileServlet">Home</a></li>
+					<li><a href="viewJobPostingsServlet">Jobs</a></li>
+					<li><a href="#">Employers</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Contact</a></li>
 				</ul>
 			</nav>
 		</div>
