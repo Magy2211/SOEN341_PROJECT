@@ -272,7 +272,7 @@ body{
         #1845ad,
         #23a2f6
     );
-    left: -100px;
+    left: -150px;
     top: -30px;
 }
 .shape:last-child{
@@ -281,17 +281,17 @@ body{
         #ff512f,
         #f09819
     );
-    right: -90px;
-    bottom: -250px;
+    right: -150px;
+    bottom: -550px;
 }
 
 
 form{
-        height: 580px;
-    width: 400px;
+        height: 900px;
+    width: 500px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
-    transform: translate(-50%,-30%);
+    transform: translate(-50%,-20%);
     top: 50%;
     left: 50%;
     border-radius: 10px;
