@@ -16,6 +16,22 @@
 
 </head>
 <body>
+
+<header>
+    <link rel="stylesheet" type="text/css" href="viewJobPostings.css">
+<div class="container">
+    <h1>Jobify</h1>
+    <nav>
+        <ul>
+            <li><a href="viewJobPostingsServlet">Home</a></li>
+            <li><a href="viewUserProfileServlet">Profile</a></li>
+            <li><a href="viewApplicationsServlet">Applications</a></li>
+            <li><a href="viewInterviewsServlet">Interviews</a></li>
+            <li><a href="AboutPage.jsp?account=student">About</a></li>
+        </ul>
+    </nav>
+</div>
+</header>
     <div class="background">
         <div class="shape"></div>
         <div class="shape"></div>
@@ -66,9 +82,9 @@
         <a href="data:application/pdf;base64,${transcript}" target="_blank">Transcript</a><br>
 
     <label><a href="EditingUserProfile.html">Edit Profile Information<br></a></label>
-        <label><a href="viewJobPostingsServlet">View job postings<br></a></label>
-        <label><a href="viewApplicationsServlet?">Applications<br></a></label>
-        <label><a href="viewInterviewsServlet?">Interviews<br></a></label>
+        <%--<label><a href="viewJobPostingsServlet">View job postings<br></a></label>
+        <label><a href="viewApplicationsServlet">Applications<br></a></label>
+        <label><a href="viewInterviewsServlet">Interviews<br></a></label>--%>
     </div>
 </form>
 </div>

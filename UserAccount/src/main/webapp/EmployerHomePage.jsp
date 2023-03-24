@@ -12,10 +12,10 @@
 			<h1>Jobify</h1>
 			<nav>
 				<ul>
-					<li><a href="viewCreatedJobPostingsServlet">Home</a></li>
+					<li><a href="viewCreatedJobPostingsServlet?interview=false">Home</a></li>
 					<li><a href="viewEmployerProfileServlet">Profile</a></li>
-					<li><a href="#">Interviews</a></li>
-					<li><a href="#">About</a></li>
+					<li><a href="viewCreatedJobPostingsServlet?interview=true">Interviews</a></li>
+					<li><a href="AboutPage.jsp?account=employer">About</a></li>
 					
 				</ul>
 			</nav>
@@ -55,8 +55,8 @@
     <label style="color:black;">Company: ${employerInformation.getCompany()}</label>
        <label><a style="color:blue;" href="EditingEmployerProfile.html">Edit Profile Information<br></a></label>
         <label><a style="color:blue;" href="AddJobPosting.html">Add a job posting<br></a></label>
-        <label><a style="color:blue;" href="viewCreatedJobPostingsServlet?interview=false">View job postings created<br></a></label>
-        <label><a style="color:blue;" href="viewCreatedJobPostingsServlet?interview=true">View selected candidates<br></a></label>
+        <%--<label><a style="color:blue;" href="viewCreatedJobPostingsServlet?interview=false">View job postings created<br></a></label>
+        <label><a style="color:blue;" href="viewCreatedJobPostingsServlet?interview=true">View selected candidates<br></a></label>--%>
     			</div>
 		</form> 
 
