@@ -13,9 +13,11 @@
 			<nav>
 				<ul>
 					<li><a href="viewCreatedJobPostingsServlet?interview=false">Home</a></li>
-					<li><a href="viewEmployerProfileServlet">Profile</a></li>
-					<li><a href="viewCreatedJobPostingsServlet?interview=true">Interviews</a></li>
-					<li><a href="AboutPage.jsp?account=employer">About</a></li>
+                    <li><a href="viewEmployerProfileServlet">Profile</a></li>
+                    <li><a href="AboutPage.jsp?account=employer">Add Jobs </a></li>
+                    <li><a href="viewCreatedJobPostingsServlet?interview=true">Interviews</a></li>
+                    <li><a href="AboutPage.jsp?account=employer">About</a></li>
+					
 					
 				</ul>
 			</nav>
