@@ -19,6 +19,7 @@
 					<li><a href="viewApplicationsServlet">Applications</a></li>
 					<li><a href="viewInterviewsServlet">Interviews</a></li>
 					<li><a href="AboutPage.jsp?account=student">About</a></li>
+					
 				</ul>
 			</nav>
 		</div>
