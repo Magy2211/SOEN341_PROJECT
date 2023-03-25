@@ -64,18 +64,15 @@
 
 		<div class="job-box">
 			<h2>${jobTitle}</h2>
+			<p><strong>Employer:</strong> ${employerFirstName} ${employerLastName}</p>
 			<p><strong>Company:</strong> ${company}</p>
 			<p><strong>Status:</strong>${status}</p>
 			<p><strong>Location:</strong> ${jobLocation} </p>
 			<p><strong>Salary:</strong> ${salary} </p>
 			<p><strong>Deadline to apply:</strong> ${deadline} </p>
-			<p>${description} </p>
+			<p>${jobDescription} </p>
 		</div>
-		
-		 <form action="applyForAJobPostingServlet?id=${id}" method="post">
 
-        <input type="submit" value="Apply">
-    </form>--%>
   <form action="ApplyForAJobPosting.html" method="post">
       <input type="submit" value="Apply">
   </form>

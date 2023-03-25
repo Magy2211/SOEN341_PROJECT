@@ -33,6 +33,7 @@ public class ViewAJobPostingServlet extends HttpServlet {
         String salary ="";
         String jobLocation="";
         String deadline="";
+        String status = "";
         
         String studentEmail = (String) request.getSession().getAttribute("studentEmail");
         
@@ -59,6 +60,15 @@ public class ViewAJobPostingServlet extends HttpServlet {
                     company = resultSet1.getString(3);
      
                 }
+
+                PreparedStatement statement2 =connection.prepareStatement("select * from applications where studentEmail = ? AND jobPostingID = ?");
+                statement2.setString(1, studentEmail);
+                statement2.setInt(2, id);
+                ResultSet resultSet2 = statement2.executeQuery();
+
+                if (resultSet2.next()) {
+                    status = resultSet2.getString("Status");
+                }
             }
             request.setAttribute("jobTitle", title);
             request.setAttribute("jobDescription", description);
@@ -68,6 +78,8 @@ public class ViewAJobPostingServlet extends HttpServlet {
             request.setAttribute("salary", salary);
             request.setAttribute("jobLocation", jobLocation);
             request.setAttribute("deadline", deadline);
+            request.setAttribute("company", company);
+            request.setAttribute("status", status);
             request.getSession().setAttribute("id", id);
             RequestDispatcher view = request.getRequestDispatcher("/ViewAJobPosting.jsp");
             view.forward(request, response);
