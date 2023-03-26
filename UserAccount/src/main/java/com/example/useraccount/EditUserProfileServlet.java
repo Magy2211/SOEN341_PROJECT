@@ -50,8 +50,8 @@ public class EditUserProfileServlet extends HttpServlet {
             statement.setBlob(4, inputStreamResume);
             statement.setBlob(5, inputStreamLetter);
             statement.setBlob(6, inputStreamTranscript);
-            statement.setString(7, email);
-            statement.setBlob(8, inputStreamPic);
+            statement.setBlob(7, inputStreamPic);
+            statement.setString(8, email);
 
             PrintWriter out = response.getWriter();
             int result = statement.executeUpdate();
@@ -64,7 +64,7 @@ public class EditUserProfileServlet extends HttpServlet {
                 //response.sendRedirect("ViewUserProfileServlet");
             }
             else
-                out.print("<H1> Error creating the profile </H1>");
+                out.print("<H1> Error updating student information </H1>");
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
