@@ -49,3 +49,6 @@ MySQL will be used as database management system.
 
 #Sprint 2 demo 
 https://liveconcordia-my.sharepoint.com/:v:/g/personal/m_gegres_live_concordia_ca/Edjs-E-xuRRDrgdJ4tE78iIBpxP6whBrYR0P6I8OO7LyZA?e=cA1syC
+
+#Sprint 3 demo 
+https://liveconcordia-my.sharepoint.com/:v:/g/personal/m_gegres_live_concordia_ca/EV9qeSuNsepGqOuhVwJFE08BmQtJhg7mpNiN82je8oEb_g?e=PF80hc
