@@ -9,18 +9,19 @@
 </head>
 <body>
 <header>
-		<div class="container">
-			<h1>Jobify</h1>
-			<nav>
-				<ul>
-					<li><a href="viewCreatedJobPostingsServlet">Home</a></li>
-					<li><a href="viewEmployerProfileServlet">Profile</a></li>
-					<li><a href="#">About</a></li>
-					
-				</ul>
-			</nav>
-		</div>
-	</header>
+	<div class="container">
+		<h1>Jobify</h1>
+		<nav>
+			<ul>
+				<li><a href="viewCreatedJobPostingsServlet?interview=false">Home</a></li>
+				<li><a href="viewEmployerProfileServlet">Profile</a></li>
+				<li><a href="AddJobPosting.html">Add Jobs</a></li>
+				<li><a href="viewCreatedJobPostingsServlet?interview=true">Interviews</a></li>
+				<li><a href="AboutPage.jsp?account=employer">About</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
 	
 	<section id="search">
 		<div class="container">
