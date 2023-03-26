@@ -26,10 +26,7 @@
 	<section id="search">
 		<div class="container">
 			<h2>Find your dream job today</h2>
-			<form>
-				<input type="text" placeholder="Search by keyword or location">
-				<button type="submit">Search</button>
-			</form>
+			
 		</div>
 	</section>
 	
