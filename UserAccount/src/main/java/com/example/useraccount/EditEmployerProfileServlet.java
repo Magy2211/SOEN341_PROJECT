@@ -27,7 +27,7 @@ public class EditEmployerProfileServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email = (String) request.getSession().getAttribute("email");
+        String email = (String) request.getSession().getAttribute("employerEmail");
         String firstName = request.getParameter("first-name");
         String lastName = request.getParameter("last-name");
         String company = request.getParameter("company");
