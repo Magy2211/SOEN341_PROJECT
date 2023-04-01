@@ -13,31 +13,32 @@
         <h1>Jobify</h1>
         <nav>
             <ul>
-                <li><a href="viewJobPostingsServlet">Home</a></li>
-                <li><a href="viewUserProfileServlet">Profile</a></li>
-                <li><a href="viewApplicationsServlet">Applications</a></li>
-                <li><a href="viewInterviewsServlet">Interviews</a></li>
-                <li><a href="AboutPage.jsp?account=student">About</a></li>
+                <li><a href="viewCreatedJobPostingsServlet?interview=false">Home</a></li>
+                <li><a href="viewEmployerProfileServlet">Profile</a></li>
+                <li><a href="AddJobPosting.html">Add Jobs </a></li>
+                <li><a href="viewCreatedJobPostingsServlet?interview=true">Interviews</a></li>
+                <li><a href="AboutPage.jsp?account=employer">About</a></li>
+
             </ul>
         </nav>
     </div>
 </header>
+
+
+
 <head>
 
+    <link rel="stylesheet" type="text/css" href="EditingUserProfile.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    <style media="screen">
 
-    <head>
-
-        <link rel="stylesheet" type="text/css" href="styles.css">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
-        <!--Stylesheet-->
-        <style media="screen">
-
-        </style>
+    </style>
 
 
-    </head>
+</head>
 
 
 <body>
@@ -49,7 +50,7 @@
 
 
     <h3 style="color:orange;">Update User Profile</h3>
-    <p style="color:black;">Please fill out the form below</p>
+    <p style="color:red;">Please fill out the form below</p>
 
 
     <div class="container">
