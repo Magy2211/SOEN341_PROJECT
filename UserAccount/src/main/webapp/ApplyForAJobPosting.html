@@ -3,76 +3,76 @@
 <html lang="en">
 <head>
 
-  <link rel="stylesheet" type="text/css" href="ApplyForAJobPosting.css">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
-  <!--Stylesheet-->
-  <style media="screen">
+    <link rel="stylesheet" type="text/css" href="ApplyForAJobPosting.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    <style media="screen">
 
-  </style>
+    </style>
 
 
 </head>
 
 
 <body>
-  
-  <header>
-		<div class="container">
-			<h1>Jobify</h1>
-			<nav>
-				<ul>
-					<li><a href="viewJobPostingsServlet">Home</a></li>
-					<li><a href="viewUserProfileServlet">Profile</a></li>
-					<li><a href="viewApplicationsServlet">Applications</a></li>
-					<li><a href="viewInterviewsServlet">Interviews</a></li>
-					<li><a href="AboutPage.jsp?account=student">About</a></li>
-					
-				</ul>
-			</nav>
-		</div>
-	</header>
-	
+
+<header>
+    <div class="container">
+        <h1>Jobify</h1>
+        <nav>
+            <ul>
+                <li><a href="viewJobPostingsServlet">Home</a></li>
+                <li><a href="viewUserProfileServlet">Profile</a></li>
+                <li><a href="viewApplicationsServlet">Applications</a></li>
+                <li><a href="viewInterviewsServlet">Interviews</a></li>
+                <li><a href="AboutPage.jsp?account=student">About</a></li>
+
+            </ul>
+        </nav>
+    </div>
+</header>
+
 <div class="background">
-  <div class="shape"></div>
-  <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
 </div>
 <form action="applyForAJobPostingServlet" method="post" enctype="multipart/form-data">
 
 
 
-  <div class="container">
-    <br/>
-    <h3 style="color:orange;">Apply for the job</h3>
-    <form method="post" action="applyForAJobPostingServlet">
-      <table>
-        <label>
-          <input type="checkbox" name="default" value="defaultResume">Default resume<br>
-        </label>
-        <label>
-         <input type="checkbox" name="default" value="defaultCoverLetter">Default cover letter<br>
-        </label>
-        <label>
-          <input type="checkbox" name="default" value="defaultTranscript">Default transcript<br>
-        </label>
-        <div class="form-group">
-          <label for="resume">Resume:</label>
-          <input type="file" id="resume" name="resume">
-        </div>
-        <div class="form-group">
-          <label for="cover-letter">Cover Letter:</label>
-          <input type="file" id="cover-letter" name="cover-letter">
-        </div>
-        <div class="form-group">
-          <label for="transcript">Unofficial Transcript:</label>
-          <input type="file" id="transcript" name="transcript">
-        </div>
-        <button type="submit" class="submit-btn">Submit</button>
-      </table>
-    </form>
-  </div>
-  <script src="script.js"></script>
+    <div class="container">
+        <br/>
+        <h3 style="color:orange;">Apply for the job</h3>
+        <form method="post" action="applyForAJobPostingServlet">
+            <table>
+                <label>
+                    <input type="checkbox" name="default" value="defaultResume">Default resume<br>
+                </label>
+                <label>
+                    <input type="checkbox" name="default" value="defaultCoverLetter">Default cover letter<br>
+                </label>
+                <label>
+                    <input type="checkbox" name="default" value="defaultTranscript">Default transcript<br>
+                </label>
+                <div class="form-group">
+                    <label for="resume">Resume:</label>
+                    <input type="file" id="resume" name="resume">
+                </div>
+                <div class="form-group">
+                    <label for="cover-letter">Cover Letter:</label>
+                    <input type="file" id="cover-letter" name="cover-letter">
+                </div>
+                <div class="form-group">
+                    <label for="transcript">Unofficial Transcript:</label>
+                    <input type="file" id="transcript" name="transcript">
+                </div>
+                <button type="submit" class="submit-btn">Submit</button>
+            </table>
+        </form>
+    </div>
+    <script src="script.js"></script>
 </form>
 
 
