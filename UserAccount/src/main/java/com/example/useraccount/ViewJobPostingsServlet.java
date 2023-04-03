@@ -25,6 +25,7 @@ public class ViewJobPostingsServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String search = request.getParameter("search");
         String title;
         String description;
         String emailEmployer;
@@ -39,7 +40,15 @@ public class ViewJobPostingsServlet extends HttpServlet {
         
         int id;
         try {
-            PreparedStatement statement = connection.prepareStatement("select * from job_postings");
+            PreparedStatement statement;
+            if (search == null){
+                statement = connection.prepareStatement("select * from job_postings");
+            }
+            else {
+                search = '%' + search + '%';
+                statement = connection.prepareStatement("select * from job_postings where Title like ?");
+                statement.setString(1, search);
+            }
             ResultSet resultSet = statement.executeQuery();
             List<JobPostings> jobPostings = new ArrayList<>();
             while (resultSet.next())
