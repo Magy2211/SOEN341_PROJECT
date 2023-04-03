@@ -27,12 +27,24 @@ public class CreateUserServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String userType = request.getParameter("user-type");
+        String adminAuthenticationCode = request.getParameter("admin-code");
      
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("select * from login_information where email = '"+email+"'");
+            
             if(!resultSet.next()) {
-                int result = statement.executeUpdate("insert into login_information values ('" + email + "', '" + password + "', '" + userType + "')");
+            	
+            	int result;
+            	
+            	if(userType.equals("Student") || userType.equals("Employer")) {
+            		result = statement.executeUpdate("insert into login_information values ('" + email + "', '" + password + "', '" + userType + "')");
+            	}
+            	else if (userType.equals("Admin") && adminAuthenticationCode != null && adminAuthenticationCode.equals(AdminInformation.AUTHENTICATION_CODE)){
+            		result = statement.executeUpdate("insert into login_information values ('" + email + "', '" + password + "', '" + userType + "')");
+            	}
+            	else
+            		result = -1;
                 
                 PrintWriter out = response.getWriter();
                 
@@ -49,6 +61,12 @@ public class CreateUserServlet extends HttpServlet {
                         view.forward(request, response);
                         request.getSession().setAttribute("employerEmail", email);
                         response.sendRedirect("CreatingEmployerProfileServlet");
+                    }
+                    else if(userType.equals("Admin")) {
+                    	RequestDispatcher view = request.getRequestDispatcher("/CreatingAdminProfile.html");
+                    	view.forward(request,  response);
+                    	request.getSession().setAttribute("adminEmail", email);
+                    	response.sendRedirect("CreatingAdminProfileServlet");
                     }
                 }
                 else
