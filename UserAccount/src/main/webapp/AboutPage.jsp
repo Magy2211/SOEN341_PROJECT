@@ -6,7 +6,7 @@
 </head>
 <body>
 <header>
-  <link rel="stylesheet" type="text/css" href="viewJobPostings.css">
+  <link rel="stylesheet" type="text/css" href="AboutPage.css">
   <div class="container">
     <h1>Jobify</h1>
     <nav>
@@ -31,7 +31,72 @@
   </div>
 </header>
 
-<h2>About us</h2>
-<h4>*Enter some information*</h4>
+<!-- <h2>About us</h2>
+<h4>*Enter some information*</h4> -->
 </body>
+
+<head>   
+  
+      <link rel="stylesheet" type="text/css" href="EmployerHomePage.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    <style media="screen">
+    
+    </style>
+
+   
+</head>
+  
+
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+      <form method="get" action="viewEmployerProfileServlet">
+      
+        <h3 style="color:#f09819;">About </h3>
+            <link rel="stylesheet" type="text/css" href="AboutPage.css">
+
+               
+    <div class="form-group">
+
+ 
+ 
+  <h2> Feedback </h2>
+    <textarea id="subject" name="subject" placeholder="Write your feedback" style="height:200px"></textarea>
+
+    		
+  		
+   <div class="rate">
+   <h2> Star Rating </h2>
+    <input type="radio" id="star5" name="rate" value="5" />
+    <label for="star5" title="text">5 stars</label>
+    <input type="radio" id="star4" name="rate" value="4" />
+    <label for="star4" title="text">4 stars</label>
+    <input type="radio" id="star3" name="rate" value="3" />
+    <label for="star3" title="text">3 stars</label>
+    <input type="radio" id="star2" name="rate" value="2" />
+    <label for="star2" title="text">2 stars</label>
+    <input type="radio" id="star1" name="rate" value="1" />
+    <label for="star1" title="text">1 star</label>
+  </div>   			
+    			
+    		
+		</form> 
+
+      </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
