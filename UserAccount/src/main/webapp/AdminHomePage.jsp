@@ -13,7 +13,7 @@
 			<nav>
 				<ul> <!-- Change the pages -->
                     <li><a href="viewAdminProfileServlet">Profile</a></li>
-                    <li><a href="ViewCurrentUsers.html">Current Users </a></li>
+                    <li><a href="viewCurrentUsersServlet">Current Users </a></li>
                     <li><a href="viewUserFeedbackServlet">User Feedback</a></li>
 				</ul>
 			</nav>

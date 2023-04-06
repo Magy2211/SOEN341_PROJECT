@@ -6,84 +6,86 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <html>
+<html>
 <head>
-	<title>Job Posting Website</title>
-	<link rel="stylesheet" type="text/css" href="CreatingEmployerProfile.css">
+<title>Job Posting Website</title>
+<link rel="stylesheet" type="text/css"
+	href="CreatingEmployerProfile.css">
 </head>
 <body>
 	<header>
 		<div class="container">
 			<h1>Jobify</h1>
 			<nav>
-				<ul> <!-- Change the pages -->
-                 	<li><a href="viewAdminProfileServlet">Profile</a></li>
-                    <li><a href="ViewCurrentUsers.html">Current Users </a></li>
-                    <li><a href="viewUserFeedbackServlet">User Feedback</a></li>
+				<ul>
+					<!-- Change the pages -->
+					<li><a href="viewAdminProfileServlet">Profile</a></li>
+					<li><a href="ViewCurrentUsers.html">Current Users </a></li>
+					<li><a href="viewUserFeedbackServlet">User Feedback</a></li>
 				</ul>
 			</nav>
 		</div>
 	</header>
-<head>   
+<head>
+<head>
+
+<link rel="stylesheet" type="text/css"
+	href="CreatingEmployerProfile.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
+	rel="stylesheet">
+<!--Stylesheet-->
+<style media="screen">
+</style>
 
 
-
-<head>   
-  
-      <link rel="stylesheet" type="text/css" href="CreatingEmployerProfile.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
-    <!--Stylesheet-->
-    <style media="screen">
-    
-    </style>
-
-   
 </head>
-  
+
 
 <body>
-    <div class="background">
-        <div class="shape"></div>
-        <div class="shape"></div>
-    </div>
-      <form method="post" action="createAdminProfileServlet">
+	<div class="background">
+		<div class="shape"></div>
+		<div class="shape"></div>
+	</div>
+	<form method="post" action="createAdminProfileServlet">
 
-      
-        <h3 style="color:black;">Administrator Profile</h3>
-        
-        <p style="color:#FF8C00;">Please fill out the form below</p>
-      
-         
-         
-        
-        
-<div class="container">
-<br/>
-   <form method="post" action="createAdminProfileServlet">
-    <div class="form-group">
-      <label for="first-name">First Name:</label>
-      <input type="text" id="first-name" name="first-name" required>
-    </div>
-    <div class="form-group">
-      <label for="last-name">Last Name:</label>
-      <input type="text" id="last-name" name="last-name" required>
-    </div>
-	<div class="form-group">
-                <label for="role">Select Administrator Role:</label>
-                <select id="role" name="role" required>
-                    <option value="" selected disabled>Select Administrator Role</option>
-                    <option value="Administrator">Administrator</option>
-                </select>
-    </div>
-    <button type="submit" class="submit-btn">Submit</button>
 
-</div>
-<script src="script.js"></script>
-</form>
-  
-</div>
-                    
+		<h3 style="color: black;">Administrator Profile</h3>
+
+		<p style="color: #FF8C00;">Please fill out the form below</p>
+
+
+
+
+
+		<div class="container">
+			<br />
+			<form method="post" action="createAdminProfileServlet">
+				<div class="form-group">
+					<label for="first-name">First Name:</label> <input type="text"
+						id="first-name" name="first-name" required>
+				</div>
+				<div class="form-group">
+					<label for="last-name">Last Name:</label> <input type="text"
+						id="last-name" name="last-name" required>
+				</div>
+				<div class="form-group">
+					<label for="role">Select Administrator Role:</label> <select
+						id="role" name="role" required>
+						<option value="" selected disabled>Select Administrator
+							Role</option>
+						<option value="Administrator">Administrator</option>
+					</select>
+				</div>
+				<button type="submit" class="submit-btn">Submit</button>
+		</div>
+		<script src="script.js"></script>
+	</form>
+
+	</div>
+
 </body>
 </html>
