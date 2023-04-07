@@ -11,14 +11,14 @@
 <body>
 	<header>
 		<div class="container">
-			<h1>Job Posting Website</h1>
+			<h1>Jobify</h1>
 			<nav>
 				<ul>
-					<li><a href="viewUserProfileServlet">Home</a></li>
-					<li><a href="viewJobPostingsServlet">Jobs</a></li>
-					<li><a href="#">Employers</a></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Contact</a></li>
+					<li><a href="viewJobPostingsServlet">Home</a></li>
+					<li><a href="viewUserProfileServlet">Profile</a></li>
+					<li><a href="viewApplicationsServlet">Applications</a></li>
+					<li><a href="viewInterviewsServlet">Interviews</a></li>
+					<li><a href="AboutPage.jsp?account=student">About</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -27,8 +27,8 @@
 	<section id="search">
 		<div class="container">
 			<h2>Find your dream job today</h2>
-			<form>
-				<input type="text" placeholder="Search by keyword or location">
+			<form method="post" action="viewJobPostingsServlet">
+				<input type="text" placeholder="Search by job title" name="search">
 				<button type="submit">Search</button>
 			</form>
 		</div>
@@ -57,7 +57,7 @@
         ArrayList<JobPostings> std = (ArrayList<JobPostings>)request.getAttribute("jobPostings");
         for(JobPostings jobPosting:std){%>
 		<div class="job-box">
-			<h2><a href="viewAJobPostingServlet?id=<%=jobPosting.getId()%>" ><%=jobPosting.getTitle()%></a></h2>
+			<h2><a href="viewAJobPostingServlet?id=<%=jobPosting.getId()%>&userType=${"Student"}" ><%=jobPosting.getTitle()%></a></h2>
 			<p><strong>Company:</strong> <%=jobPosting.getCompany()%></p>
 			<p><strong>Status:</strong> <%=jobPosting.getStatus()%></p>
 			<p><strong>Location:</strong> <%=jobPosting.getJobLocation()%></p>

@@ -64,7 +64,7 @@ public class CreatingUserProfileServlet extends HttpServlet {
                 //Go back to student home page
                 request.getSession().setAttribute("email", email);
                 request.getSession().setAttribute("userType", "Student");
-                RequestDispatcher view = request.getRequestDispatcher("/viewUserProfileServlet");
+                RequestDispatcher view = request.getRequestDispatcher("/viewJobPostingsServlet");
                 view.forward(request, response);
             }
             else
