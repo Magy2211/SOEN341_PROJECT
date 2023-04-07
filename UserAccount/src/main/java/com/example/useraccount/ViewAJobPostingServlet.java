@@ -1,8 +1,11 @@
 package com.example.useraccount;
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.sql.*;
@@ -12,7 +15,7 @@ public class ViewAJobPostingServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private Connection connection;
 
-    public void init(){
+    public void init() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "root1234");
@@ -20,33 +23,35 @@ public class ViewAJobPostingServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
     }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String title = "";
         int id = Integer.parseInt(request.getParameter("id"));
+        String interview = request.getParameter("interview");
+        String userType = request.getParameter("userType");
         String description = "";
         String emailEmployer;
         String company = "";
         String firstNameEmployer = "";
         String lastNameEmployer = "";
-        
-        String salary ="";
-        String jobLocation="";
-        String deadline="";
+
+        String salary = "";
+        String jobLocation = "";
+        String deadline = "";
         String status = "";
-        
+
         String studentEmail = (String) request.getSession().getAttribute("studentEmail");
-        
+
         try {
             PreparedStatement statement = connection.prepareStatement("select * from job_postings where id = ?");
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
-            if (resultSet.next())
-            {
+            if (resultSet.next()) {
                 title = resultSet.getString("Title");
                 description = resultSet.getString("Description");
                 emailEmployer = resultSet.getString("email");
-                
+
                 salary = resultSet.getString("salary");
                 deadline = resultSet.getString("deadline");
                 jobLocation = resultSet.getString("jobLocation");
@@ -54,14 +59,14 @@ public class ViewAJobPostingServlet extends HttpServlet {
                 PreparedStatement statement1 = connection.prepareStatement("select * from employer_profile_information where email = ?");
                 statement1.setString(1, emailEmployer);
                 ResultSet resultSet1 = statement1.executeQuery();
-                if(resultSet1.next()) {
+                if (resultSet1.next()) {
                     firstNameEmployer = resultSet1.getString(1);
                     lastNameEmployer = resultSet1.getString(2);
                     company = resultSet1.getString(3);
-     
+
                 }
 
-                PreparedStatement statement2 =connection.prepareStatement("select * from applications where studentEmail = ? AND jobPostingID = ?");
+                PreparedStatement statement2 = connection.prepareStatement("select * from applications where studentEmail = ? AND jobPostingID = ?");
                 statement2.setString(1, studentEmail);
                 statement2.setInt(2, id);
                 ResultSet resultSet2 = statement2.executeQuery();
@@ -81,8 +86,14 @@ public class ViewAJobPostingServlet extends HttpServlet {
             request.setAttribute("company", company);
             request.setAttribute("status", status);
             request.getSession().setAttribute("id", id);
-            RequestDispatcher view = request.getRequestDispatcher("/ViewAJobPosting.jsp");
-            view.forward(request, response);
+            if (userType.equals("Employer")) {
+                request.setAttribute("interview", interview);
+                RequestDispatcher view = request.getRequestDispatcher("/ViewCreatedJobPosting.jsp");
+                view.forward(request, response);
+            } else {
+                RequestDispatcher view = request.getRequestDispatcher("/ViewAJobPosting.jsp");
+                view.forward(request, response);
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -90,7 +101,15 @@ public class ViewAJobPostingServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        String interview = request.getParameter("interview");
+        String userType = request.getParameter("userType");
 
+        request.setAttribute("id", id);
+        request.setAttribute("userType", "Employer");
+        request.setAttribute("interview", interview);
+
+        doGet(request, response);
     }
 
     public void destroy() {

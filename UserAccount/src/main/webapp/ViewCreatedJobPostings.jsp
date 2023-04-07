@@ -4,10 +4,10 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <html>
+<html>
 <head>
-	<title> Jobify </title>
-	<link rel="stylesheet" type="text/css" href="EmployerHomePage.css">
+    <title> Jobify </title>
+    <link rel="stylesheet" type="text/css" href="EmployerHomePage.css">
 </head>
 <body>
 <header>
@@ -24,44 +24,49 @@
         </nav>
     </div>
 </header>
-	
-<head>   
-  
-      <link rel="stylesheet" type="text/css" href="EmployerHomePage.css">
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="EmployerHomePage.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
     <!--Stylesheet-->
     <style media="screen">
-    
+
     </style>
 
-   
+
 </head>
 <body>
-    <div class="background">
-        <div class="shape"></div>
-        <div class="shape"></div>
-    </div>
-     <form method="get" action="viewCreatedJobPostingsServlet">
-      
-        <h3 style="color:#f09819;">Job Postings </h3>
-            <link rel="stylesheet" type="text/css" href="index.css">
+<div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
+<form method="get" action="viewCreatedJobPostingsServlet">
+
+    <h3 style="color:#f09819;">Job Postings </h3>
+    <link rel="stylesheet" type="text/css" href="index.css">
 
 
-  <table>
-    <tr>
-    
-    </tr>
+    <table>
+        <tr>
 
-    <%
-      ArrayList<JobPostings> std = (ArrayList<JobPostings>)request.getAttribute("jobPostings");
-      for(JobPostings jobPosting:std){%>
-    <tr>
-      <td><label><a href="viewStudentApplicationsServlet?jobPostingID=<%=jobPosting.getId()%>&interview=${interview}" ><%=jobPosting.getTitle()%><br></a></label></td>
-    </tr>
-    <%}%>
-  </table>
+        </tr>
+
+        <%
+            ArrayList<JobPostings> std = (ArrayList<JobPostings>) request.getAttribute("jobPostings");
+            for (JobPostings jobPosting : std) {%>
+        <tr>
+            <%--<td><label><a href="viewStudentApplicationsServlet?jobPostingID=<%=jobPosting.getId()%>&interview=${interview}" ><%=jobPosting.getTitle()%>&lt;%&ndash;<br>&ndash;%&gt;</a></label>--%>
+            <td><label><a
+                    href="viewAJobPostingServlet?id=<%=jobPosting.getId()%>&interview=${interview}&userType=${"Employer"}"><%=jobPosting.getTitle()%><%--<br>--%></a></label>
+                <%--<button><a style="color:white;" href="EditJobPosting.html">Edit</a></button>
+                <button><a style="color:white;" href="removeJobPostingServlet?jobPostingID=<%=jobPosting.getId()%>">Remove</a></button>--%>
+            </td>
+        </tr>
+        <%}%>
+    </table>
 </form>
 </body>
 </html>
