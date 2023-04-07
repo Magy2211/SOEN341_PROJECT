@@ -17,7 +17,7 @@ jobs:
        distribution: 'adopt' 
    - name: Build Backedn for testing 
      run: ./gradlew build 
-     working-directory: useraccount/ 
+     working-directory: UserAccount/src/main/java/com/example/useraccount/
      
    - name: Setup Node.js
      uses: actions/setup-node@v2
