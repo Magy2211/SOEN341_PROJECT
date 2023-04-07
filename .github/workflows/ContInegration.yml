@@ -14,6 +14,7 @@ jobs:
      uses: actions/setup-java@v2
      with: 
        java-version: '11'
+       distribution: 'adopt' 
    - name: Build Backedn for testing 
      run: ./gradlew build 
      working-directory: SOEN341_PROJECT/UserAccount/src/main/java/com/example/useraccount/ 
