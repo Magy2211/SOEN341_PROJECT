@@ -15,6 +15,10 @@ jobs:
      with: 
        java-version: '11'
        distribution: 'adopt' 
+       
+   - name: Create Gradle Build
+     run: gradle init
+     
    - name: Look for gradle
      run: gradle wrapper
      
