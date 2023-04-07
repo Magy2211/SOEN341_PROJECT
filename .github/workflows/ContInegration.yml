@@ -15,6 +15,9 @@ jobs:
      with: 
        java-version: '11'
        distribution: 'adopt' 
+   - name: Look for gradle
+     run: gradle wrapper
+     
    - name: Build Backedn for testing 
      run: ./gradlew build 
      working-directory: UserAccount/src/main/java/com/example/useraccount/
