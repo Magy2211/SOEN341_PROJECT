@@ -7,9 +7,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
@@ -62,9 +59,9 @@ public class ViewUserProfileServlet extends HttpServlet {
 
                 InputStream imageData = resultSet.getBinaryStream(8);
                 byte[] imageBytes = imageData.readAllBytes();
-                ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
-                BufferedImage img = ImageIO.read(bis);
-                request.setAttribute("profilePic", img);
+                String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+                request.getSession().setAttribute("profilePic", base64Image);
+
             }
             RequestDispatcher view = request.getRequestDispatcher("/StudentHomePage.jsp");
             view.forward(request, response);

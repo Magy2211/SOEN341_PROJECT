@@ -1,7 +1,5 @@
 package com.example.useraccount;
 
-import java.awt.image.BufferedImage;
-import java.io.StringReader;
 
 public class StudentInformation {
     private String firstName;
@@ -11,7 +9,7 @@ public class StudentInformation {
     private String resumeBase64;
     private String coverLetterBase64;
     private String transcriptBase64;
-    private BufferedImage profilePicture;
+    private String profilePicture;
 
     public StudentInformation(){
         firstName = "";
@@ -21,10 +19,10 @@ public class StudentInformation {
         resumeBase64 = "";
         transcriptBase64 = "";
         coverLetterBase64 = "";
-        profilePicture = null;
+        profilePicture = "";
     }
 
-    public StudentInformation(String firstName, String lastName, String email, String fieldOfStudy, String resumeBase64, String coverLetterBase64, String transcriptBase64, BufferedImage profilePicture){
+    public StudentInformation(String firstName, String lastName, String email, String fieldOfStudy, String resumeBase64, String coverLetterBase64, String transcriptBase64, String profilePicture){
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -63,7 +61,7 @@ public class StudentInformation {
         this.transcriptBase64 = transcriptBase64;
     }
 
-    public void setProfilePicture(BufferedImage profilePicture) {
+    public void setProfilePicture(String profilePicture) {
         this.profilePicture = profilePicture;
     }
 
@@ -95,7 +93,7 @@ public class StudentInformation {
         return transcriptBase64;
     }
 
-    public BufferedImage getProfilePicture() {
+    public String getProfilePicture() {
         return profilePicture;
     }
 }

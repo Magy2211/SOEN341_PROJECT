@@ -267,39 +267,48 @@ body{
 	border-radius: 50%;
 
 }
-.shape:first-child{
-	background: linear-gradient(
-			#1845ad,
-			#23a2f6
-	);
-	left: -100px;
-	top: -30px;
-}
-.shape:last-child{
-	background: linear-gradient(
-			to right,
-			#ff512f,
-			#f09819
-	);
-	right: -90px;
-	bottom: -520px;
+.shape:first-child {
+    background: linear-gradient( 
+    	#1845ad, 
+    	#23a2f6 );
+    left: -100px;
+    top: -5px;
 }
 
 
-form{
-	height: 900px;
-	width: 400px;
-	background-color: rgba(255,255,255,0.13);
-	position: absolute;
-	transform: translate(-50%,-30%);
-	top: 60%;
-	left: 50%;
-	border-radius: 10px;
-	backdrop-filter: blur(10px);
-	border: 2px solid rgba(255,255,255,0.1);
-	box-shadow: 0 0 40px rgba(8,7,16,0.6);
-	padding: 50px 35px;
+.shape:last-child {
+    background: linear-gradient( to right, #ff512f, #f09819 );
+    right: -90px;
+    bottom: -250px;
 }
+
+
+form {
+    height: 600px;
+    width: 400px;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-30%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+}
+
+input[type=text], select, textarea {
+  width: 100%; /* Full width */
+  padding: 12px; /* Some padding */ 
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
 form *{
 	font-family: 'Poppins',sans-serif;
 	color:black;
@@ -371,6 +380,47 @@ button{
 	color: #eaf0fb;
 	text-align: center;
 }
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #2a2ced;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #3a4ded;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #2a2ced;
+}
+
 .social div:hover{
 	background-color: rgba(255,255,255,0.47);
 }
@@ -399,3 +449,4 @@ title {
 #inputZip {
 	width: 28%;
 }
+

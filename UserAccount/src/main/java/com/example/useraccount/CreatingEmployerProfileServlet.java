@@ -48,7 +48,7 @@ public class CreatingEmployerProfileServlet extends HttpServlet {
             if (result > 0) {
                 request.getSession().setAttribute("email", email);
                 request.getSession().setAttribute("userType", "Employer");
-                RequestDispatcher view = request.getRequestDispatcher("/viewUserProfileServlet");
+                RequestDispatcher view = request.getRequestDispatcher("/viewCreatedJobPostingsServlet");
                 view.forward(request, response);
             }
             

@@ -7,9 +7,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
@@ -31,14 +28,15 @@ public class ViewAStudentInformationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String studentEmail = request.getParameter("studentEmail");
-        String studentFirstName;
-        String studentLastName;
+        String studentFirstName = "";
+        String studentLastName = "";
         String fieldOfStudy;
         int jobPostingID = Integer.parseInt(request.getParameter("jobPostingID"));
         String status = "";
         String resumeBase64 = "";
         String coverLetterBase64 = "";
         String transcriptBase64 = "";
+        String base64Image = "";
 
         try {
             PreparedStatement statement = connection.prepareStatement("select * from profile_information where email = ?");
@@ -52,8 +50,7 @@ public class ViewAStudentInformationServlet extends HttpServlet {
 
                 InputStream imageData = resultSet.getBinaryStream(8);
                 byte[] imageBytes = imageData.readAllBytes();
-                ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
-                BufferedImage img = ImageIO.read(bis);
+                base64Image = Base64.getEncoder().encodeToString(imageBytes);
 
                 PreparedStatement statement1 = connection.prepareStatement("select * from applications where jobPostingID = ? AND studentEmail = ?");
                 statement1.setInt(1, jobPostingID);
@@ -77,8 +74,10 @@ public class ViewAStudentInformationServlet extends HttpServlet {
                     transcriptBase64 = Base64.getEncoder().encodeToString(transcriptData);
                 }
 
-                request.setAttribute("studentInformation", new StudentInformation(studentFirstName, studentLastName, studentEmail, fieldOfStudy, resumeBase64, coverLetterBase64, transcriptBase64, img));
+                request.setAttribute("studentInformation", new StudentInformation(studentFirstName, studentLastName, studentEmail, fieldOfStudy, resumeBase64, coverLetterBase64, transcriptBase64, base64Image));
             }
+            request.setAttribute("studentFirstName", studentFirstName);
+            request.setAttribute("studentLastName", studentLastName);
             request.setAttribute("jobPostingID", jobPostingID);
             request.setAttribute("studentEmail", studentEmail);
             request.setAttribute("status", status);

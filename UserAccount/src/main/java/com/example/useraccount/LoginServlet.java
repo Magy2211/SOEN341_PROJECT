@@ -42,8 +42,8 @@ public class LoginServlet extends HttpServlet {
                 }
                 else if(userType.equals("Employer")) {
                     request.getSession().setAttribute("employerEmail", email);
-                    RequestDispatcher view = request.getRequestDispatcher("/viewEmployerProfileServlet");
-                    //RequestDispatcher view = request.getRequestDispatcher("/viewCreatedJobPostingsServlet");
+                    //RequestDispatcher view = request.getRequestDispatcher("/viewEmployerProfileServlet");
+                    RequestDispatcher view = request.getRequestDispatcher("/viewCreatedJobPostingsServlet");
                     view.forward(request, response);
                 }
             }

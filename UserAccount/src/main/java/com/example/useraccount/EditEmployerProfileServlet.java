@@ -12,9 +12,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-@WebServlet(name = "editUserProfileServlet", value = "/editUserProfileServlet")
-@MultipartConfig
-public class EditUserProfileServlet extends HttpServlet {
+@WebServlet(name = "editEmployerProfileServlet", value = "/editEmployerProfileServlet")
+public class EditEmployerProfileServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private Connection connection;
 
@@ -28,43 +27,31 @@ public class EditUserProfileServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email = (String) request.getSession().getAttribute("studentEmail");
-        Part picturePart = request.getPart("profile-pic");
+        String email = (String) request.getSession().getAttribute("employerEmail");
         String firstName = request.getParameter("first-name");
         String lastName = request.getParameter("last-name");
-        String fieldOfStudy = request.getParameter("engineering-field");
-        Part resumePart = request.getPart("resume");
-        Part coverLetterPart = request.getPart("cover-letter");
-        Part transcriptPart = request.getPart("transcript");
-
-        InputStream inputStreamPic = picturePart.getInputStream();
-        InputStream inputStreamResume = resumePart.getInputStream();
-        InputStream inputStreamLetter = coverLetterPart.getInputStream();
-        InputStream inputStreamTranscript = transcriptPart.getInputStream();
+        String company = request.getParameter("company");
 
         try {
-            PreparedStatement statement = connection.prepareStatement("update profile_information set firstName=?, lastName=?, fieldOfStudy=?, resume=?, coverLetter=?, unofficialTranscript=?, profilePicture=? where email = ?");
+            PreparedStatement statement = connection.prepareStatement("update employer_profile_information set firstName=?, lastName=?, company=? where email = ?");
             statement.setString(1, firstName);
             statement.setString(2, lastName);
-            statement.setString(3, fieldOfStudy);
-            statement.setBlob(4, inputStreamResume);
-            statement.setBlob(5, inputStreamLetter);
-            statement.setBlob(6, inputStreamTranscript);
-            statement.setBlob(7, inputStreamPic);
-            statement.setString(8, email);
+            statement.setString(3, company);
+            statement.setString(4, email);
 
             PrintWriter out = response.getWriter();
             int result = statement.executeUpdate();
             if (result > 0) {
                 out.print("<H1>Profile created</H1>");
                 //Go back to student home page
-                RequestDispatcher view = request.getRequestDispatcher("/viewUserProfileServlet");
-                view.forward(request, response);
+                //RequestDispatcher view = request.getRequestDispatcher("/EmployerHomePage.jsp");
                 //request.getSession().setAttribute("email", email);
-                //response.sendRedirect("ViewUserProfileServlet");
+                RequestDispatcher view = request.getRequestDispatcher("/viewEmployerProfileServlet");
+                view.forward(request, response);
+                //response.sendRedirect("/viewEmployerProfileServlet");
             }
             else
-                out.print("<H1> Error updating student information </H1>");
+                out.print("<H1> Error creating the profile </H1>");
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
