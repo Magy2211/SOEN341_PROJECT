@@ -56,6 +56,7 @@ public class ViewAJobPostingServlet extends HttpServlet {
                 jobPosting.setSalary(resultSet.getString("salary"));
                 jobPosting.setDeadline(resultSet.getString("deadline"));
                 jobPosting.setJobLocation(resultSet.getString("jobLocation"));
+                jobPosting.setStatus(resultSet.getString("Status"));
 
                 emailEmployer = resultSet.getString("email");
 
