@@ -11,6 +11,7 @@ public class AdminInformation {
 	private String role;
 	List<String> permissions;
 	
+	// Authentication code to allow admin profile creation
 	public static final String AUTHENTICATION_CODE = "qwerty1234";
 	
 	public AdminInformation(String firstName, String lastName, String email, String role) {

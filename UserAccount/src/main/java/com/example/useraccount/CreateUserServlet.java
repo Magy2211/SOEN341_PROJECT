@@ -37,19 +37,22 @@ public class CreateUserServlet extends HttpServlet {
             	
             	int result;
             	
+            	// For student and employer user type, save their login information in the database directly
             	if(userType.equals("Student") || userType.equals("Employer")) {
             		result = statement.executeUpdate("insert into login_information values ('" + email + "', '" + password + "', '" + userType + "')");
             	}
+            	// For admin user type, verify that the authentication code has been entered correctly
+            	// before saving login information into the database
             	else if (userType.equals("Admin") && adminAuthenticationCode != null && adminAuthenticationCode.equals(AdminInformation.AUTHENTICATION_CODE)){
             		result = statement.executeUpdate("insert into login_information values ('" + email + "', '" + password + "', '" + userType + "')");
             	}
             	else
-            		result = -1;
+            		result = -1; // Error
                 
                 PrintWriter out = response.getWriter();
                 
                 if (result > 0) {
-                	
+                	// Redirect each user type the appropriate profile creation page
                 	if(userType.equals("Student")) {
                     RequestDispatcher view = request.getRequestDispatcher("/CreatingUserProfile.html");
                     view.forward(request, response);

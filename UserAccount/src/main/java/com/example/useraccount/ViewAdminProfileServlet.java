@@ -16,6 +16,9 @@ public class ViewAdminProfileServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private Connection connection;
 
+    /*
+     * Open database connection
+     */
     public void init(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -24,23 +27,27 @@ public class ViewAdminProfileServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
     }
-
+    
+    /*
+     * Extract admin profile information from the database
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String adminEmail = (String) request.getSession().getAttribute("adminEmail");
+        String adminEmail = (String) request.getSession().getAttribute("adminEmail"); // Get the email of current user
         String adminFirstName;
         String adminLastName;
         String role;
         try {
             PreparedStatement statement = connection.prepareStatement("select * from admin_profile_information where email = ?");
-            statement.setString(1, adminEmail);
+            statement.setString(1, adminEmail); // Select the user with corresponding email in the database
             ResultSet resultSet = statement.executeQuery();
-            if(resultSet.next()){
+            if(resultSet.next()){ // Get information about user
                 adminFirstName = resultSet.getString(1);
                 adminLastName = resultSet.getString(2);
                 role = resultSet.getString(4);
+                // Save information in an AdminInformation object
                 request.setAttribute("adminInformation", new AdminInformation(adminFirstName, adminLastName, adminEmail, role));
             }
-            RequestDispatcher view = request.getRequestDispatcher("/AdminHomePage.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("/AdminHomePage.jsp"); // Go to the admin home page
             view.forward(request, response);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -50,7 +57,10 @@ public class ViewAdminProfileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
-
+    
+    /*
+     * Close database connection
+     */
     public void destroy() {
         try {
             connection.close();
