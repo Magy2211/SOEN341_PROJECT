@@ -47,13 +47,13 @@
 <body>
 
 <div class="job-box">
-    <h2>${jobTitle}</h2>
-    <p><strong>Employer:</strong> ${employerFirstName} ${employerLastName}</p>
-    <p><strong>Company:</strong> ${company}</p>
-    <p><strong>Location:</strong> ${jobLocation} </p>
-    <p><strong>Salary:</strong> ${salary} </p>
-    <p><strong>Deadline to apply:</strong> ${deadline} </p>
-    <p>${jobDescription} </p>
+    <h2>${jobPosting.getTitle()}</h2>
+    <p><strong>Employer:</strong> ${jobPosting.getEmployerFirstName()} ${jobPosting.getEmployerLastName()}</p>
+    <p><strong>Company:</strong> ${jobPosting.getCompany()}</p>
+    <p><strong>Location:</strong> ${jobPosting.getJobLocation()} </p>
+    <p><strong>Salary:</strong> ${jobPosting.getSalary()} </p>
+    <p><strong>Deadline to apply:</strong> ${jobPosting.getDeadline()} </p>
+    <p>${jobPosting.getDescription()} </p>
 </div>
 
 <form action="viewStudentApplicationsServlet?jobPostingID=${id}&interview=${interview}" method="post">

@@ -31,13 +31,13 @@
         <h2>Applicant Information</h2>
         <div class="job-box">
             <h2>${jobTitle}</h2>
-            <p><strong>Name:</strong> ${studentFirstName} ${studentLastName}</p>
+            <p><strong>Name:</strong> ${studentInformation.getFirstName()} ${studentInformation.getLastName()}</p>
             <p><strong>Field of study:</strong> ${studentInformation.getFieldOfStudy()}</p>
-            <p><strong>Email:</strong> ${studentEmail}</p>
+            <p><strong>Email:</strong> ${studentInformation.getEmail()}</p>
             <a href="data:application/pdf;base64,${studentInformation.getResumeBase64()}" target="_blank">Resume</a><br>
             <a href="data:application/pdf;base64,${studentInformation.getCoverLetterBase64()}" target="_blank">Cover Letter</a><br>
             <a href="data:application/pdf;base64,${studentInformation.getTranscriptBase64()}" target="_blank">Transcript</a><br>
-            <form action="selectStudentForInterviewServlet?jobPostingID=${jobPostingID}&studentEmail=${studentEmail}" method="post">
+            <form action="selectStudentForInterviewServlet?jobPostingID=${jobPostingID}&studentEmail=${studentInformation.getEmail()}" method="post">
                 <input type="submit" value="Select for an interview">
             </form>
 
