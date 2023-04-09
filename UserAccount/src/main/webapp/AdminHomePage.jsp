@@ -53,6 +53,7 @@
     <label style="color:black;">Role: ${adminInformation.getRole()}</label>
     <label style="color:black;">Permissions: </label>
     <label style="color:black;">${adminInformation.permissionsToString()}</label>
+     <label><a style="color:blue;" href="EditingAdminProfile.html">Edit Profile Information<br></a></label>
       <!-- <label><a style="color:blue;" href="EditingEmployerProfile.html">Edit Profile Information<br></a></label>  
         <%--<label><a style="color:blue;" href="AddJobPosting.html">Add a job posting<br></a></label>--%>
         <%--<label><a style="color:blue;" href="viewCreatedJobPostingsServlet?interview=false">View job postings created<br></a></label>

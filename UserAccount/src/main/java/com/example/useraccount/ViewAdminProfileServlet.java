@@ -35,7 +35,7 @@ public class ViewAdminProfileServlet extends HttpServlet {
         String adminEmail = (String) request.getSession().getAttribute("adminEmail"); // Get the email of current user
         String adminFirstName;
         String adminLastName;
-        String role;
+        String adminRole;
         try {
             PreparedStatement statement = connection.prepareStatement("select * from admin_profile_information where email = ?");
             statement.setString(1, adminEmail); // Select the user with corresponding email in the database
@@ -43,9 +43,9 @@ public class ViewAdminProfileServlet extends HttpServlet {
             if(resultSet.next()){ // Get information about user
                 adminFirstName = resultSet.getString(1);
                 adminLastName = resultSet.getString(2);
-                role = resultSet.getString(4);
+                adminRole = resultSet.getString(3);
                 // Save information in an AdminInformation object
-                request.setAttribute("adminInformation", new AdminInformation(adminFirstName, adminLastName, adminEmail, role));
+                request.setAttribute("adminInformation", new AdminInformation(adminFirstName, adminLastName, adminEmail, adminRole));
             }
             RequestDispatcher view = request.getRequestDispatcher("/AdminHomePage.jsp"); // Go to the admin home page
             view.forward(request, response);
