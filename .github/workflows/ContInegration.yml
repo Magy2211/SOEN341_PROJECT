@@ -19,6 +19,9 @@ jobs:
    - name: Create Gradle Build
      run: gradle init
      
+   - name: Make gradlew executable
+     run: chmod +x ./gradlew
+     
    - name: Look for gradle
      run: gradle wrapper
      
