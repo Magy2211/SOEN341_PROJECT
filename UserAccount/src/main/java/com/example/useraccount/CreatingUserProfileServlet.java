@@ -17,13 +17,19 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/*
+ * The purpose of this servlet is to complete
+ * the student account registration by entering the
+ * student profile information into the database
+ */
 @WebServlet(name = "createUserProfileServlet", value = "/createUserProfileServlet")
 @MultipartConfig
 public class CreatingUserProfileServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private Connection connection;
 
-    public void init(){
+    //Establishing a connection with the database
+    public void init() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "root1234");
@@ -33,6 +39,8 @@ public class CreatingUserProfileServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        //Getting parameters sent from other servlet/pages
         String email = (String) request.getSession().getAttribute("studentEmail");
         Part picturePart = request.getPart("profile-pic");
         String firstName = request.getParameter("first-name");
@@ -42,13 +50,18 @@ public class CreatingUserProfileServlet extends HttpServlet {
         Part coverLetterPart = request.getPart("cover-letter");
         Part transcriptPart = request.getPart("transcript");
 
+        //Creating and initialing variables that holds the documents
         InputStream inputStreamPic = picturePart.getInputStream();
         InputStream inputStreamResume = resumePart.getInputStream();
         InputStream inputStreamLetter = coverLetterPart.getInputStream();
         InputStream inputStreamTranscript = transcriptPart.getInputStream();
 
         try {
+
+            //Connect to the table to input the student information
             PreparedStatement statement = connection.prepareStatement("insert into profile_information values (?, ?, ?, ?, ?, ?, ?, ?)");
+
+            //Inserting the student profile information into the table
             statement.setString(1, firstName);
             statement.setString(2, lastName);
             statement.setString(3, fieldOfStudy);
@@ -57,17 +70,21 @@ public class CreatingUserProfileServlet extends HttpServlet {
             statement.setBlob(6, inputStreamTranscript);
             statement.setString(7, email);
             statement.setBlob(8, inputStreamPic);
-            		
-            PrintWriter out = response.getWriter();
+
             int result = statement.executeUpdate();
-            if (result > 0) {
-                //Go back to student home page
-                request.getSession().setAttribute("email", email);
+
+            PrintWriter out = response.getWriter();
+
+            if (result > 0) { //If the information was added successfully into the table
+
+                //Setting the user type as an attribute to be used by other servlets
                 request.getSession().setAttribute("userType", "Student");
+
+                //Redirecting the student to a page that displays all the job postings
                 RequestDispatcher view = request.getRequestDispatcher("/viewJobPostingsServlet");
                 view.forward(request, response);
-            }
-            else
+
+            } else //If there was a problem inserting the information into the table
                 out.print("<H1> Error creating the profile </H1>");
 
         } catch (SQLException e) {
@@ -76,6 +93,7 @@ public class CreatingUserProfileServlet extends HttpServlet {
 
     }
 
+    //Close the connection with the database
     public void destroy() {
         try {
             connection.close();

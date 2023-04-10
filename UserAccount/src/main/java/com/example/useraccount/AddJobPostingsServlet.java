@@ -1,21 +1,30 @@
 package com.example.useraccount;
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.*;
-import java.time.LocalDate;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
+/*
+ * The purpose of this servlet is to add a
+ * job posting to the database
+ */
 @WebServlet(name = "addJobPostingsServlet", value = "/addJobPostingsServlet")
 public class AddJobPostingsServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     private Connection connection;
 
-    public void init(){
+    //Establishing a connection with the database
+    public void init() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "root1234");
@@ -25,16 +34,21 @@ public class AddJobPostingsServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        //Getting parameters sent from other servlet/pages
         String email = (String) request.getSession().getAttribute("employerEmail");
         String title = request.getParameter("positionTitle");
         String description = request.getParameter("description");
-
         String salary = request.getParameter("salary");
         String deadline = request.getParameter("deadline");
         String jobLocation = request.getParameter("jobLocation");
 
         try {
+
+            //Connecting to the table to input the job posting details
             PreparedStatement statement = connection.prepareStatement("INSERT INTO job_postings (Title, Description, email, Status, salary, deadline, jobLocation) VALUES (?, ?, ?, ?, ?, ?, ?)");
+
+            //Inserting the job posting details into the table
             statement.setString(1, title);
             statement.setString(2, description);
             statement.setString(3, email);
@@ -42,18 +56,19 @@ public class AddJobPostingsServlet extends HttpServlet {
             statement.setString(5, salary);
             statement.setString(6, deadline);
             statement.setString(7, jobLocation);
-            int result = statement.executeUpdate();
-            PrintWriter out = response.getWriter();
-                if (result > 0) {
-                    RequestDispatcher view = request.getRequestDispatcher("/viewCreatedJobPostingsServlet");
-                    view.forward(request, response);
-                } else
-                    out.print("<H1> Error creating job posting </H1>");
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
+
+            statement.executeUpdate();
+
+            //Redirecting the employer to a page that displays all the job postings created
+            RequestDispatcher view = request.getRequestDispatcher("/viewCreatedJobPostingsServlet");
+            view.forward(request, response);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
+    //Close the connection with the database
     public void destroy() {
         try {
             connection.close();

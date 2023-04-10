@@ -10,11 +10,15 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
 
+/*
+ * The purpose of this servlet is to display a specific job posting
+ */
 @WebServlet(name = "viewAJobPostingServlet", value = "/viewAJobPostingServlet")
 public class ViewAJobPostingServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private Connection connection;
 
+    //Establishing a connection with the database
     public void init() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -26,71 +30,75 @@ public class ViewAJobPostingServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String title = "";
+
+        //Getting parameters sent from other servlet/pages
         int id = Integer.parseInt(request.getParameter("id"));
         String interview = request.getParameter("interview");
         String userType = request.getParameter("userType");
-        String description = "";
-        String emailEmployer;
-        String company = "";
-        String firstNameEmployer = "";
-        String lastNameEmployer = "";
-
-        String salary = "";
-        String jobLocation = "";
-        String deadline = "";
-        String status = "";
-
         String studentEmail = (String) request.getSession().getAttribute("studentEmail");
 
+        //Creating and initialising variables
+        JobPostings jobPosting = new JobPostings();
+        String emailEmployer;
+
+
         try {
+            //Connecting to the table and selecting a specific row (row where the id field is equal to the variable id)
             PreparedStatement statement = connection.prepareStatement("select * from job_postings where id = ?");
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
-            if (resultSet.next()) {
-                title = resultSet.getString("Title");
-                description = resultSet.getString("Description");
+
+            if (resultSet.next()) { //If the job posting exists
+
+                //Getting values from the selected row
+                jobPosting.setTitle(resultSet.getString("Title"));
+                jobPosting.setDescription(resultSet.getString("Description"));
+                jobPosting.setSalary(resultSet.getString("salary"));
+                jobPosting.setDeadline(resultSet.getString("deadline"));
+                jobPosting.setJobLocation(resultSet.getString("jobLocation"));
+                jobPosting.setStatus(resultSet.getString("Status"));
+
                 emailEmployer = resultSet.getString("email");
 
-                salary = resultSet.getString("salary");
-                deadline = resultSet.getString("deadline");
-                jobLocation = resultSet.getString("jobLocation");
-
+                //Connecting to another table to select the information of the employer who created the job posting
                 PreparedStatement statement1 = connection.prepareStatement("select * from employer_profile_information where email = ?");
                 statement1.setString(1, emailEmployer);
                 ResultSet resultSet1 = statement1.executeQuery();
-                if (resultSet1.next()) {
-                    firstNameEmployer = resultSet1.getString(1);
-                    lastNameEmployer = resultSet1.getString(2);
-                    company = resultSet1.getString(3);
 
+                if (resultSet1.next()) { //If the employer exists
+
+                    //Getting values from the selected row
+                    jobPosting.setEmployerFirstName(resultSet1.getString(1));
+                    jobPosting.setEmployerLastName(resultSet1.getString(2));
+                    jobPosting.setCompany(resultSet1.getString(3));
                 }
 
+                //Connecting to a third table to check if the student applied to the job posting
                 PreparedStatement statement2 = connection.prepareStatement("select * from applications where studentEmail = ? AND jobPostingID = ?");
                 statement2.setString(1, studentEmail);
                 statement2.setInt(2, id);
                 ResultSet resultSet2 = statement2.executeQuery();
 
-                if (resultSet2.next()) {
-                    status = resultSet2.getString("Status");
+                if (resultSet2.next()) { //If the student applied to the job posting
+
+                    //Getting the status of the application
+                    jobPosting.setStatus(resultSet2.getString("Status"));
                 }
             }
-            request.setAttribute("jobTitle", title);
-            request.setAttribute("jobDescription", description);
-            request.setAttribute("organization", company);
-            request.setAttribute("employerFirstName", firstNameEmployer);
-            request.setAttribute("employerLastName", lastNameEmployer);
-            request.setAttribute("salary", salary);
-            request.setAttribute("jobLocation", jobLocation);
-            request.setAttribute("deadline", deadline);
-            request.setAttribute("company", company);
-            request.setAttribute("status", status);
+
+            //Sending attributes to another servlet or a webpage
+            request.setAttribute("jobPosting", jobPosting);
             request.getSession().setAttribute("id", id);
+
             if (userType.equals("Employer")) {
                 request.setAttribute("interview", interview);
+
+                //Redirecting the employer to a page that displays the job posting
                 RequestDispatcher view = request.getRequestDispatcher("/ViewCreatedJobPosting.jsp");
                 view.forward(request, response);
             } else {
+
+                //Redirecting the student to a page that displays the job posting
                 RequestDispatcher view = request.getRequestDispatcher("/ViewAJobPosting.jsp");
                 view.forward(request, response);
             }
@@ -112,6 +120,8 @@ public class ViewAJobPostingServlet extends HttpServlet {
         doGet(request, response);
     }
 
+
+    //Close the connection with the database
     public void destroy() {
         try {
             connection.close();
