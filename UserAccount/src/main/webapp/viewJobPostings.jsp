@@ -27,8 +27,8 @@
 	<section id="search">
 		<div class="container">
 			<h2>Find your dream job today</h2>
-			<form>
-				<input type="text" placeholder="Search by keyword or location">
+			<form method="post" action="viewJobPostingsServlet">
+				<input type="text" placeholder="Search by job title" name="search">
 				<button type="submit">Search</button>
 			</form>
 		</div>
@@ -57,7 +57,7 @@
         ArrayList<JobPostings> std = (ArrayList<JobPostings>)request.getAttribute("jobPostings");
         for(JobPostings jobPosting:std){%>
 		<div class="job-box">
-			<h2><a href="viewAJobPostingServlet?id=<%=jobPosting.getId()%>" ><%=jobPosting.getTitle()%></a></h2>
+			<h2><a href="viewAJobPostingServlet?id=<%=jobPosting.getId()%>&userType=${"Student"}" ><%=jobPosting.getTitle()%></a></h2>
 			<p><strong>Company:</strong> <%=jobPosting.getCompany()%></p>
 			<p><strong>Status:</strong> <%=jobPosting.getStatus()%></p>
 			<p><strong>Location:</strong> <%=jobPosting.getJobLocation()%></p>

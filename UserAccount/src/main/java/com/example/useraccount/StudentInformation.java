@@ -1,6 +1,8 @@
 package com.example.useraccount;
 
-
+/*
+ * The purpose of this class is to hold the student information
+ */
 public class StudentInformation {
     private String firstName;
     private String lastName;
@@ -11,7 +13,7 @@ public class StudentInformation {
     private String transcriptBase64;
     private String profilePicture;
 
-    public StudentInformation(){
+    public StudentInformation() {
         firstName = "";
         lastName = "";
         email = "";
@@ -29,7 +31,7 @@ public class StudentInformation {
         this.fieldOfStudy = fieldOfStudy;
     }
 
-    public StudentInformation(String firstName, String lastName, String email, String fieldOfStudy, String resumeBase64, String coverLetterBase64, String transcriptBase64, String profilePicture){
+    public StudentInformation(String firstName, String lastName, String email, String fieldOfStudy, String resumeBase64, String coverLetterBase64, String transcriptBase64, String profilePicture) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -37,38 +39,6 @@ public class StudentInformation {
         this.resumeBase64 = resumeBase64;
         this.transcriptBase64 = transcriptBase64;
         this.coverLetterBase64 = coverLetterBase64;
-        this.profilePicture = profilePicture;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setFieldOfStudy(String fieldOfStudy) {
-        this.fieldOfStudy = fieldOfStudy;
-    }
-
-    public void setResumeBase64(String resumeBase64) {
-        this.resumeBase64 = resumeBase64;
-    }
-
-    public void setCoverLetterBase64(String coverLetterBase64) {
-        this.coverLetterBase64 = coverLetterBase64;
-    }
-
-    public void setTranscriptBase64(String transcriptBase64) {
-        this.transcriptBase64 = transcriptBase64;
-    }
-
-    public void setProfilePicture(String profilePicture) {
         this.profilePicture = profilePicture;
     }
 
@@ -76,31 +46,63 @@ public class StudentInformation {
         return firstName;
     }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
     public String getLastName() {
         return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
         return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getFieldOfStudy() {
         return fieldOfStudy;
+    }
+
+    public void setFieldOfStudy(String fieldOfStudy) {
+        this.fieldOfStudy = fieldOfStudy;
     }
 
     public String getResumeBase64() {
         return resumeBase64;
     }
 
+    public void setResumeBase64(String resumeBase64) {
+        this.resumeBase64 = resumeBase64;
+    }
+
     public String getCoverLetterBase64() {
         return coverLetterBase64;
+    }
+
+    public void setCoverLetterBase64(String coverLetterBase64) {
+        this.coverLetterBase64 = coverLetterBase64;
     }
 
     public String getTranscriptBase64() {
         return transcriptBase64;
     }
 
+    public void setTranscriptBase64(String transcriptBase64) {
+        this.transcriptBase64 = transcriptBase64;
+    }
+
     public String getProfilePicture() {
         return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
     }
 }

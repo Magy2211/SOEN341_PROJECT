@@ -14,11 +14,13 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /*
- * The purpose of this servlet is to allow
- * the employer to select a student for an interview
+ * The purpose of this servlet is to delete
+ * a job posting. The job posting and the student applications
+ * for that job posting should be removed.
  */
-@WebServlet(name = "selectStudentForInterviewServlet", value = "/selectStudentForInterviewServlet")
-public class SelectStudentForInterviewServlet extends HttpServlet {
+@WebServlet(name = "removeJobPostingServlet", value = "/removeJobPostingServlet")
+public class RemoveJobPostingServlet extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
     private Connection connection;
 
@@ -34,33 +36,34 @@ public class SelectStudentForInterviewServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         //Getting parameters sent from other servlet/pages
         int jobPostingID = Integer.parseInt(request.getParameter("jobPostingID"));
-        String studentEmail = request.getParameter("studentEmail");
 
         try {
 
-            //Connect to the table to change the application status
-            PreparedStatement statement = connection.prepareStatement("UPDATE applications SET Status = ? WHERE studentEmail = ? AND jobPostingID = ?");
-            statement.setString(1, "Selected for an interview");
-            statement.setString(2, studentEmail);
-            statement.setInt(3, jobPostingID);
-
+            //Connect to a table to remove the student application for that posting
+            PreparedStatement statement = connection.prepareStatement("delete from applications where jobPostingID = ?");
+            statement.setInt(1, jobPostingID);
             statement.executeUpdate();
 
-            //Redirect the employer to the page that displays all the student applications for that job posting
-            RequestDispatcher view = request.getRequestDispatcher("/viewStudentApplicationsServlet?interview=${interview}");
+            //Connect to another table to remove the job posting 
+            PreparedStatement statement1 = connection.prepareStatement("delete  from job_postings where id = ?");
+            statement1.setInt(1, jobPostingID);
+            statement1.executeUpdate();
+
+            //Redirect the employer to a page that displays all the job postings created by that employer
+            RequestDispatcher view = request.getRequestDispatcher("/viewCreatedJobPostingsServlet");
             view.forward(request, response);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
     }
 
     //Close the connection with the database
