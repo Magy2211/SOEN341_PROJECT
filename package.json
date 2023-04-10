@@ -1,0 +1,11 @@
+{
+  "name": "soen341_proj",
+  "version": "1.0.0",
+  "description": "This repository will contain all progress and updates on the SOEN 341 Project for Winter 2023. The project consists of creating a career planning platform through \r web development.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
