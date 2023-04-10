@@ -26,7 +26,19 @@
       
         <h3 style="color:black;">Account Registration</h3>
          
-        
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#user-type").change(function () {
+            if ($(this).val() == "Admin") {
+                $("#admin-code").removeAttr("disabled");
+                $("#admin-code").focus();
+            } else {
+                $("#admin-code").attr("disabled", "disabled");
+            }
+        });
+    });
+</script>    
         
 <div class="container">
 <br/>
@@ -37,7 +49,7 @@
       <tr>
         <div class="form-group">
                 <label for="user-type">Select user type:</label>
-                <select id="user-type" name="user-type" required onchange='on_change(this)'>
+                <select id="user-type" name="user-type" required>
                     <option value="" selected disabled>Select User Type</option>
                     <option value="Student">Student</option>
                     <option value="Employer">Employer</option>
@@ -58,8 +70,9 @@
       </tr>
        <div class="form-group">
           <td>AAC:</td>
-          <td><input name="admin-code"/></td>
+          <td><input name="admin-code" id=admin-code disabled="disabled"/></td>
         </div>
+        <!--<input type="text" id="txtOther" disabled="disabled" />-->
       <tr>
         <td />
         <button type="submit" class="submit-btn">Create Account</button>

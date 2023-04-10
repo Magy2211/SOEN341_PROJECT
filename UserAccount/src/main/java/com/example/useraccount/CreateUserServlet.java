@@ -35,18 +35,31 @@ public class CreateUserServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String userType = request.getParameter("user-type");
-
+        String adminAuthenticationCode = request.getParameter("admin-code");
+     
         try {
 
             //Connect to a table to checks if the email is not already in-use
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from login_information where email = '" + email + "'");
-
-            if (!resultSet.next()) { //If the email doesn't exist in the table
-
-                //Insert the user account email and password into the table
-                int result = statement.executeUpdate("insert into login_information values ('" + email + "', '" + password + "', '" + userType + "')");
-
+            ResultSet resultSet = statement.executeQuery("select * from login_information where email = '"+email+"'");
+            
+            if(!resultSet.next()) { //If the email doesn't exist in the table
+            	
+            	int result;
+            	
+            	// For student and employer user type, save their login information in the database directly
+            	if(userType.equals("Student") || userType.equals("Employer")) {
+            		result = statement.executeUpdate("insert into login_information values ('" + email + "', '" + password + "', '" + userType + "')");
+            	}
+            	// For admin user type, verify that the authentication code has been entered correctly
+            	// before saving login information into the database
+            	else if (userType.equals("Admin") && adminAuthenticationCode != null && adminAuthenticationCode.equals(AdminInformation.AUTHENTICATION_CODE)){
+            		result = statement.executeUpdate("insert into login_information values ('" + email + "', '" + password + "', '" + userType + "')");
+            	}
+            	else
+            		result = -1; // Error
+                
+             
                 PrintWriter out = response.getWriter();
 
                 if (result > 0) { //If the information was inserted successfully
@@ -69,6 +82,13 @@ public class CreateUserServlet extends HttpServlet {
                         RequestDispatcher view = request.getRequestDispatcher("/CreatingEmployerProfile.html");
                         view.forward(request, response);
                     }
+                    else if(userType.equals("Admin")) {
+                    	RequestDispatcher view = request.getRequestDispatcher("/CreatingAdminProfile.html");
+                    	view.forward(request,  response);
+                    	request.getSession().setAttribute("adminEmail", email);
+                    	response.sendRedirect("CreatingAdminProfileServlet");
+                    }
+          
                 } else //If there was a problem inserting the information
                     out.print("<H1> Error creating the account </H1>");
 

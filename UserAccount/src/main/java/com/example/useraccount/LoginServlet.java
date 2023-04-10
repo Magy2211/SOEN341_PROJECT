@@ -64,6 +64,13 @@ public class LoginServlet extends HttpServlet {
                     RequestDispatcher view = request.getRequestDispatcher("/viewCreatedJobPostingsServlet");
                     view.forward(request, response);
                 }
+                
+                else if(userType.equals("Admin")) {
+                	request.getSession().setAttribute("adminEmail", email);
+                    //RequestDispatcher view = request.getRequestDispatcher("/viewEmployerProfileServlet");
+                    RequestDispatcher view = request.getRequestDispatcher("/viewAdminProfileServlet");
+                    view.forward(request, response);
+                }
             } else { //If the login information is incorrect
 
                 //Redirect the user to a page to re-enter their login information
