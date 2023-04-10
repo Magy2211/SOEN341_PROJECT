@@ -18,6 +18,34 @@ body{
     left: 50%;
     top: 50%;
 }
+.job-box {
+        border: 1px solid black;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    input[type = submit] {
+        background-color: #333;
+        border: none;
+        text-decoration: none;
+        color: #fff;;
+        padding: 10px 20px;
+        margin: 20px 20px;
+        cursor: pointer;
+    }
+     .job-box {
+        border: 1px solid black;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    input[type = submit] {
+        background-color: #333;
+        border: none;
+        text-decoration: none;
+        color: #fff;;
+        padding: 10px 20px;
+        margin: 20px 20px;
+        cursor: pointer;
+    }
 .background .shape{
     height: 200px;
     width: 200px;
