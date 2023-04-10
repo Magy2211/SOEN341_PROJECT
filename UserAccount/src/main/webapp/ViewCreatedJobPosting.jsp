@@ -1,11 +1,10 @@
-<%@ page import="com.example.useraccount.JobPostings" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page contentType="text/html;charset=UTF-8" %>
-<html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
+<html lang="en">
 <html>
 <head>
-    <title>Job Posting Website</title>
+    <title> Jobify </title>
     <link rel="stylesheet" type="text/css" href="viewJobPostings.css">
 </head>
 <body>
@@ -14,68 +13,60 @@
         <h1>Jobify</h1>
         <nav>
             <ul>
-                <li><a href="viewCreatedJobPostingsServlet?interview=false">Home</a></li>
-                <li><a href="viewEmployerProfileServlet">Profile</a></li>
-                <li><a href="AddJobPosting.html">Add Jobs </a></li>
-                <li><a href="viewCreatedJobPostingsServlet?interview=true">Interviews</a></li>
-                <li><a href="AboutPage.jsp?account=employer">About</a></li>
+                <li><a href="viewJobPostingsServlet">Home</a></li>
+                <li><a href="viewUserProfileServlet">Profile</a></li>
+                <li><a href="viewApplicationsServlet">Applications</a></li>
+                <li><a href="viewInterviewsServlet">Interviews</a></li>
+                <li><a href="AboutPage.jsp?account=student">About</a></li>
+
             </ul>
         </nav>
     </div>
 </header>
 
+<head>
+    <link rel="stylesheet" type="text/css" href="StudentHomePage.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    <style media="screen">
 
-<title>Job Posting</title>
-<style>
-    .job-box {
-        border: 1px solid black;
-        padding: 10px;
-        margin-bottom: 10px;
-    }
+    </style>
 
-    input[type = submit] {
-        background-color: #333;
-        border: none;
-        text-decoration: none;
-        color: #fff;;
-        padding: 10px 20px;
-        margin: 20px 20px;
-        cursor: pointer;
-    }
-</style>
 </head>
+<div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
+<form action="createUserProfileServlet" method="post" enctype="multipart/form-data">
+
 <body>
 
 <div class="job-box">
-    <h2>${jobPosting.getTitle()}</h2>
-    <p><strong>Employer:</strong> ${jobPosting.getEmployerFirstName()} ${jobPosting.getEmployerLastName()}</p>
-    <p><strong>Company:</strong> ${jobPosting.getCompany()}</p>
-    <p><strong>Location:</strong> ${jobPosting.getJobLocation()} </p>
-    <p><strong>Salary:</strong> ${jobPosting.getSalary()} </p>
-    <p><strong>Deadline to apply:</strong> ${jobPosting.getDeadline()} </p>
-    <p>${jobPosting.getDescription()} </p>
+<!-- diplay informations of the job that has been added -->
+    <h3>${jobPosting.getTitle()}</h3>
+    <h3> </h3>
+    <p><strong style="color: blue;"> Employer:</strong> ${jobPosting.getEmployerFirstName()} ${jobPosting.getEmployerLastName()}</p>
+    <p><strong style="color: blue;"> Company:</strong> ${jobPosting.getCompany()}</p>
+    <p><strong style="color: blue;"> Location:</strong> ${jobPosting.getJobLocation()} </p>
+    <p><strong style="color: blue;"> Salary:</strong> ${jobPosting.getSalary()} </p>
+    <p><strong style="color: blue;"> Deadline to apply:</strong> ${jobPosting.getDeadline()} </p>
+    <p><strong style="color: blue;"> Description: </strong> ${jobPosting.getDescription()} </p>
 </div>
+<!-- button for View student applications  -->
 
-<form action="viewStudentApplicationsServlet?jobPostingID=${id}&interview=${interview}" method="post">
-    <input type="submit" value="View student applications">
-</form>
-<%
-    int id = Integer.parseInt(request.getParameter("id"));
-    request.getSession().setAttribute("jobPostingID", id);
+ <button><a style="color:white;" href="viewStudentApplicationsServlet?jobPostingID=${id}&interview=${interview}">View student applications<br></a></button>
+ 
+<!-- button for editing job poting  -->
 
-    String interview = request.getParameter("interview");
-    request.getSession().setAttribute("interview", interview);
-%>
-<form action="EditJobPosting.html" method="post">
-    <input type="submit" value="Edit">
-</form>
-<form action="removeJobPostingServlet?jobPostingID=${id}" method="post">
-    <input type="submit" value="Remove">
-</form>
-</body>
-
-</html>
+<button><a style="color:white;" href="EditJobPosting.html">Edit Job Posting<br></a></button>
+  
+<!-- button for removing job poting  -->
+  
+<button><a style="color:white;" href="removeJobPostingServlet?jobPostingID=${id}">Remove Job Posting<br></a></button>
 
 </body>
+</form>
+</body>
 </html>
-
