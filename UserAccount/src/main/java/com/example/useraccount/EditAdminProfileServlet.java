@@ -1,26 +1,25 @@
 package com.example.useraccount;
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 @WebServlet(name = "editAdminProfileServlet", value = "/editAdminProfileServlet")
 public class EditAdminProfileServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private Connection connection;
-    
+
     /*
      * Open database connection
      */
-    public void init(){
+    public void init() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "root1234");
@@ -28,13 +27,45 @@ public class EditAdminProfileServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
     }
-    
+
+    /*
+     * Get the admin profile information from the database to be visible while editing the information
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String adminEmail = (String) request.getSession().getAttribute("adminEmail"); // Get the email of current user
+
+        AdminInformation adminInformation = new AdminInformation();
+
+        try {
+            PreparedStatement statement = connection.prepareStatement("select * from admin_profile_information where email = ?");
+
+            statement.setString(1, adminEmail); // Select the user with corresponding email in the database
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) { // Get information about user
+                adminInformation.setFirstName(resultSet.getString(1));
+                adminInformation.setLastName(resultSet.getString(2));
+                adminInformation.setRole(resultSet.getString(3));
+
+                // Save information in an AdminInformation object
+                request.setAttribute("adminInformation", adminInformation);
+            }
+
+            //Redirect the admin to a page to edit their profile information
+            RequestDispatcher view = request.getRequestDispatcher("/EditingAdminProfile.jsp");
+            view.forward(request, response);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     /*
      * Modify the admin profile information in the database
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = (String) request.getSession().getAttribute("adminEmail"); // Get the current admin user email
-        
+
         // Save the updated information provided by the user
         String firstName = request.getParameter("first-name");
         String lastName = request.getParameter("last-name");
@@ -46,15 +77,16 @@ public class EditAdminProfileServlet extends HttpServlet {
             statement.setString(2, lastName);
             statement.setString(3, adminRole);
             statement.setString(4, email);
-            
-            PrintWriter out = response.getWriter();
+
             int result = statement.executeUpdate();
+
+            PrintWriter out = response.getWriter();
+
             // If information modified successfully, go to profile view
             if (result > 0) {
                 RequestDispatcher view = request.getRequestDispatcher("/viewAdminProfileServlet");
                 view.forward(request, response);
-            }
-            else // Print out error message
+            } else // Print out error message
                 out.print("<H1> Error modifying the profile with email </H1>" + email + firstName + lastName + adminRole);
 
         } catch (SQLException e) {
@@ -62,7 +94,7 @@ public class EditAdminProfileServlet extends HttpServlet {
         }
 
     }
-    
+
     /*
      * Close database connection
      */
