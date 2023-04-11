@@ -97,7 +97,7 @@ public class CreateUserServlet extends HttpServlet {
             } else { //If the email is in-use
 
                 //Redirect the user to a page to enter another email
-                RequestDispatcher view = request.getRequestDispatcher("/InvalidCreatingUser.html");
+                RequestDispatcher view = request.getRequestDispatcher("/InvalidCreatingUser.jsp");
                 view.forward(request, response);
             }
 
