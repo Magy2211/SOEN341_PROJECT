@@ -24,7 +24,7 @@ public class CreatingAdminProfileServlet extends HttpServlet {
     /*
      * Open database connection
      */
-    public void init(){
+    public void init() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "root1234");
@@ -32,17 +32,18 @@ public class CreatingAdminProfileServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
     }
-    
+
     /*
      * Enter admin profile information in the database upon account creation
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	// Receive the parameters from the form in CreatingAdminProfile.html
-    	String firstName = request.getParameter("first-name");
+
+        // Receive the parameters from the form in CreatingAdminProfile.html
+        String firstName = request.getParameter("first-name");
         String lastName = request.getParameter("last-name");
-    	String email = (String) request.getSession().getAttribute("adminEmail");
+        String email = (String) request.getSession().getAttribute("adminEmail");
         String adminRole = request.getParameter("adminRole");
-        
+
         // Enter the information into the database
         try {
             PreparedStatement statement = connection.prepareStatement("insert into admin_profile_information values (?, ?, ?, ?)");
@@ -50,18 +51,22 @@ public class CreatingAdminProfileServlet extends HttpServlet {
             statement.setString(2, lastName);
             statement.setString(3, adminRole);
             statement.setString(4, email);
-            
-            // If successful, go to view of the newly created profile
-            PrintWriter out = response.getWriter();
+
             int result = statement.executeUpdate();
+
+            PrintWriter out = response.getWriter();
+
+            // If successful, go to view of the newly created profile
             if (result > 0) {
-                request.getSession().setAttribute("email", email);
-                request.getSession().setAttribute("userType", "Admin");
+
+                //Setting the user type as an attribute to be used by other servlets
+                request.setAttribute("userType", "Admin");
+
+                //Redirecting the admin to the page that displays the profile information
                 RequestDispatcher view = request.getRequestDispatcher("/viewAdminProfileServlet");
                 view.forward(request, response);
-            }
-            
-            else // Print an error message
+
+            } else // Print an error message
                 out.print("<H1> Error creating the profile </H1>");
 
         } catch (SQLException e) {
@@ -69,7 +74,7 @@ public class CreatingAdminProfileServlet extends HttpServlet {
         }
 
     }
-    
+
     /*
      * Close database connection
      */

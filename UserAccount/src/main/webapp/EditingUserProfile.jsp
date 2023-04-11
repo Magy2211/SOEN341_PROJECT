@@ -1,6 +1,4 @@
-
-
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 
 <head>
@@ -23,7 +21,6 @@
         </nav>
     </div>
 </header>
-
 
 
 <head>
@@ -49,8 +46,7 @@
 <form action="editUserProfileServlet" method="post" enctype="multipart/form-data">
 
 
-    <h3 style="color:orange;">Update User Profile</h3>
-    <p style="color:red;">Please fill out the form below</p>
+    <h3 style="color:orange;">Edit User Profile</h3>
 
 
     <div class="container">
@@ -63,24 +59,41 @@
                 </div>
                 <div class="form-group">
                     <label for="first-name">First Name:</label>
-                    <input type="text" id="first-name" name="first-name" required>
+                    <input type="text" id="first-name" name="first-name" value="${studentInformation.getFirstName()}"
+                           required>
                 </div>
                 <div class="form-group">
                     <label for="last-name">Last Name:</label>
-                    <input type="text" id="last-name" name="last-name" required>
+                    <input type="text" id="last-name" name="last-name" value="${studentInformation.getLastName()}"
+                           required>
                 </div>
                 <div class="form-group">
-                    <label for="engineering-field">Engineering Field:</label>
                     <select id="engineering-field" name="engineering-field" required>
                         <option value="" selected disabled>Select Engineering Field</option>
-                        <option value="aerospace-engineering">Aerospace Engineering</option>
-                        <option value="building-engineering">Building Engineering</option>
-                        <option value="computer-engineering">Computer Engineering</option>
-                        <option value="civil-engineering">Civil Engineering</option>
-                        <option value="electrical-engineering">Electrical Engineering</option>
-                        <option value="industrial-engineering">Industrial Engineering</option>
-                        <option value="mechanical-engineering">Mechanical Engineering</option>
-                        <option value="software-engineering">Software Engineering</option>
+                        <option value="aerospace-engineering" ${studentInformation.getFieldOfStudy().equals("aerospace-engineering") ? "selected" : ""}>
+                            Aerospace Engineering
+                        </option>
+                        <option value="building-engineering" ${studentInformation.getFieldOfStudy().equals("building-engineering") ? "selected" : ""}>
+                            Building Engineering
+                        </option>
+                        <option value="computer-engineering" ${studentInformation.getFieldOfStudy().equals("computer-engineering") ? "selected" : ""}>
+                            Computer Engineering
+                        </option>
+                        <option value="civil-engineering" ${studentInformation.getFieldOfStudy().equals("civil-engineering") ? "selected" : ""}>
+                            Civil Engineering
+                        </option>
+                        <option value="electrical-engineering" ${studentInformation.getFieldOfStudy().equals("electrical-engineering") ? "selected" : ""}>
+                            Electrical Engineering
+                        </option>
+                        <option value="industrial-engineering" ${studentInformation.getFieldOfStudy().equals("industrial-engineering") ? "selected" : ""}>
+                            Industrial Engineering
+                        </option>
+                        <option value="mechanical-engineering" ${studentInformation.getFieldOfStudy().equals("mechanical-engineering") ? "selected" : ""}>
+                            Mechanical Engineering
+                        </option>
+                        <option value="software-engineering" ${studentInformation.getFieldOfStudy().equals("software-engineering") ? "selected" : ""}>
+                            Software Engineering
+                        </option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -95,15 +108,11 @@
                     <label for="transcript">Unofficial Transcript:</label>
                     <input type="file" id="transcript" name="transcript">
                 </div>
-                <button type="submit" class="submit-btn">Submit</button>
+                <button type="submit" class="submit-btn">Save</button>
 
     </div>
     <script src="script.js"></script>
 </form>
-
-
-
-
 
 
 </div>

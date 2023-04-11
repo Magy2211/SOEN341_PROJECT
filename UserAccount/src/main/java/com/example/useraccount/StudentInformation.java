@@ -23,8 +23,8 @@ public class StudentInformation {
         coverLetterBase64 = "";
         profilePicture = "";
     }
-    
-    public StudentInformation(String firstName, String lastName, String email, String fieldOfStudy){
+
+    public StudentInformation(String firstName, String lastName, String email, String fieldOfStudy) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

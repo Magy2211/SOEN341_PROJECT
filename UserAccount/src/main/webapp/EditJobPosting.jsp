@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <html>
 <head>
@@ -48,7 +48,7 @@
             <td>
                 <div class="form-group">
                     <label for="positionTitle">Position title:</label>
-                    <input name="positionTitle" id="positionTitle" required/>
+                    <input name="positionTitle" id="positionTitle" value="${jobPosting.getTitle()}" required/>
                 </div>
             </td>
         </tr>
@@ -57,7 +57,8 @@
             <td>
                 <div class="form-group">
                     <label for="jobLocation">Job location:</label>
-                    <textarea rows="5" cols="60" name="jobLocation" id="jobLocation" required></textarea>
+                    <textarea rows="5" cols="60" name="jobLocation" id="jobLocation"
+                              required>${jobPosting.getJobLocation()}</textarea>
                 </div>
             </td>
         </tr>
@@ -66,7 +67,7 @@
             <td>
                 <div class="form-group">
                     <label for="salary">Salary:</label>
-                    <input name="salary" id="salary" required/>
+                    <input name="salary" id="salary" value="${jobPosting.getSalary()}" required/>
                 </div>
             </td>
         </tr>
@@ -74,7 +75,7 @@
             <td>
                 <div class="form-group">
                     <label for="deadline">Deadline to apply:</label>
-                    <input name="deadline" id="deadline" required/>
+                    <input name="deadline" id="deadline" value="${jobPosting.getDeadline()}" required/>
                 </div>
             </td>
         </tr>
@@ -82,12 +83,13 @@
             <td>
                 <div class="form-group">
                     <label for="description">Job posting details:</label>
-                    <textarea rows="5" cols="60" name="description" id="description" required></textarea>
+                    <textarea rows="5" cols="60" name="description" id="description"
+                              required>${jobPosting.getDescription()}</textarea>
                 </div>
             </td>
         </tr>
         <td>
-            <button type="submit" class="submit-btn">Edit Job Posting</button>
+            <button type="submit" class="submit-btn">Save</button>
         </td>
         </tr>
     </table>
