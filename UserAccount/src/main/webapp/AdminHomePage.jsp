@@ -35,6 +35,7 @@
 
 
 <body>
+        
 <div class="background">
     <div class="shape"></div>
     <div class="shape"></div>
@@ -51,7 +52,7 @@
         <label style="color:black;">Email: ${adminInformation.getEmail()}</label>
         <label style="color:black;">Role: ${adminInformation.getRole()}</label>
         <label style="color:black;">Permissions: </label>
-        <label style="color:black;">${adminInformation.permissionsToString()}</label>
+        <pre><label style="color:black;">${adminInformation.permissionsToString()}</label></pre>
         <label><a style="color:blue;" href="editAdminProfileServlet">Edit Profile Information<br></a></label>
         <!-- <label><a style="color:blue;" href="EditingEmployerProfile.html">Edit Profile Information<br></a></label>
         <%--<label><a style="color:blue;" href="AddJobPosting.html">Add a job posting<br></a></label>--%>
