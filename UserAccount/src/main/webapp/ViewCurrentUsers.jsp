@@ -58,11 +58,13 @@
     ArrayList<StudentInformation> std = (ArrayList<StudentInformation>)request.getAttribute("students");
     for(StudentInformation students:std){%>
   <div class="job-box">
-    <p><strong>Student</strong></p>
+    <p><strong>Student</strong></p><br/>
     <p><strong>Name:</strong> <%=students.getFirstName()%> <%=students.getLastName()%></p>
     <p><strong>Field of study:</strong> <%=students.getFieldOfStudy()%></p>
     <p><strong>Email:</strong> <%=students.getEmail()%></p>
     <br>
+    <br>
+    <label><a href="viewAStudentUserServlet?studentEmail=<%=students.getEmail()%>">View Profile<br></a></label><br>
     </div>
   <%}%>
   
@@ -70,13 +72,14 @@
     ArrayList<EmployerInformation> std1 = (ArrayList<EmployerInformation>)request.getAttribute("employers");
     for(EmployerInformation employers:std1){%>
   <div class="job-box">
-    <p><strong>Employer</strong></p>
+    <p><strong>Employer</strong></p><br/>
     <p><strong>Name:</strong> <%=employers.getFirstName()%> <%=employers.getLastName()%></p>
     <p><strong>Company:</strong> <%=employers.getCompany()%></p>
     <p><strong>Email:</strong> <%=employers.getEmail()%></p>
     <br>
+    <label><a href="viewAnEmployerUserServlet?employerEmail=<%=employers.getEmail()%>">View Profile<br></a></label><br>
+    </div>
     </div>
   <%}%>
-  
 </body>
 </html>

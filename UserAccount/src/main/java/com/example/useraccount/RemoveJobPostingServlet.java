@@ -48,7 +48,7 @@ public class RemoveJobPostingServlet extends HttpServlet {
             statement.executeUpdate();
 
             //Connect to another table to remove the job posting 
-            PreparedStatement statement1 = connection.prepareStatement("delete  from job_postings where id = ?");
+            PreparedStatement statement1 = connection.prepareStatement("delete from job_postings where id = ?");
             statement1.setInt(1, jobPostingID);
             statement1.executeUpdate();
 
