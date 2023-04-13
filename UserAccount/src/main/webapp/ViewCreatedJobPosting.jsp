@@ -13,11 +13,12 @@
         <h1>Jobify</h1>
         <nav>
             <ul>
-                <li><a href="viewCreatedJobPostingsServlet?interview=false">Home</a></li>
-                <li><a href="viewEmployerProfileServlet">Profile</a></li>
-                <li><a href="AddJobPosting.html">Add Jobs </a></li>
-                <li><a href="viewCreatedJobPostingsServlet?interview=true">Interviews</a></li>
-                <li><a href="AboutPage.jsp?account=employer">About</a></li>
+                <li><a href="viewJobPostingsServlet">Home</a></li>
+                <li><a href="viewUserProfileServlet">Profile</a></li>
+                <li><a href="viewApplicationsServlet">Applications</a></li>
+                <li><a href="viewInterviewsServlet">Interviews</a></li>
+                <li><a href="AboutPage.jsp?account=student">About</a></li>
+
             </ul>
         </nav>
     </div>
@@ -40,36 +41,32 @@
 </div>
 <form action="createUserProfileServlet" method="post" enctype="multipart/form-data">
 
-    <body>
+<body>
 
-    <div class="job-box">
-        <!-- display information of the job that has been added -->
-        <h3>${jobPosting.getTitle()}</h3>
-        <h3></h3>
-        <p><strong style="color: blue;">
-            Employer:</strong> ${jobPosting.getEmployerFirstName()} ${jobPosting.getEmployerLastName()}</p>
-        <p><strong style="color: blue;"> Company:</strong> ${jobPosting.getCompany()}</p>
-        <p><strong style="color: blue;"> Location:</strong> ${jobPosting.getJobLocation()} </p>
-        <p><strong style="color: blue;"> Salary:</strong> ${jobPosting.getSalary()} </p>
-        <p><strong style="color: blue;"> Deadline to apply:</strong> ${jobPosting.getDeadline()} </p>
-        <p><strong style="color: blue;"> Description: </strong> ${jobPosting.getDescription()} </p>
-    </div>
-    <!-- button for View student applications  -->
+<div class="job-box">
+<!-- diplay informations of the job that has been added -->
+    <h3>${jobPosting.getTitle()}</h3>
+    <h3> </h3>
+    <p><strong style="color: blue;"> Employer:</strong> ${jobPosting.getEmployerFirstName()} ${jobPosting.getEmployerLastName()}</p>
+    <p><strong style="color: blue;"> Company:</strong> ${jobPosting.getCompany()}</p>
+    <p><strong style="color: blue;"> Location:</strong> ${jobPosting.getJobLocation()} </p>
+    <p><strong style="color: blue;"> Salary:</strong> ${jobPosting.getSalary()} </p>
+    <p><strong style="color: blue;"> Deadline to apply:</strong> ${jobPosting.getDeadline()} </p>
+    <p><strong style="color: blue;"> Description: </strong> ${jobPosting.getDescription()} </p>
+</div>
+<!-- button for View student applications  -->
 
-    <button><a style="color:white;" href="viewStudentApplicationsServlet?jobPostingID=${id}&interview=${interview}">View
-        student applications<br></a></button>
+ <button><a style="color:white;" href="viewStudentApplicationsServlet?jobPostingID=${id}&interview=${interview}">View student applications<br></a></button>
+ 
+<!-- button for editing job poting  -->
 
-    <!-- button for editing job posting  -->
+<button><a style="color:white;" href="EditJobPosting.html">Edit Job Posting<br></a></button>
+  
+<!-- button for removing job poting  -->
+  
+<button><a style="color:white;" href="removeJobPostingServlet?jobPostingID=${id}">Remove Job Posting<br></a></button>
 
-    <button><a style="color:white;" href="editJobPostingServlet?jobPostingID=${id}&interview=${interview}">Edit Job
-        Posting<br></a></button>
-
-    <!-- button for removing job posting  -->
-
-    <button><a style="color:white;" href="removeJobPostingServlet?jobPostingID=${id}">Remove Job Posting<br></a>
-    </button>
-
-    </body>
+</body>
 </form>
 </body>
 </html>
