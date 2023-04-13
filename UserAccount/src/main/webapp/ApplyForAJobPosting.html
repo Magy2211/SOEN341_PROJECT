@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+<!-- add the white screen in the middle  -->
     <link rel="stylesheet" type="text/css" href="ApplyForAJobPosting.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -23,6 +23,8 @@
         <h1>Jobify</h1>
         <nav>
             <ul>
+      <!-- Adding a blue bar on top in our website page that will include Home, Profile, Add jobs, Interviews and About buttons -->
+            
                 <li><a href="viewJobPostingsServlet">Home</a></li>
                 <li><a href="viewUserProfileServlet">Profile</a></li>
                 <li><a href="viewApplicationsServlet">Applications</a></li>
@@ -34,6 +36,7 @@
     </div>
 </header>
 
+<!-- To add the shapes which are the two circles that surround the white screen that is in the middle of the website page -->
 <div class="background">
     <div class="shape"></div>
     <div class="shape"></div>
@@ -47,6 +50,7 @@
         <h3 style="color:orange;">Apply for the job</h3>
         <form method="post" action="applyForAJobPostingServlet">
             <table>
+            <!-- add checkbox if user want to choose the Default resume, Default cover letter, Default transcript -->
                 <label>
                     <input type="checkbox" name="default" value="defaultResume">Default resume<br>
                 </label>
@@ -56,6 +60,7 @@
                 <label>
                     <input type="checkbox" name="default" value="defaultTranscript">Default transcript<br>
                 </label>
+                <!--Let the user upload documents as resume, cover letter and unofficial transcripts  -->
                 <div class="form-group">
                     <label for="resume">Resume:</label>
                     <input type="file" id="resume" name="resume">

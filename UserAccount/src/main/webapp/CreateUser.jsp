@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>   
+  <!-- add the white screen in the middle  -->
   
       <link rel="stylesheet" type="text/css" href="Index.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -17,6 +18,8 @@
   
 
 <body>
+<!-- To add the shapes which are the two circles that surround the white screen that is in the middle of the website page -->
+
     <div class="background">
         <div class="shape"></div>
         <div class="shape"></div>
@@ -47,6 +50,8 @@
      <tr>
       </tr>
       <tr>
+      <!-- let the user select "user type" -->
+      <!-- creating options as dropdown menu  -->
         <div class="form-group">
                 <label for="user-type">Select user type:</label>
                 <select id="user-type" name="user-type" required>
@@ -57,6 +62,7 @@
                 </select>
             </div>
       <tr>
+      <!-- let user fill out the email, password and AAC for their account registration -->
         <div class="form-group">
           <td>Email:</td>
           <td><input name="email" /></td>
