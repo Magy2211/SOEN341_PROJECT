@@ -65,6 +65,10 @@ public class AddFeedbackServlet extends HttpServlet {
                     //view.forward(request, response);
             	}
             	 */
+            	
+            	RequestDispatcher view = request.getRequestDispatcher("/AboutPage.jsp");
+                view.forward(request, response);
+                
             } else //If there was a problem inserting the information into the table
                 out.print("<H1> Error saving feedback </H1>");
 
