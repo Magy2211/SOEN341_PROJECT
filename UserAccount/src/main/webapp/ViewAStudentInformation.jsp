@@ -5,15 +5,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     
     <!--the title of the website and the css for styling--> 
+
     <title>Jobify</title>
     <link rel="stylesheet" type="text/css" href="viewJobPostings.css">
 </head>
 <body>
 <header>
-    
-    //contains the websit's name, home,profile,add jobs,interviews and About lists
     <div class="container">
         <h1>Jobify</h1>
         <nav>
@@ -28,8 +28,10 @@
     </div>
 </header>
 
+
 <!--In job section there is applicant information which includes the name,field,email that is added and store in the backend
  Also with submit button when the student is selected for an interview--> 
+
 <section id="jobs">
     <div class="container">
         <h2>Applicant Information</h2>

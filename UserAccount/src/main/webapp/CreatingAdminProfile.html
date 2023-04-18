@@ -18,7 +18,8 @@
 			<h1>Jobify</h1>
 			<nav>
 				<ul>
-					<!-- Change the pages -->
+		  <!-- In the blur bar we will have 3 buttons(profile, current users and user feedback) -->
+
 					<li><a href="viewAdminProfileServlet">Profile</a></li>
                     <li><a href="viewCurrentUsersServlet">Current Users </a></li>
                     <li><a href="viewUserFeedbackServlet">User Feedback</a></li>
@@ -29,15 +30,11 @@
 	</header>
 <head>
 <head>
-
-<link rel="stylesheet" type="text/css"
-	href="CreatingEmployerProfile.css">
+<!-- adding the white screen in the middle  -->
+<link rel="stylesheet" type="text/css" href="CreatingEmployerProfile.css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link
-	href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
-	rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
 <!--Stylesheet-->
 <style media="screen">
 </style>
@@ -47,13 +44,14 @@
 
 
 <body>
+<!-- To add the shapes which are the two circles that surround the white screen that is in the middle of the website page -->
 	<div class="background">
 		<div class="shape"></div>
 		<div class="shape"></div>
 	</div>
 	<form method="post" action="createAdminProfileServlet">
 
-
+<!--  styling  -->
 		<h3 style="color: black;">Administrator Profile</h3>
 
 		<p style="color: #FF8C00;">Please fill out the form below</p>
@@ -61,7 +59,7 @@
 
 
 
-
+<!-- let the admin write his first and last name and chose their select Administrator Role -->
 		<div class="container">
 			<br />
 			<form method="post" action="createAdminProfileServlet">
