@@ -6,7 +6,7 @@
 <html>
 <head>
     
-    //the title of the website and the css for styling 
+    <!--the title of the website and the css for styling--> 
     <title>Jobify</title>
     <link rel="stylesheet" type="text/css" href="viewJobPostings.css">
 </head>
@@ -28,8 +28,8 @@
     </div>
 </header>
 
-// In job section there is applicant information which includes the name,field,email that is added and store in the backend
-// Also with submit button when the student is selected for an interview
+<!--In job section there is applicant information which includes the name,field,email that is added and store in the backend
+ Also with submit button when the student is selected for an interview--> 
 <section id="jobs">
     <div class="container">
         <h2>Applicant Information</h2>

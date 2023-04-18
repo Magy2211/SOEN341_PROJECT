@@ -18,6 +18,7 @@
                     <li><a href="viewAdminProfileServlet">Profile</a></li>
                     <li><a href="viewCurrentUsersServlet">Current Users </a></li>
                     <li><a href="viewUserFeedbackServlet">User Feedback</a></li>
+                    <li><a href="viewJobPostingsAdminServlet">Job Postings</a></li>
 			</ul>
         </nav>
     </div>
@@ -58,9 +59,9 @@
     for(FeedbackForm feedbackForms:std){%>
     
   <div class="job-box">
-    <p><strong>Feedback</strong></p>
+    <p><strong>Feedback</strong></p><br/>
     <p><%=feedbackForms.getSubject()%></p><br/>
-    <p><strong>Rating:</strong> <%=feedbackForms.getRating()%></p>
+    <p><strong>Rating:</strong> <%=feedbackForms.getRating()%>/5</p>
     <br>
     </div>
   <%}%>

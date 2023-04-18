@@ -13,16 +13,15 @@
 <body>
 <header>
     
-    <!-- contains the websit's name, home,profile,add jobs,interviews and About lists -->
+    <!-- contains the website's name, home,profile,add jobs,interviews and About lists -->
     <div class="container">
         <h1>Jobify</h1>
         <nav>
             <ul>
-                <li><a href="viewCreatedJobPostingsServlet?interview=false">Home</a></li>
-                <li><a href="viewEmployerProfileServlet">Profile</a></li>
-                <li><a href="AddJobPosting.html">Add Jobs </a></li>
-                <li><a href="viewCreatedJobPostingsServlet?interview=true">Interviews</a></li>
-                <li><a href="AboutPage.jsp?account=employer">About</a></li>
+                <li><a href="viewAdminProfileServlet">Profile</a></li>
+                <li><a href="viewCurrentUsersServlet">Current Users </a></li>
+                <li><a href="viewUserFeedbackServlet">User Feedback</a></li>
+                <li><a href="viewJobPostingsAdminServlet">Job Postings</a></li>
             </ul>
         </nav>
     </div>

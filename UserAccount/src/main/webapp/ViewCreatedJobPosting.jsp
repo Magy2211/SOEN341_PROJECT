@@ -66,7 +66,7 @@
 
     <!-- button for removing job posting  -->
 
-    <button><a style="color:white;" href="removeJobPostingServlet?jobPostingID=${id}">Remove Job Posting<br></a>
+    <button><a style="color:white;" href="removeJobPostingServlet?jobPostingID=${id}&userType=Employer"">Remove Job Posting<br></a>
     </button>
 
     </body>

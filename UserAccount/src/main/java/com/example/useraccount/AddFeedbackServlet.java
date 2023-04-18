@@ -34,7 +34,7 @@ public class AddFeedbackServlet extends HttpServlet {
         //Getting parameters sent from other servlet/pages
         String subject = request.getParameter("subject");
         int rating = Integer.parseInt(request.getParameter("rate"));
-        //String userType = request.getParameter("userType");
+        String userType = request.getParameter("userType");
 
         try {
 

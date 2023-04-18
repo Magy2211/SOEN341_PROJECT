@@ -19,6 +19,7 @@
                     <li><a href="viewAdminProfileServlet">Profile</a></li>
                     <li><a href="viewCurrentUsersServlet">Current Users </a></li>
                     <li><a href="viewUserFeedbackServlet">User Feedback</a></li>
+                    <li><a href="viewJobPostingsAdminServlet">Job Postings</a></li>
 			</ul>
         </nav>
     </div>
