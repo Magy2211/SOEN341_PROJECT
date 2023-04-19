@@ -52,13 +52,13 @@ public class RemoveJobPostingServlet extends HttpServlet {
             PreparedStatement statement1 = connection.prepareStatement("delete from job_postings where id = ?");
             statement1.setInt(1, jobPostingID);
             statement1.executeUpdate();
-            
-            if(userType.equals("Admin")){
-            	 //Redirect the admin to the job postings list
+
+            if (userType.equals("Admin")) {
+                //Redirect the admin to the job postings list
                 RequestDispatcher view = request.getRequestDispatcher("/viewJobPostingsAdminServlet");
                 view.forward(request, response);
-            }else {
-            	//Redirect the employer to a page that displays all the job postings created by that employer
+            } else {
+                //Redirect the employer to a page that displays all the job postings created by that employer
                 RequestDispatcher view = request.getRequestDispatcher("/viewCreatedJobPostingsServlet");
                 view.forward(request, response);
             }

@@ -10,9 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.Base64;
-import java.util.List;
 
 /*
  * The purpose of this servlet is to get the information
@@ -41,13 +39,13 @@ public class ViewAStudentUserServlet extends HttpServlet {
      * Extract all user profile information from the database
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-    	String studentEmail = request.getParameter("studentEmail");
-    	
-    	//Creating and initialing variables
+
+        String studentEmail = request.getParameter("studentEmail");
+
+        //Creating and initialing variables
         StudentInformation studentInformation = new StudentInformation();
         studentInformation.setEmail(studentEmail);
-        
+
         try {
 
             //Connecting to the table to get the student information
@@ -66,17 +64,17 @@ public class ViewAStudentUserServlet extends HttpServlet {
                 InputStream imageData = resultSet.getBinaryStream(8);
                 byte[] imageBytes = imageData.readAllBytes();
                 studentInformation.setProfilePicture(Base64.getEncoder().encodeToString(imageBytes));
-                
+
             }
-            
-           //Sending attributes to another page
+
+            //Sending attributes to another page
             request.setAttribute("studentInformation", studentInformation);
-           
+
             //Redirect the employer to the page that displays this information
             RequestDispatcher view = request.getRequestDispatcher("/ViewStudentUserProfile.jsp");
             view.forward(request, response);
-       
-        
+
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

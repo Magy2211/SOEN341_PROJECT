@@ -1,18 +1,18 @@
 <%@ page import="com.example.useraccount.JobPostings" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <!DOCTYPE html>
 <html>
 <head>
-    
-   <!--  the title of the website and the css for styling -->
+
+    <!--  the title of the website and the css for styling -->
     <title>Jobify</title>
     <link rel="stylesheet" type="text/css" href="viewJobPostings.css">
 </head>
 <body>
 <header>
-    
+
     <!--  contains the website's name, home,profile,add jobs,interviews and About lists-->
     <div class="container">
         <h1>Jobify</h1>
@@ -27,7 +27,7 @@
     </div>
 </header>
 
- <!-- In job section there is applicant information which includes the name,field,email that is added and store in the backend -->
+<!-- In job section there is applicant information which includes the name,field,email that is added and store in the backend -->
 <!--  Also with delete button to delete the profile -->
 <section id="jobs">
     <div class="container">
@@ -52,6 +52,7 @@
         padding: 10px;
         margin-bottom: 10px;
     }
+
     input[type = submit] {
         background-color: #333;
         border: none;
@@ -64,9 +65,6 @@
 </style>
 </head>
 <body>
-
-
-
 
 
 <%--String status = (String) request.getAttribute("status");

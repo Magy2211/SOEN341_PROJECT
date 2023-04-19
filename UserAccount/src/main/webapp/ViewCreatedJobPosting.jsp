@@ -46,11 +46,12 @@
     <div class="job-box">
         <!-- display information of the job that has been added -->
         <h3>${jobPosting.getTitle()}</h3>
-    <h3> </h3>
-    <p><strong style="color: blue;"> Employer:</strong> ${jobPosting.getEmployerFirstName()} ${jobPosting.getEmployerLastName()}</p>
-    <p><strong style="color: blue;"> Company:</strong> ${jobPosting.getCompany()}</p>
-    <p><strong style="color: blue;"> Location:</strong> ${jobPosting.getJobLocation()} </p>
-    <p><strong style="color: blue;"> Salary:</strong> ${jobPosting.getSalary()} </p>
+        <h3></h3>
+        <p><strong style="color: blue;">
+            Employer:</strong> ${jobPosting.getEmployerFirstName()} ${jobPosting.getEmployerLastName()}</p>
+        <p><strong style="color: blue;"> Company:</strong> ${jobPosting.getCompany()}</p>
+        <p><strong style="color: blue;"> Location:</strong> ${jobPosting.getJobLocation()} </p>
+        <p><strong style="color: blue;"> Salary:</strong> ${jobPosting.getSalary()} </p>
         <p><strong style="color: blue;"> Deadline to apply:</strong> ${jobPosting.getDeadline()} </p>
         <p><strong style="color: blue;"> Description: </strong> ${jobPosting.getDescription()} </p>
     </div>

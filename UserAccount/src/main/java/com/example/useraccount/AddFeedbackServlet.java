@@ -49,7 +49,7 @@ public class AddFeedbackServlet extends HttpServlet {
             //Inserting the student profile information into the table
             statement.setInt(1, rating);
             statement.setString(2, subject);
-            if (userType.equals("student")){
+            if (userType.equals("student")) {
                 statement.setString(3, studentEmail);
             } else {
                 statement.setString(3, employerEmail);

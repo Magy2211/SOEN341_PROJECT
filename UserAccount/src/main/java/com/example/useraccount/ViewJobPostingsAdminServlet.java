@@ -35,7 +35,7 @@ public class ViewJobPostingsAdminServlet extends HttpServlet {
 
         //Getting parameters sent from other servlet/pages
         //String studentEmail = (String) request.getSession().getAttribute("studentEmail");
-    	String search = request.getParameter("search");
+        String search = request.getParameter("search");
 
         //Creating and initialising variables
         List<JobPostings> jobPostings = new ArrayList<>();
