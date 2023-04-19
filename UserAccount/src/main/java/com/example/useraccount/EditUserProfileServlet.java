@@ -25,6 +25,7 @@ public class EditUserProfileServlet extends HttpServlet {
     private Connection connection;
 
     //Establishing a connection with the database
+    @Override
     public void init() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -35,6 +36,7 @@ public class EditUserProfileServlet extends HttpServlet {
     }
 
     //This method sends the existing information in the table, so the user can view the information while editing
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         //Getting parameter sent from other servlet
@@ -73,6 +75,7 @@ public class EditUserProfileServlet extends HttpServlet {
     }
 
     //This method edits the information in the table with the new information submitted by the user
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         //Getting parameters sent from other servlet/pages
@@ -192,6 +195,7 @@ public class EditUserProfileServlet extends HttpServlet {
     }
 
     //Close the connection with the database
+    @Override
     public void destroy() {
         try {
             connection.close();

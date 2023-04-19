@@ -19,6 +19,7 @@ public class ViewAJobPostingServlet extends HttpServlet {
     private Connection connection;
 
     //Establishing a connection with the database
+    @Override
     public void init() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -128,6 +129,7 @@ public class ViewAJobPostingServlet extends HttpServlet {
 
 
     //Close the connection with the database
+    @Override
     public void destroy() {
         try {
             connection.close();

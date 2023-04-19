@@ -24,6 +24,7 @@ public class ViewAdminProfileServlet extends HttpServlet {
     /*
      * Open database connection
      */
+    @Override
     public void init() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -36,6 +37,7 @@ public class ViewAdminProfileServlet extends HttpServlet {
     /*
      * Extract admin profile information from the database
      */
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String adminEmail = (String) request.getSession().getAttribute("adminEmail"); // Get the email of current user
 
@@ -63,7 +65,7 @@ public class ViewAdminProfileServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
     }
-
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
@@ -71,6 +73,7 @@ public class ViewAdminProfileServlet extends HttpServlet {
     /*
      * Close database connection
      */
+    @Override
     public void destroy() {
         try {
             connection.close();

@@ -26,6 +26,7 @@ public class ViewAStudentUserServlet extends HttpServlet {
     /*
      * Open database connection
      */
+    @Override
     public void init() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -38,6 +39,7 @@ public class ViewAStudentUserServlet extends HttpServlet {
     /*
      * Extract all user profile information from the database
      */
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String studentEmail = request.getParameter("studentEmail");
@@ -80,7 +82,7 @@ public class ViewAStudentUserServlet extends HttpServlet {
         }
 
     }
-
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
@@ -88,6 +90,7 @@ public class ViewAStudentUserServlet extends HttpServlet {
     /*
      * Close database connection
      */
+    @Override
     public void destroy() {
         try {
             connection.close();

@@ -24,6 +24,7 @@ public class AddJobPostingsServlet extends HttpServlet {
     private Connection connection;
 
     //Establishing a connection with the database
+    @Override
     public void init() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -32,7 +33,8 @@ public class AddJobPostingsServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
     }
-
+    
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         //Getting parameters sent from other servlet/pages
@@ -69,6 +71,7 @@ public class AddJobPostingsServlet extends HttpServlet {
     }
 
     //Close the connection with the database
+    @Override
     public void destroy() {
         try {
             connection.close();

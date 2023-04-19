@@ -26,6 +26,7 @@ public class ViewCurrentUsersServlet extends HttpServlet {
     /*
      * Open database connection
      */
+    @Override
     public void init() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -38,6 +39,7 @@ public class ViewCurrentUsersServlet extends HttpServlet {
     /*
      * Extract all user profile information from the database
      */
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String firstName;
         String lastName;
@@ -95,7 +97,7 @@ public class ViewCurrentUsersServlet extends HttpServlet {
         }
 
     }
-
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
@@ -103,6 +105,7 @@ public class ViewCurrentUsersServlet extends HttpServlet {
     /*
      * Close database connection
      */
+    @Override
     public void destroy() {
         try {
             connection.close();

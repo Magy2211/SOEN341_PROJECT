@@ -24,6 +24,7 @@ public class CreatingAdminProfileServlet extends HttpServlet {
     /*
      * Open database connection
      */
+    @Override
     public void init() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -36,6 +37,7 @@ public class CreatingAdminProfileServlet extends HttpServlet {
     /*
      * Enter admin profile information in the database upon account creation
      */
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         // Receive the parameters from the form in CreatingAdminProfile.html
@@ -78,6 +80,7 @@ public class CreatingAdminProfileServlet extends HttpServlet {
     /*
      * Close database connection
      */
+    @Override
     public void destroy() {
         try {
             connection.close();

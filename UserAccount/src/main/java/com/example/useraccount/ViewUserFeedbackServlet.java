@@ -22,6 +22,7 @@ public class ViewUserFeedbackServlet extends HttpServlet {
     private Connection connection;
 
     //Establishing a connection with the database
+    @Override
     public void init() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -30,7 +31,7 @@ public class ViewUserFeedbackServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
     }
-
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         //Creating and initialising variables
@@ -74,6 +75,7 @@ public class ViewUserFeedbackServlet extends HttpServlet {
     }
 
     //Close the connection with the database
+    @Override
     public void destroy() {
         try {
             connection.close();
