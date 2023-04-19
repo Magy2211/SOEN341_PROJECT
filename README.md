@@ -56,5 +56,7 @@ https://liveconcordia-my.sharepoint.com/:v:/g/personal/m_gegres_live_concordia_c
 #Sprint 4 demo
 https://liveconcordia-my.sharepoint.com/:v:/g/personal/k_georgy_live_concordia_ca/ERlSP4FY-dxFgpNv1OxJgNIBbL8pGnUqQb_DtJb8qxorwg?e=PKiaj7
 
-#SonarLint Report
+#SonarLint Report - 471 issues found (before code modifications)
 https://drive.google.com/file/d/1GsVs692oIuSP6NVEbSm_ker7xbYOtuKo/view?usp=sharing
+
+#SonarLint Report - (  ) issues found (after code modifications)
