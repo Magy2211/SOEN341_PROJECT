@@ -3,7 +3,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 
 <!-- View all the job postings in order to apply for jobs. -->
-<html>
 <!DOCTYPE html>
 <html>
 <head>

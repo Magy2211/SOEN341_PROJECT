@@ -121,13 +121,12 @@ public class AdminInformation {
     /*
      * Initialize the permissions given to a role
      */
-    public void initializePermissions(String role) throws Exception {
+    public void initializePermissions(String role) {
         if (role.equals("Administrator")) {
             permissions.add(USER_PROFILE_ACCESS);
             permissions.add(USER_FEEDBACK_ACCESS);
             permissions.add(DELETE_USER_PROFILE);
             permissions.add(DELETE_JOB_POSTING);
-        } else
-            throw new Exception("Specified administrator role does not match 'Administrator' ");
+        }
     }
 }

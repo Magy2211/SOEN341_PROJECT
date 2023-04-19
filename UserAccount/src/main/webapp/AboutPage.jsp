@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -40,10 +41,6 @@
         </nav>
     </div>
 </header>
-
-
-<!-- <h2>About us</h2>
-<h4>*Enter some information*</h4> -->
 
 </body>
 

@@ -24,18 +24,20 @@ public class ViewAdminProfileServlet extends HttpServlet {
     /*
      * Open database connection
      */
-    public void init() {
+    @Override
+    public void init() throws ServletException {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "root1234");
         } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            throw new ServletException(e);
         }
     }
 
     /*
      * Extract admin profile information from the database
      */
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String adminEmail = (String) request.getSession().getAttribute("adminEmail"); // Get the email of current user
 
@@ -60,10 +62,10 @@ public class ViewAdminProfileServlet extends HttpServlet {
             RequestDispatcher view = request.getRequestDispatcher("/AdminHomePage.jsp"); // Go to the admin home page
             view.forward(request, response);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new ServletException(e);
         }
     }
-
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
@@ -71,11 +73,12 @@ public class ViewAdminProfileServlet extends HttpServlet {
     /*
      * Close database connection
      */
+    @Override
     public void destroy() {
         try {
             connection.close();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+        	e.printStackTrace();
         }
     }
 }

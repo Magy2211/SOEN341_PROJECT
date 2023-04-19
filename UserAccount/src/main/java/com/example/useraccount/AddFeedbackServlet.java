@@ -23,15 +23,17 @@ public class AddFeedbackServlet extends HttpServlet {
     private Connection connection;
 
     //Establishing a connection with the database
-    public void init() {
+    @Override
+    public void init() throws ServletException {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "root1234");
         } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            throw new ServletException(e);
         }
     }
-
+    
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         //Getting parameters sent from other servlet/pages
@@ -76,17 +78,18 @@ public class AddFeedbackServlet extends HttpServlet {
                 out.print("<H1> Error saving feedback </H1>");
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new ServletException(e);
         }
 
     }
 
     //Close the connection with the database
+    @Override
     public void destroy() {
         try {
             connection.close();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+        	e.printStackTrace();
         }
     }
 }

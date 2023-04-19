@@ -24,18 +24,20 @@ public class CreatingAdminProfileServlet extends HttpServlet {
     /*
      * Open database connection
      */
-    public void init() {
+    @Override
+    public void init() throws ServletException {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "root1234");
         } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            throw new ServletException(e);
         }
     }
 
     /*
      * Enter admin profile information in the database upon account creation
      */
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         // Receive the parameters from the form in CreatingAdminProfile.html
@@ -70,7 +72,7 @@ public class CreatingAdminProfileServlet extends HttpServlet {
                 out.print("<H1> Error creating the profile </H1>");
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new ServletException(e);
         }
 
     }
@@ -78,11 +80,12 @@ public class CreatingAdminProfileServlet extends HttpServlet {
     /*
      * Close database connection
      */
+    @Override
     public void destroy() {
         try {
             connection.close();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+        	e.printStackTrace();
         }
     }
 }

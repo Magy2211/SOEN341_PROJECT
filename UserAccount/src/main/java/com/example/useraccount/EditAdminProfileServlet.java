@@ -19,18 +19,20 @@ public class EditAdminProfileServlet extends HttpServlet {
     /*
      * Open database connection
      */
-    public void init() {
+    @Override
+    public void init() throws ServletException {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "root1234");
         } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            throw new ServletException(e);
         }
     }
 
     /*
      * Get the admin profile information from the database to be visible while editing the information
      */
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String adminEmail = (String) request.getSession().getAttribute("adminEmail"); // Get the email of current user
 
@@ -56,13 +58,14 @@ public class EditAdminProfileServlet extends HttpServlet {
             view.forward(request, response);
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new ServletException(e);
         }
     }
 
     /*
      * Modify the admin profile information in the database
      */
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = (String) request.getSession().getAttribute("adminEmail"); // Get the current admin user email
 
@@ -90,7 +93,7 @@ public class EditAdminProfileServlet extends HttpServlet {
                 out.print("<H1> Error modifying the profile with email </H1>" + email + firstName + lastName + adminRole);
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new ServletException(e);
         }
 
     }
@@ -98,11 +101,12 @@ public class EditAdminProfileServlet extends HttpServlet {
     /*
      * Close database connection
      */
+    @Override
     public void destroy() {
         try {
             connection.close();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+        	e.printStackTrace();
         }
     }
 }
