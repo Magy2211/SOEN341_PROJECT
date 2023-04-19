@@ -17,7 +17,7 @@ test('Profile management', async () => {
   // Assert that user is redirected to dashboard page after successful registration
   expect(page.url()).toBe('http://localhost:3000//CreatingUserProfile.html');
   
-  wait page.type('#First Name:', 'Test');
+  await page.type('#First Name:', 'Test');
   await page.type('Last Name:', 'Test');
   await page.select('select[name = Engineering Field:]', Computer Engineering);
   await page.click('#Submit');
