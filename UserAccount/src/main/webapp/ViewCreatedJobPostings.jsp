@@ -60,7 +60,7 @@
         <tr>
             <%--<td><label><a href="viewStudentApplicationsServlet?jobPostingID=<%=jobPosting.getId()%>&interview=${interview}" ><%=jobPosting.getTitle()%>&lt;%&ndash;<br>&ndash;%&gt;</a></label>--%>
             <td><label><a
-                    href="viewAJobPostingServlet?id=<%=jobPosting.getId()%>&interview=${interview}&userType=${"Employer"}"><%=jobPosting.getTitle()%><%--<br>--%></a></label>
+                    href="viewAJobPostingServlet?id=<%=jobPosting.getId()%>&interview=${interview}&userType=Employer"><%=jobPosting.getTitle()%><%--<br>--%></a></label>
                 <%--<button><a style="color:white;" href="EditJobPosting.html">Edit</a></button>
                 <button><a style="color:white;" href="removeJobPostingServlet?jobPostingID=<%=jobPosting.getId()%>">Remove</a></button>--%>
             </td>

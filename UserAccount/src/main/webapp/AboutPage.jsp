@@ -67,16 +67,16 @@
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-      <form method="get" action="viewEmployerProfileServlet">
-      
+    
+      <form method="post" action="addFeedbackServlet">
         <h3 style="color:#f09819;">About </h3>
             <link rel="stylesheet" type="text/css" href="AboutPage.css">
 
                
     <div class="form-group">
 
- 
  <!-- add the the text area to let the user enter their feedback -->
+
   <h2> Feedback </h2>
     <textarea id="subject" name="subject" placeholder="Write your feedback" style="height:200px"></textarea>
 
@@ -94,11 +94,13 @@
     <label for="star2" title="text">2 stars</label>
     <input type="radio" id="star1" name="rate" value="1" />
     <label for="star1" title="text">1 star</label>
+    
+    <div class="form-group">
+	<button type="submit" class="submit-btn">Submit</button>
+	</div>
+	 
   </div>   			
-    			
-    		
 		</form> 
-
       </body>
 </html>
 

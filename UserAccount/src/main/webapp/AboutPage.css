@@ -484,20 +484,3 @@ button{
 title {
 	color: green;
 }
-
-/* Set width for input fields */
-#inputStreet {
-	width: 100%;
-}
-
-#inputCity {
-	width: 50%;
-}
-
-#inputState {
-	width: 30%;
-}
-
-#inputZip {
-	width: 28%;
-}

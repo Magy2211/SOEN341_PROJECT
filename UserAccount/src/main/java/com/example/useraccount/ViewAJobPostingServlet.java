@@ -74,6 +74,7 @@ public class ViewAJobPostingServlet extends HttpServlet {
                 }
 
                 //Connecting to a third table to check if the student applied to the job posting
+                if(!userType.equals("Admin")){
                 PreparedStatement statement2 = connection.prepareStatement("select * from applications where studentEmail = ? AND jobPostingID = ?");
                 statement2.setString(1, studentEmail);
                 statement2.setInt(2, id);
@@ -83,6 +84,7 @@ public class ViewAJobPostingServlet extends HttpServlet {
 
                     //Getting the status of the application
                     jobPosting.setStatus(resultSet2.getString("Status"));
+                }
                 }
             }
 
@@ -96,10 +98,15 @@ public class ViewAJobPostingServlet extends HttpServlet {
                 //Redirecting the employer to a page that displays the job posting
                 RequestDispatcher view = request.getRequestDispatcher("/ViewCreatedJobPosting.jsp");
                 view.forward(request, response);
-            } else {
+            } else if (userType.equals("Student")){
 
                 //Redirecting the student to a page that displays the job posting
                 RequestDispatcher view = request.getRequestDispatcher("/ViewAJobPosting.jsp");
+                view.forward(request, response);
+            }
+            else {
+            	//Redirecting the student to a page that displays the job posting
+                RequestDispatcher view = request.getRequestDispatcher("/ViewAJobPostingAdmin.jsp");
                 view.forward(request, response);
             }
         } catch (SQLException e) {

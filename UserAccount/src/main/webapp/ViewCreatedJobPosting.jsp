@@ -60,11 +60,13 @@
  
 <!-- button for editing job poting  -->
 
+
 <button><a style="color:white;" href="EditJobPosting.html">Edit Job Posting<br></a></button>
   
 <!-- button for removing job poting  -->
   
 <button><a style="color:white;" href="removeJobPostingServlet?jobPostingID=${id}">Remove Job Posting<br></a></button>
+
 
 </body>
 </form>
