@@ -42,10 +42,6 @@
     </div>
 </header>
 
-
-<!-- <h2>About us</h2>
-<h4>*Enter some information*</h4> -->
-
 </body>
 
 <!-- add the white screen in the middle that will have all the information for the about page as feedback and the star	rating  -->

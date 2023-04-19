@@ -27,12 +27,12 @@ public class ApplyForAJobPostingServlet extends HttpServlet {
 
     //Establishing a connection with the database
     @Override
-    public void init() {
+    public void init() throws ServletException {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "root1234");
         } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            throw new ServletException(e);
         }
     }
 
@@ -145,7 +145,7 @@ public class ApplyForAJobPostingServlet extends HttpServlet {
             view.forward(request, response);
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new ServletException(e);
         }
     }
 
@@ -155,7 +155,7 @@ public class ApplyForAJobPostingServlet extends HttpServlet {
         try {
             connection.close();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+        	e.printStackTrace();
         }
     }
 }

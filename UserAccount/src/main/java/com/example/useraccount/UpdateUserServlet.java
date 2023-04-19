@@ -28,7 +28,7 @@ public class UpdateUserServlet extends HttpServlet {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "root1234");
         } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            throw new ServletException(e);
         }
     }
     @Override
@@ -47,7 +47,7 @@ public class UpdateUserServlet extends HttpServlet {
 
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new ServletException(e);
         }
 
     }
@@ -59,7 +59,7 @@ public class UpdateUserServlet extends HttpServlet {
         try {
             connection.close();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+        	e.printStackTrace();
         }
     }
 }
