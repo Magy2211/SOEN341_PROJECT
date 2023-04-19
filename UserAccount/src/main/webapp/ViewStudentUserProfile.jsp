@@ -1,7 +1,6 @@
 <%@ page import="com.example.useraccount.JobPostings" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
-<html>
 <!DOCTYPE html>
 <html>
 <head>
