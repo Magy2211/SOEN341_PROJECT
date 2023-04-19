@@ -27,13 +27,12 @@ public class AddJobPostingsServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "root1234");
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
             throw new ServletException(e);
         }
     }
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -76,7 +75,7 @@ public class AddJobPostingsServlet extends HttpServlet {
         try {
             connection.close();
         } catch (SQLException e) {
-        	e.printStackTrace();
+            e.printStackTrace();
         }
     }
 }

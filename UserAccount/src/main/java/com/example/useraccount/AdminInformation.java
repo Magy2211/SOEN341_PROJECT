@@ -34,7 +34,7 @@ public class AdminInformation {
         lastName = "";
         email = "";
         role = "";
-        permissions = new LinkedList<String>();
+        permissions = new LinkedList<>();
     }
 
 
@@ -45,12 +45,11 @@ public class AdminInformation {
         this.email = email;
         this.role = role;
 
-        permissions = new LinkedList<String>();
+        permissions = new LinkedList<>();
 
         try {
             initializePermissions(role);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
