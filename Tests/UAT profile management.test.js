@@ -3,7 +3,7 @@ const puppeteer = require('puppeteer');
 test('Profile management', async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  await page.goto('http://localhost:3000/createUserServlet');
+  await page.goto('http://localhost:8080/UserAccount/index.jsp');
 
   // Fill in registration information
   await page.type('#Email', 'test@gmail.com');
