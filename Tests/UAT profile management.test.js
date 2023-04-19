@@ -15,7 +15,7 @@ test('Profile management', async () => {
   await page.waitForNavigation();
 
   // Assert that user is redirected to dashboard page after successful registration
-  expect(page.url()).toBe('http://localhost:3000//CreatingUserProfile.html');
+  expect(page.url()).toBe('http://localhost:8080/UserAccount/CreateUser.html');
   
   await page.type('#First Name:', 'Test');
   await page.type('Last Name:', 'Test');
