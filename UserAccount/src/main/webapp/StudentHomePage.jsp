@@ -49,7 +49,8 @@
         <br/>
         <form method="get" action="viewUserProfileServlet">
             <div class="form-group">
-                <img src="data:image/jpeg;base64,${studentInformation.getProfilePicture()}" width="180" height=180/><br>
+                <img src="data:image/jpeg;base64,${studentInformation.getProfilePicture()}"
+                     alt="Student profile picture" width="180" height=180/><br>
                 <h4>First Name: ${studentInformation.getFirstName()}</h4>
                 <h4>Last Name: ${studentInformation.getLastName()}</h4>
                 <h4>Email: ${studentInformation.getEmail()}</h4>
