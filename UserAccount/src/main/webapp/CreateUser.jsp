@@ -1,8 +1,9 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Creating account</title>
-    <!-- add the white screen in the middle  -->
 
     <link rel="stylesheet" type="text/css" href="Index.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -13,13 +14,21 @@
 
     </style>
 
+    <script>
+        function on_change(select) {
+            var adminCodeInput = document.getElementById("admin-code");
+            if (select.value == "Admin") {
+                adminCodeInput.style.display = "block";
+            } else {
+                adminCodeInput.style.display = "none";
+            }
+        }
+    </script>
 
 </head>
 
 
 <body>
-<!-- To add the shapes which are the two circles that surround the white screen that is in the middle of the website page -->
-
 <div class="background">
     <div class="shape"></div>
     <div class="shape"></div>
@@ -29,19 +38,6 @@
 
     <h3 style="color:black;">Account Registration</h3>
 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            $("#user-type").change(function () {
-                if ($(this).val() == "Admin") {
-                    $("#admin-code").removeAttr("disabled");
-                    $("#admin-code").focus();
-                } else {
-                    $("#admin-code").attr("disabled", "disabled");
-                }
-            });
-        });
-    </script>
 
     <div class="container">
         <br/>
@@ -50,11 +46,9 @@
                 <tr>
                 </tr>
                 <tr>
-                    <!-- let the user select "user type" -->
-                    <!-- creating options as dropdown menu  -->
                     <div class="form-group">
                         <label for="user-type">Select user type:</label>
-                        <select id="user-type" name="user-type" required>
+                        <select id="user-type" name="user-type" required onchange='on_change(this)'>
                             <option value="" selected disabled>Select User Type</option>
                             <option value="Student">Student</option>
                             <option value="Employer">Employer</option>
@@ -62,7 +56,6 @@
                         </select>
                     </div>
                 <tr>
-                    <!-- let user fill out the email, password and AAC for their account registration -->
                     <div class="form-group">
                         <td>Email:</td>
                         <td><input name="email"/></td>
@@ -74,14 +67,15 @@
                         <td><input name="password" type="password"/></td>
                     </div>
                 </tr>
-                <div class="form-group">
-                    <td>AAC:</td>
-                    <td><input name="admin-code" id=admin-code disabled="disabled"/></td>
-                </div>
+                <tr id="admin-code" style="display:none">
+                    <div class="form-group">
+                        <td>AAC:</td>
+                        <td><input name="admin-code"/></td>
+                    </div>
+                </tr>
                 <tr>
                     <td/>
                     <button type="submit" class="submit-btn">Create Account</button>
-
             </table>
         </form>
     </div>

@@ -23,8 +23,9 @@ public class CreateUserServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         try {
+            Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "root1234");
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new ServletException(e);
         }
     }

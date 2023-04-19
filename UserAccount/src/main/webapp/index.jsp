@@ -28,7 +28,7 @@
     <div class="container">
         <br/>
         <div class="form-group">
-            <label><a href="CreateUser1.jsp">Create a new account<br></a></label>
+            <label><a href="CreateUser.jsp">Create a new account<br></a></label>
             <label><a href="LoginPage.html">Login</a></label>
         </div>
     </div>
