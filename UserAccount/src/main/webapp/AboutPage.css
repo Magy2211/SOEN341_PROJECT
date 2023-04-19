@@ -1,13 +1,18 @@
+/* Global Styles */
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
+/*Body */
 
 body {
 	font-family: Arial, sans-serif;
 	font-size: 16px;
 }
+
+/* Layout */
 
 .container {
 	max-width: 1200px;
@@ -15,12 +20,15 @@ body {
 	padding: 0 20px;
 }
 
+/* Header */
 
 header {
 	background-color: #1845ad;
 	color: #fff;
 	padding: 20px 0;
 }
+
+/* Navigation */
 
 nav ul {
 	list-style: none;
@@ -40,6 +48,8 @@ nav ul li a:hover {
 	background-color: #555;
 }
 
+/* Search Section */
+
 section#search {
 	background-color: #f5f5f5;
 	padding: 50px 0;
@@ -56,6 +66,8 @@ section#search form {
 	align-items: center;
 }
 
+
+/* Styling for search input */
 section#search input[type="text"] {
 	padding: 10px;
 	border: none;
@@ -63,6 +75,7 @@ section#search input[type="text"] {
 	flex-grow: 1;
 }
 
+/* Styling for search button */
 section#search button[type="submit"] {
 	background-color: #333;
 	color: #fff;
@@ -72,29 +85,35 @@ section#search button[type="submit"] {
 	cursor: pointer;
 }
 
+/* Styling for job section */
 section#jobs {
 	padding: 50px 0;
 }
 
+/* Styling for job section heading */
 section#jobs h2 {
 	text-align: center;
 	margin-bottom: 20px;
 }
 
+/* Styling for each job */
 section#jobs .job {
 	background-color: #f5f5f5;
 	padding: 20px;
 	margin-bottom: 30px;
 }
 
+/* Styling for each job title */
 section#jobs .job h3 {
 	margin-bottom: 10px;
 }
 
+/* Styling for each job description */
 section#jobs .job p {
 	margin-bottom: 20px;
 }
 
+/* Styling for apply button in each job */
 section#jobs .job a {
 	background-color: green;
 	color: #fff;
@@ -104,25 +123,30 @@ section#jobs .job a {
 	display: inline-block;
 }
 
+/* Styling for apply button on hover */
 section#jobs .job a:hover {
 	background-color: #555;
 }
 
+/* Styling for employers section */
 section#employers {
 	background-color: #f5f5f5;
 	padding: 50px 0;
 }
 
+/* Styling for employers section heading */
 section#employers h2 {
 	text-align: center;
 	margin-bottom: 20px;
 }
 
+/* Styling for employers section description */
 section#employers p {
 	text-align: center;
 	margin-bottom: 50px;
 }
 
+/* Styling for employers button */
 section#employers a {
 	background-color: #333;
 	color: #fff;
@@ -132,9 +156,12 @@ section#employers a {
 	display: inline-block;
 }
 
+/* Styling for employers button on hover */
 section#employers a:hover {
 	background-color: #555;
 }
+
+/* Styling for the footer element */
 
 footer {
 	background-color: #333;
@@ -142,10 +169,11 @@ footer {
 	padding: 20px 0;
 	text-align: center;
 }
-
+/* Styling for paragraph elements inside the footer */
 footer p {
 	margin-bottom: 0;
 }
+/* Styling for the job details section */
 section#job-details {
 	position: fixed;
 	top: 0;
@@ -158,18 +186,19 @@ section#job-details {
 	transition: right 0.5s ease-in-out;
 	z-index: 1000;
 }
-
+/* Styling for the container element that holds the job details */
 .job-details-container {
 	height: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
-
+/* Styling for the actual job details content */
 .job-details {
 	max-height: 100%;
 	overflow-y: auto;
 }
+/* Styling for job details section */
 section#job-details {
 	position: fixed;
 	top: 0;
@@ -182,6 +211,7 @@ section#job-details {
 	transition: right 0.5s ease-in-out;
 	z-index: 1000;
 }
+/* Styling for job details container */
 
 .job-details-container {
 	height: 100%;
@@ -189,147 +219,137 @@ section#job-details {
 	align-items: center;
 	justify-content: center;
 }
-
+/* Styling for job details */
 .job-details {
 	max-height: 100%;
 	overflow-y: auto;
 }
+/* This section defines the styling for the job details section */
 section#job-details {
-	position: fixed;
-	top: 0;
-	right: -500px;
-	height: 100%;
-	width: 500px;
-	background-color: #f5f5f5;
-	padding: 50px;
-	box-shadow: 0 0 10px rgba(0,0,0,0.3);
-	transition: right 0.5s ease-in-out;
-	z-index: 1000;
+	position: fixed; /* position property specifies how an element should be positioned */
+	top: 0; /* distance from the top edge of the parent element */
+	right: -500px; /* distance from the right edge of the parent element */
+	height: 100%; /* height of the element */
+	width: 500px; /* width of the element */
+	background-color: #f5f5f5; /* background color of the element */
+	padding: 50px; /* padding inside the element */
+	box-shadow: 0 0 10px rgba(0,0,0,0.3); /* shadow effect applied to the element */
+	transition: right 0.5s ease-in-out; /* transition effect applied to the element */
+	z-index: 1000; /* stack order of the element */
 }
 
+/* This section defines the styling for the container that holds job details */
 .job-details-container {
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	height: 100%; /* height of the container */
+	display: flex; /* sets the display property to flex */
+	align-items: center; /* aligns items in the container along the vertical axis */
+	justify-content: center; /* aligns items in the container along the horizontal axis */
 }
 
+/* This section defines the styling for the job details */
 .job-details {
-	max-height: 100%;
-	overflow-y: auto;
-}
-section#job-details {
-	position: fixed;
-	top: 0;
-	right: -500px;
-	height: 100%;
-	width: 500px;
-	background-color: #f5f5f5;
-	padding: 50px;
-	box-shadow: 0 0 10px rgba(0,0,0,0.3);
-	transition: right 0.5s ease-in-out;
-	z-index: 1000;
+	max-height: 100%; /* maximum height of the job details section */
+	overflow-y: auto; /* sets the overflow behavior for the job details section */
 }
 
-.job-details-container {
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+/* Reset all padding and margin and set box-sizing to border-box for all elements */
+*, *:before, *:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-.job-details {
-	max-height: 100%;
-	overflow-y: auto;
+/* Set the background color of the body to white */
+body {
+    background-color: white;
 }
-*,
-*:before,
-*:after{
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
-}
-body{
-	background-color:white;
-}
-.background{
-	width: 430px;
-	height: 520px;
-	position: absolute;
-	transform: translate(-50%,-50%);
-	left: 50%;
-	top: 50%;
-}
-.background .shape{
-	height: 200px;
-	width: 200px;
-	position: absolute;
-	border-radius: 50%;
 
+/* Style for a background element with a specific width, height, position, and transform */
+.background {
+    width: 430px;
+    height: 520px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
 }
+
+/* Style for a shape element within the background with specific height, width, position, and border-radius */
+.background .shape {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+}
+
+/* Style for the first shape element with a linear gradient background, left and top positions */
 .shape:first-child {
-    background: linear-gradient( 
-    	#1845ad, 
-    	#23a2f6 );
+    background: linear-gradient(#1845ad, #23a2f6);
     left: -100px;
     top: -5px;
 }
 
-
+/* Style for the last shape element with a linear gradient background, right and bottom positions */
 .shape:last-child {
-    background: linear-gradient( to right, #ff512f, #f09819 );
+    background: linear-gradient(to right, #ff512f, #f09819);
     right: -90px;
     bottom: -250px;
 }
 
-
+/* Style for a form element with specific height, width, position, border-radius, backdrop-filter, border, box-shadow, and padding */
 form {
     height: 600px;
     width: 400px;
-    background-color: rgba(255,255,255,0.13);
+    background-color: rgba(255, 255, 255, 0.13);
     position: absolute;
-    transform: translate(-50%,-30%);
+    transform: translate(-50%, -30%);
     top: 50%;
     left: 50%;
     border-radius: 10px;
     backdrop-filter: blur(10px);
-    border: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
     padding: 50px 35px;
 }
 
+/* Style for input, select, and textarea elements with specific width, padding, border, border-radius, margin, and resize */
 input[type=text], select, textarea {
-  width: 100%; /* Full width */
-  padding: 12px; /* Some padding */ 
-  border: 1px solid #ccc; /* Gray border */
-  border-radius: 4px; /* Rounded borders */
-  box-sizing: border-box; /* Make sure that padding and width stays in place */
-  margin-top: 6px; /* Add a top margin */
-  margin-bottom: 16px; /* Bottom margin */
-  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
 }
 
-form *{
-	font-family: 'Poppins',sans-serif;
-	color:black;
-	letter-spacing: 0.5px;
-	outline: none;
-	border: none;
+/* Style for all elements within the form with specific font-family, color, letter-spacing, outline, and border */
+form * {
+    font-family: 'Poppins', sans-serif;
+    color: black;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
 }
 
-form h3{
-	font-size: 32px;
-	font-weight: 500;
-	line-height: 42px;
-	text-align: center;
+/* Style for the h3 element within the form with specific font-size, font-weight, line-height, and text-align */
+form h3 {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
 }
 
-label{
-	display: block;
-	margin-top: 30px;
-	font-size: 16px;
-	font-weight: 500;
+/* Style for label elements within the form with specific display and margin */
+label {
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
 }
+
+/* Styling for textareas */
 textarea{
 	display: block;
 	height: 100px;
@@ -341,6 +361,8 @@ textarea{
 	font-size: 14px;
 	font-weight: 300;
 }
+
+/* Styling for inputs */
 input{
 	display: block;
 	height: 50px;
@@ -352,10 +374,13 @@ input{
 	font-size: 14px;
 	font-weight: 300;
 }
+
+/* Styling for input placeholders */
 ::placeholder{
 	color: black;
 }
 
+/* Styling for buttons */
 button{
 	margin-top: 50px;
 	width: 100%;
@@ -367,86 +392,95 @@ button{
 	border-radius: 5px;
 	cursor: pointer;
 }
-.social{
-	margin-top: 30px;
-	display: flex;
-}
-.social div{
-	background: red;
-	width: 150px;
-	border-radius: 3px;
-	padding: 5px 10px 10px 5px;
-	background-color: rgba(255,255,255,0.27);
-	color: #eaf0fb;
-	text-align: center;
+
+/* Styles for social icons */
+.social {
+  margin-top: 30px;
+  display: flex;
 }
 
-*{
-    margin: 0;
-    padding: 0;
+/* Style for each social icon */
+.social div {
+  background: red;
+  width: 150px;
+  border-radius: 3px;
+  padding: 5px 10px 10px 5px;
+  background-color: rgba(255, 255, 255, 0.27);
+  color: #eaf0fb;
+  text-align: center;
 }
+
+/* Global reset for margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Styles for star rating */
 .rate {
-    float: left;
-    height: 46px;
-    padding: 0 10px;
+  float: left;
+  height: 46px;
+  padding: 0 10px;
 }
+
+/* Hide unchecked stars */
 .rate:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
+  position: absolute;
+  top: -9999px;
 }
+
+/* Style for unchecked stars */
 .rate:not(:checked) > label {
-    float:right;
-    width:1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:30px;
-    color:#ccc;
+  float: right;
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 30px;
+  color: #ccc;
 }
+
+/* Add star symbol to unchecked stars */
 .rate:not(:checked) > label:before {
-    content: '★ ';
+  content: '★ ';
 }
+
+/* Style for checked stars */
 .rate > input:checked ~ label {
-    color: #2a2ced;    
+  color: #2a2ced;
 }
+
+/* Style for unchecked stars when hovered */
 .rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
-    color: #3a4ded;  
+  color: #3a4ded;
 }
+
+/* Change star color when checked and hovered */
 .rate > input:checked + label:hover,
 .rate > input:checked + label:hover ~ label,
 .rate > input:checked ~ label:hover,
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
-    color: #2a2ced;
+	color: #2a2ced;
 }
 
+/* Change background color of social div when hovered */
 .social div:hover{
 	background-color: rgba(255,255,255,0.47);
 }
+
+/* Adjust margin for .fb class inside .social */
 .social .fb{
 	margin-left: 25px;
 }
+
+/* Add margin to the right of social icons */
 .social i{
 	margin-right: 4px;
 }
+
+/* Change color of page title */
 title {
 	color: green;
 }
-
-#inputStreet {
-	width: 100%;
-}
-
-#inputCity {
-	width: 50%;
-}
-
-#inputState {
-	width: 30%;
-}
-
-#inputZip {
-	width: 28%;
-}
-

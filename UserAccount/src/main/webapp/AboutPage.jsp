@@ -6,35 +6,47 @@
 </head>
 <body>
 <header>
+  <!-- Include the AboutPage.css file for styling -->
   <link rel="stylesheet" type="text/css" href="AboutPage.css">
   <div class="container">
     <h1>Jobify</h1>
     <nav>
       <ul>
         <% String account = request.getParameter("account");
-          if(account.equals("student")) {
+/*      Check if the user is a student or employer and display appropriate links */   
+
+			if(account != null && account.equals("student")) {
         %>
         <li><a href="viewJobPostingsServlet">Home</a></li>
         <li><a href="viewUserProfileServlet">Profile</a></li>
         <li><a href="viewApplicationsServlet">Applications</a></li>
         <li><a href="viewInterviewsServlet">Interviews</a></li>
         <li><a href="AboutPage.jsp?account=student">About</a></li>
-        <%} else {%>
+        <%} else if(account != null && account.equals("employer")) {%>
         <li><a href="viewCreatedJobPostingsServlet?interview=false">Home</a></li>
         <li><a href="viewEmployerProfileServlet">Profile</a></li>
         <li><a href="AddJobPosting.html">Add Jobs </a></li>
         <li><a href="viewCreatedJobPostingsServlet?interview=true">Interviews</a></li>
         <li><a href="AboutPage.jsp?account=employer">About</a></li>
+        <%} else {%>
+        
+        <li><a href="index.jsp">Home</a></li>
+        <li><a href="login.jsp">Login</a></li>
+        <li><a href="register.jsp">Register</a></li>
+        <li><a href="AboutPage.jsp">About</a></li>
         <%}%>
       </ul>
     </nav>
   </div>
 </header>
 
+
 <!-- <h2>About us</h2>
 <h4>*Enter some information*</h4> -->
+
 </body>
 
+<!-- add the white screen in the middle that will have all the informations for the about page as feedback and the star	rating  -->
 <head>   
   
       <link rel="stylesheet" type="text/css" href="EmployerHomePage.css">
@@ -55,21 +67,21 @@
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-      <form method="get" action="viewEmployerProfileServlet">
-      
+    
+      <form method="post" action="addFeedbackServlet">
         <h3 style="color:#f09819;">About </h3>
             <link rel="stylesheet" type="text/css" href="AboutPage.css">
 
                
     <div class="form-group">
 
- 
- 
+ <!-- add the the text area to let the user enter their feedback -->
+
   <h2> Feedback </h2>
     <textarea id="subject" name="subject" placeholder="Write your feedback" style="height:200px"></textarea>
 
     		
-  		
+  <!-- add 5 starts for rating -->		
    <div class="rate">
    <h2> Star Rating </h2>
     <input type="radio" id="star5" name="rate" value="5" />
@@ -82,21 +94,13 @@
     <label for="star2" title="text">2 stars</label>
     <input type="radio" id="star1" name="rate" value="1" />
     <label for="star1" title="text">1 star</label>
+    
+    <div class="form-group">
+	<button type="submit" class="submit-btn">Submit</button>
+	</div>
+	 
   </div>   			
-    			
-    		
 		</form> 
-
       </body>
 </html>
-
-
-
-
-
-
-
-
-
-
 
