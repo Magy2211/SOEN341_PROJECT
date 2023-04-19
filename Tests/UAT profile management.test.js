@@ -5,10 +5,10 @@ test('Profile management', async () => {
   const page = await browser.newPage();
   await page.goto('http://localhost:3000/createUserServlet');
 
-  // Fill in registration informatio n
+  // Fill in registration information
   await page.type('#Email', 'test@gmail.com');
   await page.type('#Password', '123456');
-  await page.select('select[name = Select user type:]', Student)
+  await page.select('select[name = Select user type:]', 'Student')
   await page.click('#Create Account');
 
   // Wait for page to reload after registration
@@ -19,7 +19,7 @@ test('Profile management', async () => {
   
   await page.type('#First Name:', 'Test');
   await page.type('Last Name:', 'Test');
-  await page.select('select[name = Engineering Field:]', Computer Engineering);
+  await page.select('select[name = Engineering Field:]', 'Computer Engineering');
   await page.click('#Submit');
   
   const Fname = await page.$eval('#First Name:', el => el.textContent);
