@@ -37,9 +37,9 @@ public class ViewUserFeedbackServlet extends HttpServlet {
         List<FeedbackForm> feedbackFormList = new ArrayList<>();
 
         try {
-        	// Connecting to the table and selecting all the feedback
+            // Connecting to the table and selecting all the feedback
             PreparedStatement statement = connection.prepareStatement("select * from feedback");
-               
+
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) { //Loop while there are job postings in the table
@@ -50,7 +50,8 @@ public class ViewUserFeedbackServlet extends HttpServlet {
                 //Getting the information from the table
                 feedbackForm.setSubject(resultSet.getString("subject"));
                 feedbackForm.setRating(resultSet.getInt("rating"));
-        
+                feedbackForm.setEmail(resultSet.getString("email"));
+
                 //Adding the job posting to the array of job postings
                 feedbackFormList.add(feedbackForm);
             }

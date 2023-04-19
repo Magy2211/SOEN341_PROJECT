@@ -8,11 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
 
 /*
  * The purpose of this servlet is to get the information
@@ -38,12 +34,12 @@ public class ViewAnEmployerUserServlet extends HttpServlet {
     }
 
     /*
-     * Extract 
+     * Extract
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	String employerEmail = request.getParameter("employerEmail");
-    	
-    	//Creating and initialing variables
+        String employerEmail = request.getParameter("employerEmail");
+
+        //Creating and initialing variables
         EmployerInformation employerInformation = new EmployerInformation();
         employerInformation.setEmail(employerEmail);
 
@@ -60,16 +56,16 @@ public class ViewAnEmployerUserServlet extends HttpServlet {
                 employerInformation.setFirstName(resultSet.getString("firstName"));
                 employerInformation.setLastName(resultSet.getString("lastName"));
                 employerInformation.setCompany(resultSet.getString("company"));
-                
+
             }
-            
-           //Sending attributes to another page
+
+            //Sending attributes to another page
             request.setAttribute("employerInformation", employerInformation);
-           
+
             //Redirect the employer to the page that displays this information
             RequestDispatcher view = request.getRequestDispatcher("/ViewEmployerUserProfile.jsp");
             view.forward(request, response);
-            
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

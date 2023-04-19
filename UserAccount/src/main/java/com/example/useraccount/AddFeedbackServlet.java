@@ -38,15 +38,22 @@ public class AddFeedbackServlet extends HttpServlet {
         String subject = request.getParameter("subject");
         int rating = Integer.parseInt(request.getParameter("rate"));
         String userType = request.getParameter("userType");
+        String studentEmail = (String) request.getSession().getAttribute("studentEmail");
+        String employerEmail = (String) request.getSession().getAttribute("employerEmail");
 
         try {
 
             //Connect to the table to input the student information
-            PreparedStatement statement = connection.prepareStatement("insert into feedback values (?, ?)");
+            PreparedStatement statement = connection.prepareStatement("insert into feedback values (?, ?, ?)");
 
             //Inserting the student profile information into the table
             statement.setInt(1, rating);
             statement.setString(2, subject);
+            if (userType.equals("student")) {
+                statement.setString(3, studentEmail);
+            } else {
+                statement.setString(3, employerEmail);
+            }
 
             int result = statement.executeUpdate();
 
