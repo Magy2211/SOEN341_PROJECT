@@ -53,7 +53,7 @@
     <label style="color:black;">Last Name: ${employerInformation.getLastName()}</label>
     <label style="color:black;">Email: ${employerInformation.getEmail()}</label>
     <label style="color:black;">Company: ${employerInformation.getCompany()}</label>
-       <label><a style="color:blue;" href="EditingEmployerProfile.html">Edit Profile Information<br></a></label>
+        <label><a style="color:blue;" href="editEmployerProfileServlet">Edit Profile Information<br></a></label>
         <%--<label><a style="color:blue;" href="AddJobPosting.html">Add a job posting<br></a></label>--%>
         <%--<label><a style="color:blue;" href="viewCreatedJobPostingsServlet?interview=false">View job postings created<br></a></label>
         <label><a style="color:blue;" href="viewCreatedJobPostingsServlet?interview=true">View selected candidates<br></a></label>--%>

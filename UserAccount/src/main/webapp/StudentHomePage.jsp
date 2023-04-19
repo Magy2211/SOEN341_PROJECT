@@ -59,8 +59,9 @@
                 <h4>Engineering field of study: ${studentInformation.getFieldOfStudy()}</h4>
                 <a style="color:blue;" href="data:application/pdf;base64,${studentInformation.getResumeBase64()}" target="_blank">Resume</a><br>
                 <a style="color:blue;" href="data:application/pdf;base64,${studentInformation.getCoverLetterBase64()}" target="_blank">Cover Letter</a><br>
-                <a style="color:blue;" href="data:application/pdf;base64,${studentInformation.getTranscriptBase64()}" target="_blank">Transcript</a><br>
-                <button><a style="color:white;" href="EditingUserProfile.html">Edit Profile Information<br></a></button>
+                <a style="color:blue;" href="data:application/pdf;base64,${studentInformation.getTranscriptBase64()}"
+                   target="_blank">Transcript</a><br>
+                <button><a style="color:white;" href="editUserProfileServlet">Edit Profile Information<br></a></button>
             </div>
         </form>
     </div>

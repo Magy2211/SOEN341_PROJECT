@@ -39,36 +39,39 @@
     <div class="shape"></div>
     <div class="shape"></div>
 </div>
-<form action="createUserProfileServlet" method="post" enctype="multipart/form-data">
+<form>
 
-<body>
+    <body>
 
-<div class="job-box">
-<!-- diplay informations of the job that has been added -->
-    <h3>${jobPosting.getTitle()}</h3>
+    <div class="job-box">
+        <!-- display information of the job that has been added -->
+        <h3>${jobPosting.getTitle()}</h3>
     <h3> </h3>
     <p><strong style="color: blue;"> Employer:</strong> ${jobPosting.getEmployerFirstName()} ${jobPosting.getEmployerLastName()}</p>
     <p><strong style="color: blue;"> Company:</strong> ${jobPosting.getCompany()}</p>
     <p><strong style="color: blue;"> Location:</strong> ${jobPosting.getJobLocation()} </p>
     <p><strong style="color: blue;"> Salary:</strong> ${jobPosting.getSalary()} </p>
-    <p><strong style="color: blue;"> Deadline to apply:</strong> ${jobPosting.getDeadline()} </p>
-    <p><strong style="color: blue;"> Description: </strong> ${jobPosting.getDescription()} </p>
-</div>
-<!-- button for View student applications  -->
+        <p><strong style="color: blue;"> Deadline to apply:</strong> ${jobPosting.getDeadline()} </p>
+        <p><strong style="color: blue;"> Description: </strong> ${jobPosting.getDescription()} </p>
+    </div>
+    <!-- button for View student applications  -->
 
- <button><a style="color:white;" href="viewStudentApplicationsServlet?jobPostingID=${id}&interview=${interview}">View student applications<br></a></button>
- 
-<!-- button for editing job poting  -->
+    <button><a style="color:white;" href="viewStudentApplicationsServlet?jobPostingID=${id}&interview=${interview}">View
+        student applications<br></a></button>
 
-
-<button><a style="color:white;" href="EditJobPosting.html">Edit Job Posting<br></a></button>
-  
-<!-- button for removing job poting  -->
-  
-<button><a style="color:white;" href="removeJobPostingServlet?jobPostingID=${id}">Remove Job Posting<br></a></button>
+    <!-- button for editing job posting  -->
 
 
-</body>
+    <button><a style="color:white;" href="editJobPostingServlet?jobPostingID=${id}&interview=${interview}">Edit Job
+        Posting<br></a></button>
+
+    <!-- button for removing job posting  -->
+
+    <button><a style="color:white;" href="removeJobPostingServlet?jobPostingID=${id}&userType=employer">Remove Job
+        Posting<br></a></button>
+
+
+    </body>
 </form>
 </body>
 </html>

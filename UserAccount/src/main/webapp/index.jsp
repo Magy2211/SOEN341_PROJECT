@@ -23,20 +23,18 @@
     </div>
       <form method="post" action="loginServlet">
 
-      
-        <h3 style="color:Orange;">Welcome to Jobify</h3>
-         
-        
-        
-        
-<div class="container">
-<br/>
-    <div class="form-group">
-        <label><a href="CreateUser.html">Create a new account<br></a></label>
-        <label><a href="LoginPage.html">Login</a></label>
-    </div>
-</div>
-          
-          
+
+          <h3 style="color:Orange;">Welcome to Jobify</h3>
+
+
+          <div class="container">
+              <br/>
+              <div class="form-group">
+                  <label><a href="CreateUser1.jsp">Create a new account<br></a></label>
+                  <label><a href="LoginPage.html">Login</a></label>
+              </div>
+          </div>
+
+
 </body>
 </html>
