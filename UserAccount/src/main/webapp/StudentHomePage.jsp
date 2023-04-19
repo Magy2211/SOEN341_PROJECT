@@ -43,8 +43,6 @@
 <form action="createUserProfileServlet" method="post" enctype="multipart/form-data">
 
 
-    <!--  <h3 style="color:#FF77FF;">*User Profile*</h3>
-     -->
     <h3 style="color:orange;"> User Profile </h3>
 
     <div class="container">

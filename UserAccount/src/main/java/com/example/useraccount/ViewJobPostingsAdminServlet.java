@@ -35,7 +35,6 @@ public class ViewJobPostingsAdminServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         //Getting parameters sent from other servlet/pages
-        //String studentEmail = (String) request.getSession().getAttribute("studentEmail");
         String search = request.getParameter("search");
 
         //Creating and initialising variables
@@ -92,7 +91,6 @@ public class ViewJobPostingsAdminServlet extends HttpServlet {
 
             //Sending attributes to other servlets or pages
             request.setAttribute("jobPostings", jobPostings);
-            //request.setAttribute("studentEmail", studentEmail);
 
             //Redirecting the user to a page that displays all the job postings
             RequestDispatcher view = request.getRequestDispatcher("/viewJobPostingsAdmin.jsp");

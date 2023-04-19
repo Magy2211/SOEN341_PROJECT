@@ -78,7 +78,6 @@
                     <td>AAC:</td>
                     <td><input name="admin-code" id=admin-code disabled="disabled"/></td>
                 </div>
-                <!--<input type="text" id="txtOther" disabled="disabled" />-->
                 <tr>
                     <td/>
                     <button type="submit" class="submit-btn">Create Account</button>
@@ -86,7 +85,5 @@
             </table>
         </form>
     </div>
-    }
-    </script>
 </body>
 </html>

@@ -80,8 +80,6 @@
             </table>
         </form>
     </div>
-    }
-    </script>
 </body>
 </html>
 
