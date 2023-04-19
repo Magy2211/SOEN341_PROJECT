@@ -59,4 +59,5 @@ https://liveconcordia-my.sharepoint.com/:v:/g/personal/k_georgy_live_concordia_c
 #SonarLint Report - 471 issues found (before code modifications)
 https://drive.google.com/file/d/1GsVs692oIuSP6NVEbSm_ker7xbYOtuKo/view?usp=sharing
 
-#SonarLint Report - (  ) issues found (after code modifications)
+#SonarLint Report - 147 issues found (after code modifications, total of 68% of issues removed)
+https://drive.google.com/file/d/1fgFs0Z3_873plRSxllbQenFQpd8uNMWv/view?usp=sharing
