@@ -11,4 +11,7 @@
   "devDependencies": {
     "jest": "^29.5.0"
   }
+  "jest": {
+    "testMatch": ["**/Tests/*.test.js"]
+  }
 }
