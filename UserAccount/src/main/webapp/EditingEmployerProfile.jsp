@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Edit employer profile</title>
     <link rel="stylesheet" type="text/css" href="../../../target/UserAccount-1.0-SNAPSHOT/CreatingEmployerProfile.css">

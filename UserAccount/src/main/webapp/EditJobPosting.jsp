@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
-<html>
 <head>
     <title>Edit job posting</title>
     <link rel="stylesheet" type="text/css" href="AddJobPosting.css">

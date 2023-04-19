@@ -4,7 +4,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<html>
 <head>
     <title> Job Postings </title>
     <link rel="stylesheet" type="text/css" href="EmployerHomePage.css">

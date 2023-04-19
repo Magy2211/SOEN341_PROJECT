@@ -2,7 +2,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<html>
 <head>
     <title> Job Posting </title>
     <link rel="stylesheet" type="text/css" href="viewJobPostings.css">

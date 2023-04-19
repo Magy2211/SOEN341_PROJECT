@@ -2,7 +2,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<html>
 <head>
     <title> Profile page </title>
     <link rel="stylesheet" type="text/css" href="EmployerHomePage.css">

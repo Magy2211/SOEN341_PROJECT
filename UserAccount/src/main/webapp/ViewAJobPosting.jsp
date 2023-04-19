@@ -4,7 +4,7 @@
 
 <!-- View all the job postings in order to apply for jobs. -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Job Posting Website</title>
     <link rel="stylesheet" type="text/css" href="viewJobPostings.css">
