@@ -4,7 +4,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<html>
 <head>
     <title> Jobify </title>
     <link rel="stylesheet" type="text/css" href="viewJobPostings.css">

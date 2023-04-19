@@ -2,7 +2,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Jobify</title>
     <link rel="stylesheet" type="text/css" href="viewJobPostings.css">

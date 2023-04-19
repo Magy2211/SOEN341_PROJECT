@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-
+    <title> Jobify </title>
     <link rel="stylesheet" type="text/css" href="Index2.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -29,7 +28,7 @@
     <div class="container">
         <br/>
         <div class="form-group">
-            <label><a href="CreateUser1.jsp">Create a new account<br></a></label>
+            <label><a href="CreateUser.jsp">Create a new account<br></a></label>
             <label><a href="LoginPage.html">Login</a></label>
         </div>
     </div>

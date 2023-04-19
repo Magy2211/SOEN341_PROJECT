@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<html>
 <head>
-    <title> Jobify </title>
+    <title> Profile page </title>
     <link rel="stylesheet" type="text/css" href="EmployerHomePage.css">
 </head>
 <body>
@@ -22,6 +21,7 @@
 </header>
 
 <head>
+    <title> Profile page </title>
     <!-- add the white screen in the middle  -->
     <link rel="stylesheet" type="text/css" href="EmployerHomePage.css">
 

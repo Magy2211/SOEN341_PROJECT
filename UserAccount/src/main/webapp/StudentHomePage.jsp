@@ -2,9 +2,8 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<html>
 <head>
-    <title> Jobify </title>
+    <title> Profile page </title>
     <link rel="stylesheet" type="text/css" href="EmployerHomePage.css">
 </head>
 <body>
@@ -25,7 +24,7 @@
 </header>
 
 <head>
-
+    <title>Profile page</title>
     <link rel="stylesheet" type="text/css" href="StudentHomePage.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -44,15 +43,14 @@
 <form action="createUserProfileServlet" method="post" enctype="multipart/form-data">
 
 
-    <!--  <h3 style="color:#FF77FF;">*User Profile*</h3>
-     -->
     <h3 style="color:orange;"> User Profile </h3>
 
     <div class="container">
         <br/>
         <form method="get" action="viewUserProfileServlet">
             <div class="form-group">
-                <img src="data:image/jpeg;base64,${studentInformation.getProfilePicture()}" width="180" height=180/><br>
+                <img src="data:image/jpeg;base64,${studentInformation.getProfilePicture()}"
+                     alt="Student profile picture" width="180" height=180/><br>
                 <h4>First Name: ${studentInformation.getFirstName()}</h4>
                 <h4>Last Name: ${studentInformation.getLastName()}</h4>
                 <h4>Email: ${studentInformation.getEmail()}</h4>

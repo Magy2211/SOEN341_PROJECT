@@ -4,9 +4,8 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<html>
 <head>
-    <title> Jobify </title>
+    <title> Job Postings </title>
     <link rel="stylesheet" type="text/css" href="EmployerHomePage.css">
 </head>
 <body>
@@ -26,7 +25,7 @@
 </header>
 
 <head>
-
+    <title> Job Postings </title>
     <link rel="stylesheet" type="text/css" href="EmployerHomePage.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">

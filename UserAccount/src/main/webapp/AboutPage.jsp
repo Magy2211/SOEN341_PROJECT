@@ -46,7 +46,7 @@
 
 <!-- add the white screen in the middle that will have all the information for the about page as feedback and the star	rating  -->
 <head>
-
+    <title>About us</title>
     <link rel="stylesheet" type="text/css" href="EmployerHomePage.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">

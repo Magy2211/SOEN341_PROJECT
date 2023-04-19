@@ -3,17 +3,17 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 
-<!-- the title of the website and the css for styling -->
+    <!-- the title of the website and the css for styling -->
     <title>Jobify</title>
     <link rel="stylesheet" type="text/css" href="viewJobPostings.css">
 </head>
 <body>
 <header>
 
-<!-- contains the website's name, home,profile,add jobs,interviews and About lists -->
+    <!-- contains the website's name, home,profile,add jobs,interviews and About lists -->
     <div class="container">
         <h1>Jobify</h1>
         <nav>
