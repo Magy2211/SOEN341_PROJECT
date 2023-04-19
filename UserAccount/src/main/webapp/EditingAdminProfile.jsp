@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Profile</title>
+    <title>Edit admin profile</title>
     <link rel="stylesheet" type="text/css" href="../../../target/UserAccount-1.0-SNAPSHOT/CreatingEmployerProfile.css">
 
 </head>
@@ -25,6 +25,7 @@
 
 
     <head>
+        <title>Edit admin profile</title>
 
         <link rel="stylesheet" type="text/css" href="CreatingEmployerProfile.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">

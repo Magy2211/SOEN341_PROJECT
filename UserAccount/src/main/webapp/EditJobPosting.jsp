@@ -3,7 +3,7 @@
 <html lang="en">
 <html>
 <head>
-    <title>Job Posting Website</title>
+    <title>Edit job posting</title>
     <link rel="stylesheet" type="text/css" href="AddJobPosting.css">
 </head>
 <body>
@@ -23,7 +23,7 @@
     </div>
 </header>
 <head>
-
+    <title>Edit job posting</title>
     <link rel="stylesheet" type="text/css" href="AddJobPosting.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">

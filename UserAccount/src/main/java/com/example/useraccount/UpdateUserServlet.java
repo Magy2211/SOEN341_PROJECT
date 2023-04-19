@@ -23,7 +23,7 @@ public class UpdateUserServlet extends HttpServlet {
 
     //Establishing a connection with the database
     @Override
-    public void init() {
+    public void init() throws ServletException {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "root1234");
@@ -31,6 +31,7 @@ public class UpdateUserServlet extends HttpServlet {
             throw new ServletException(e);
         }
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Creating account</title>
     <!-- add the white screen in the middle  -->
 
     <link rel="stylesheet" type="text/css" href="Index.css">

@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Creating account</title>
 
     <link rel="stylesheet" type="text/css" href="Index.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">

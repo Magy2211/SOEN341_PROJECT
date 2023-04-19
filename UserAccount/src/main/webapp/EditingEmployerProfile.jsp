@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Employer Profile</title>
+    <title>Edit employer profile</title>
     <link rel="stylesheet" type="text/css" href="../../../target/UserAccount-1.0-SNAPSHOT/CreatingEmployerProfile.css">
 
 </head>
@@ -25,7 +25,7 @@
 
 
     <head>
-
+        <title>Edit employer profile</title>
         <link rel="stylesheet" type="text/css" href="CreatingEmployerProfile.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
