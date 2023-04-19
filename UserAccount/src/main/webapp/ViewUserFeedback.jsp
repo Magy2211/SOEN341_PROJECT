@@ -62,6 +62,7 @@
     <p><strong>Feedback</strong></p><br/>
     <p><%=feedbackForms.getSubject()%></p><br/>
     <p><strong>Rating:</strong> <%=feedbackForms.getRating()%>/5</p>
+      <p><strong>Email:</strong> <%=feedbackForms.getEmail()%></p>
     <br>
     </div>
   <%}%>

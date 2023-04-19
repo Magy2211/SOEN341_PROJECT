@@ -50,6 +50,7 @@ public class ViewUserFeedbackServlet extends HttpServlet {
                 //Getting the information from the table
                 feedbackForm.setSubject(resultSet.getString("subject"));
                 feedbackForm.setRating(resultSet.getInt("rating"));
+                feedbackForm.setEmail(resultSet.getString("email"));
         
                 //Adding the job posting to the array of job postings
                 feedbackFormList.add(feedbackForm);

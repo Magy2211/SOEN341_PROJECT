@@ -1,20 +1,25 @@
 package com.example.useraccount;
 
+import java.io.PrintWriter;
+
 public class FeedbackForm {
 	
 	private String subject;
 	private int rating;
+	private String email;
 	
 	public FeedbackForm() {
 		super();
 		this.subject = "";
 		this.rating = -1;
+		this.email = "";
 	}
 	
-	public FeedbackForm(String subject, int rating) {
+	public FeedbackForm(String subject, int rating, String email) {
 		super();
 		this.subject = subject;
 		this.rating = rating;
+		this.email = email;
 	}
 	
 	public String getSubject() {
@@ -29,7 +34,12 @@ public class FeedbackForm {
 	public void setRating(int rating) {
 		this.rating = rating;
 	}
-	
-	
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 }
