@@ -9,10 +9,13 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 /*
- * The purpose of this servlet is to create a user account
+ * The purpose of this servlet is to add a feedback
  */
 @WebServlet(name = "addFeedbackServlet", value = "/addFeedbackServlet")
 public class AddFeedbackServlet extends HttpServlet {
@@ -50,25 +53,18 @@ public class AddFeedbackServlet extends HttpServlet {
             PrintWriter out = response.getWriter();
 
             if (result > 0) { //If the information was added successfully into the table
-            	
-            	//Must redirect the user to the appropriate page
-            	
+
+                //Must redirect the user to the appropriate page
+
                 //Redirecting the employer to the about page
-            	/*
-            	if(userType.equals("student")) {
-                RequestDispatcher view = request.getRequestDispatcher("/viewUserProfileServlet");
-                view.forward(request, response);
-            	}
-            	else {
-            		out.print("Account type: " + userType);
-            		//RequestDispatcher view = request.getRequestDispatcher("/viewCreatedJobPostingsServlet");
-                    //view.forward(request, response);
-            	}
-            	 */
-            	
-            	RequestDispatcher view = request.getRequestDispatcher("/AboutPage.jsp");
-                view.forward(request, response);
-                
+                if (userType.equals("student")) {
+                    RequestDispatcher view = request.getRequestDispatcher("/viewJobPostingsServlet");
+                    view.forward(request, response);
+                } else {
+                    RequestDispatcher view = request.getRequestDispatcher("/viewCreatedJobPostingsServlet?interview=false");
+                    view.forward(request, response);
+                }
+
             } else //If there was a problem inserting the information into the table
                 out.print("<H1> Error saving feedback </H1>");
 
