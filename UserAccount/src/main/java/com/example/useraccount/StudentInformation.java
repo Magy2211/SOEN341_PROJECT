@@ -24,6 +24,13 @@ public class StudentInformation {
         profilePicture = "";
     }
 
+    public StudentInformation(String firstName, String lastName, String email, String fieldOfStudy) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.fieldOfStudy = fieldOfStudy;
+    }
+
     public StudentInformation(String firstName, String lastName, String email, String fieldOfStudy, String resumeBase64, String coverLetterBase64, String transcriptBase64, String profilePicture) {
         this.firstName = firstName;
         this.lastName = lastName;

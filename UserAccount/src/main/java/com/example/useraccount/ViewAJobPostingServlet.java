@@ -19,17 +19,18 @@ public class ViewAJobPostingServlet extends HttpServlet {
     private Connection connection;
 
     //Establishing a connection with the database
-    public void init() {
+    @Override
+    public void init() throws ServletException {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "root1234");
-        } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new ServletException(e);
         }
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 
         //Getting parameters sent from other servlet/pages
         int id = Integer.parseInt(request.getParameter("id"));
@@ -74,15 +75,17 @@ public class ViewAJobPostingServlet extends HttpServlet {
                 }
 
                 //Connecting to a third table to check if the student applied to the job posting
-                PreparedStatement statement2 = connection.prepareStatement("select * from applications where studentEmail = ? AND jobPostingID = ?");
-                statement2.setString(1, studentEmail);
-                statement2.setInt(2, id);
-                ResultSet resultSet2 = statement2.executeQuery();
+                if (!userType.equals("Admin")) {
+                    PreparedStatement statement2 = connection.prepareStatement("select * from applications where studentEmail = ? AND jobPostingID = ?");
+                    statement2.setString(1, studentEmail);
+                    statement2.setInt(2, id);
+                    ResultSet resultSet2 = statement2.executeQuery();
 
-                if (resultSet2.next()) { //If the student applied to the job posting
+                    if (resultSet2.next()) { //If the student applied to the job posting
 
-                    //Getting the status of the application
-                    jobPosting.setStatus(resultSet2.getString("Status"));
+                        //Getting the status of the application
+                        jobPosting.setStatus(resultSet2.getString("Status"));
+                    }
                 }
             }
 
@@ -96,14 +99,18 @@ public class ViewAJobPostingServlet extends HttpServlet {
                 //Redirecting the employer to a page that displays the job posting
                 RequestDispatcher view = request.getRequestDispatcher("/ViewCreatedJobPosting.jsp");
                 view.forward(request, response);
-            } else {
+            } else if (userType.equals("Student")) {
 
                 //Redirecting the student to a page that displays the job posting
                 RequestDispatcher view = request.getRequestDispatcher("/ViewAJobPosting.jsp");
                 view.forward(request, response);
+            } else {
+                //Redirecting the student to a page that displays the job posting
+                RequestDispatcher view = request.getRequestDispatcher("/ViewAJobPostingAdmin.jsp");
+                view.forward(request, response);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new ServletException(e);
         }
     }
 
@@ -111,7 +118,6 @@ public class ViewAJobPostingServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         String interview = request.getParameter("interview");
-        String userType = request.getParameter("userType");
 
         request.setAttribute("id", id);
         request.setAttribute("userType", "Employer");
@@ -122,11 +128,12 @@ public class ViewAJobPostingServlet extends HttpServlet {
 
 
     //Close the connection with the database
+    @Override
     public void destroy() {
         try {
             connection.close();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+        	e.printStackTrace();
         }
     }
 }

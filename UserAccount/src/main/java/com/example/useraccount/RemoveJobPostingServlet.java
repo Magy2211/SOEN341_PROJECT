@@ -25,12 +25,12 @@ public class RemoveJobPostingServlet extends HttpServlet {
     private Connection connection;
 
     //Establishing a connection with the database
-    public void init() {
+    @Override
+    public void init() throws ServletException {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "root1234");
-        } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new ServletException(e);
         }
     }
 
@@ -39,6 +39,7 @@ public class RemoveJobPostingServlet extends HttpServlet {
 
         //Getting parameters sent from other servlet/pages
         int jobPostingID = Integer.parseInt(request.getParameter("jobPostingID"));
+        String userType = request.getParameter("userType");
 
         try {
 
@@ -48,16 +49,22 @@ public class RemoveJobPostingServlet extends HttpServlet {
             statement.executeUpdate();
 
             //Connect to another table to remove the job posting 
-            PreparedStatement statement1 = connection.prepareStatement("delete  from job_postings where id = ?");
+            PreparedStatement statement1 = connection.prepareStatement("delete from job_postings where id = ?");
             statement1.setInt(1, jobPostingID);
             statement1.executeUpdate();
 
-            //Redirect the employer to a page that displays all the job postings created by that employer
-            RequestDispatcher view = request.getRequestDispatcher("/viewCreatedJobPostingsServlet");
-            view.forward(request, response);
+            if (userType.equals("Admin")) {
+                //Redirect the admin to the job postings list
+                RequestDispatcher view = request.getRequestDispatcher("/viewJobPostingsAdminServlet");
+                view.forward(request, response);
+            } else {
+                //Redirect the employer to a page that displays all the job postings created by that employer
+                RequestDispatcher view = request.getRequestDispatcher("/viewCreatedJobPostingsServlet");
+                view.forward(request, response);
+            }
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new ServletException(e);
         }
     }
 
@@ -67,11 +74,12 @@ public class RemoveJobPostingServlet extends HttpServlet {
     }
 
     //Close the connection with the database
+    @Override
     public void destroy() {
         try {
             connection.close();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+        	e.printStackTrace();
         }
     }
 }

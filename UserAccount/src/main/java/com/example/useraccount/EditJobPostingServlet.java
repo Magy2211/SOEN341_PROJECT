@@ -8,10 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 /*
  * The purpose of this servlet is to edit the
@@ -22,28 +19,66 @@ import java.sql.SQLException;
 @WebServlet(name = "editJobPostingServlet", value = "/editJobPostingServlet")
 public class EditJobPostingServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    int jobPostingID;
+    String interview;
     private Connection connection;
 
     //Establishing a connection with the database
-    public void init() {
+    @Override
+    public void init() throws ServletException {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "root1234");
-        } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new ServletException(e);
         }
     }
 
+    //This method sends the existing information in the table, so the user can view the information while editing
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
+        //Getting parameters sent from other servlet/pages
+        jobPostingID = Integer.parseInt(request.getParameter("jobPostingID"));
+        interview = request.getParameter("interview");
+
+        //Creating and initialising a job posting object
+        JobPostings jobPosting = new JobPostings();
+
+        try {
+
+            //Connecting to the table and selecting a specific row (row where the id field is equal to the variable id)
+            PreparedStatement statement = connection.prepareStatement("select * from job_postings where id = ?");
+            statement.setInt(1, jobPostingID);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) { //If the job posting exists
+
+                //Getting values from the selected row
+                jobPosting.setTitle(resultSet.getString("Title"));
+                jobPosting.setDescription(resultSet.getString("Description"));
+                jobPosting.setSalary(resultSet.getString("salary"));
+                jobPosting.setDeadline(resultSet.getString("deadline"));
+                jobPosting.setJobLocation(resultSet.getString("jobLocation"));
+                jobPosting.setStatus(resultSet.getString("Status"));
+            }
+
+            //Sending attributes to another servlet or a webpage
+            request.setAttribute("jobPosting", jobPosting);
+
+            //Redirecting the employer to a page to edit the job posting
+            RequestDispatcher view = request.getRequestDispatcher("/EditJobPosting.jsp");
+            view.forward(request, response);
+
+        } catch (SQLException e) {
+            throw new ServletException(e);
+        }
     }
 
+    //This method edits the information in the table with the new information submitted by the user
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         //Getting parameters sent from other servlet/pages
-        int jobPostingID = (int) request.getSession().getAttribute("jobPostingID");
         String email = (String) request.getSession().getAttribute("employerEmail");
-        String interview = (String) request.getSession().getAttribute("interview");
         String title = request.getParameter("positionTitle");
         String description = request.getParameter("description");
         String salary = request.getParameter("salary");
@@ -78,21 +113,21 @@ public class EditJobPostingServlet extends HttpServlet {
             request.setAttribute("interview", interview);
 
             //Redirect the employer to the page that displays all the job postings created by that employer
-            //RequestDispatcher view = request.getRequestDispatcher("/viewAJobPostingServlet");
             RequestDispatcher view = request.getRequestDispatcher("/viewCreatedJobPostingsServlet");
             view.forward(request, response);
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new ServletException(e);
         }
     }
 
     //Close the connection with the database
+    @Override
     public void destroy() {
         try {
             connection.close();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+        	e.printStackTrace();
         }
     }
 }

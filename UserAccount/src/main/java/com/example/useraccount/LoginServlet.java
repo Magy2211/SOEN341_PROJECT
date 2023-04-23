@@ -22,15 +22,16 @@ public class LoginServlet extends HttpServlet {
     private Connection connection;
 
     //Establishing a connection with the database
-    public void init() {
+    @Override
+    public void init() throws ServletException {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "root1234");
         } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            throw new ServletException(e);
         }
     }
-
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         //Getting parameters sent from other servlet/pages
@@ -63,6 +64,15 @@ public class LoginServlet extends HttpServlet {
                     //Redirecting the employer to their home page
                     RequestDispatcher view = request.getRequestDispatcher("/viewCreatedJobPostingsServlet");
                     view.forward(request, response);
+
+                } else if (userType.equals("Admin")) {
+
+                    //Setting the email to be used by other servlets
+                    request.getSession().setAttribute("adminEmail", email);
+
+                    //Redirecting the admin to their profile page
+                    RequestDispatcher view = request.getRequestDispatcher("/viewAdminProfileServlet");
+                    view.forward(request, response);
                 }
             } else { //If the login information is incorrect
 
@@ -71,17 +81,18 @@ public class LoginServlet extends HttpServlet {
                 view.forward(request, response);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new ServletException(e);
         }
     }
 
 
     //CLose the connection with the database
+    @Override
     public void destroy() {
         try {
             connection.close();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+        	e.printStackTrace();
         }
     }
 }

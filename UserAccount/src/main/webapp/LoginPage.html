@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <link rel="stylesheet" type="text/css" href="Index.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Login page</title>
+    <link href="Index.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
     <!--Stylesheet-->
     <style media="screen">
@@ -15,44 +14,45 @@
 
 </head>
 
+<!--background design colors and size -->
 
 <body>
 <div class="background">
     <div class="shape"></div>
     <div class="shape"></div>
 </div>
-<form method="post" action="loginServlet">
+<form action="loginServlet" method="post">
 
 
     <h3 style="color: black;">Login</h3>
 
 
-
     <div class="container">
         <br/>
-        <form method="post" action="loginServlet">
+
+
+        <!--  post method for adding the email, password & functional login button -->
+
+        <form action="loginServlet" method="post">
             <table>
                 <tr>
                     <div class="form-group">
                         <td>Email:</td>
-                        <td><input name="email" /></td>
+                        <td><input name="email"/></td>
                     </div>
                 </tr>
                 <tr>
                     <div class="form-group">
                         <td>Password:</td>
-                        <td><input name="password" type="password" /></td>
+                        <td><input name="password" type="password"/></td>
                     </div>
                 </tr>
                 <tr>
-                    <td />
-                    <button type="submit" class="submit-btn">Login</button>
+                    <td/>
+                    <button class="submit-btn" type="submit">Login</button>
 
             </table>
         </form>
-
-
-
 
 
     </div>

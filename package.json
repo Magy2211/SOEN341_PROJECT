@@ -1,0 +1,18 @@
+{
+  "name": "soen341_proj",
+  "version": "1.0.0",
+  "description": "This repository will contain all progress and updates on the SOEN 341 Project for Winter 2023. The project consists of creating a career planning platform through \r web development.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.5.0",
+    "puppeteer": "^19.9.1"
+  },
+  "jest": {
+    "testMatch": ["**/Tests/*.test.js"]
+  }
+}
