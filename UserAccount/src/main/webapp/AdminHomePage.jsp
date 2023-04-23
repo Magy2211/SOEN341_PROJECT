@@ -1,10 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <html>
 <head>
-	<title> Jobify </title>
-	<link rel="stylesheet" type="text/css" href="EmployerHomePage.css">
+    <title> Profile page </title>
+    <link rel="stylesheet" type="text/css" href="EmployerHomePage.css">
 </head>
 <body>
 
@@ -23,7 +21,8 @@
 </header>
 
 <head>
-  <!-- add the white screen in the middle  -->
+    <title> Profile page </title>
+    <!-- add the white screen in the middle  -->
     <link rel="stylesheet" type="text/css" href="EmployerHomePage.css">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -31,15 +30,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
     <!--Stylesheet-->
     <style media="screen">
-    
+
     </style>
 
-   
+
 </head>
-  
+
 
 <body>
-        
+
 <div class="background">
     <div class="shape"></div>
     <div class="shape"></div>
@@ -48,7 +47,7 @@
 
     <h3 style="color:#f09819;">Welcome </h3>
     <link rel="stylesheet" type="text/css" href="index.css">
-    
+
     <div class="form-group">
 
         <label style="color:black;">First Name: ${adminInformation.getFirstName()}</label>
@@ -60,5 +59,5 @@
         <label><a style="color:blue;" href="editAdminProfileServlet">Edit Profile Information<br></a></label>
     </div>
 </form>
-      </body>
+</body>
 </html>

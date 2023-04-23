@@ -22,24 +22,24 @@ public class ViewUserFeedbackServlet extends HttpServlet {
     private Connection connection;
 
     //Establishing a connection with the database
-    public void init() {
+    @Override
+    public void init() throws ServletException {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "root1234");
-        } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new ServletException(e);
         }
     }
-
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         //Creating and initialising variables
         List<FeedbackForm> feedbackFormList = new ArrayList<>();
 
         try {
-        	// Connecting to the table and selecting all the feedback
+            // Connecting to the table and selecting all the feedback
             PreparedStatement statement = connection.prepareStatement("select * from feedback");
-               
+
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) { //Loop while there are job postings in the table
@@ -50,7 +50,8 @@ public class ViewUserFeedbackServlet extends HttpServlet {
                 //Getting the information from the table
                 feedbackForm.setSubject(resultSet.getString("subject"));
                 feedbackForm.setRating(resultSet.getInt("rating"));
-        
+                feedbackForm.setEmail(resultSet.getString("email"));
+
                 //Adding the job posting to the array of job postings
                 feedbackFormList.add(feedbackForm);
             }
@@ -63,7 +64,7 @@ public class ViewUserFeedbackServlet extends HttpServlet {
             view.forward(request, response);
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new ServletException(e);
         }
     }
 
@@ -73,11 +74,12 @@ public class ViewUserFeedbackServlet extends HttpServlet {
     }
 
     //Close the connection with the database
+    @Override
     public void destroy() {
         try {
             connection.close();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+        	e.printStackTrace();
         }
     }
 }

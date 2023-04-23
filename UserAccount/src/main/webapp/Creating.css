@@ -19,25 +19,28 @@ body {
     left: 50%;
     top: 50%;
 }
+
 .background .shape {
     height: 200px;
     width: 200px;
     position: absolute;
     border-radius: 50%;
 }
+
 .shape:first-child {
     background: linear-gradient(
-        #1845ad,
-        #23a2f6
+            #1845ad,
+            #23a2f6
     );
     left: -400px;
     top: 40px;
 }
+
 .shape:last-child {
     background: linear-gradient(
-        to right,
-        #ff512f,
-        #f09819
+            to right,
+            #ff512f,
+            #f09819
     );
     right: -400px;
     bottom: -550px;
@@ -120,33 +123,34 @@ button {
     margin-top: 30px;
     display: flex;
 }
+
 .social div {
     background: red;
     width: 150px;
     border-radius: 3px;
-  	padding: 5px 10px 10px 5px;
- 	 background-color: rgba(255,255,255,0.27);
-  	color: #eaf0fb;
-  	text-align: center;
+    padding: 5px 10px 10px 5px;
+    background-color: rgba(255, 255, 255, 0.27);
+    color: #eaf0fb;
+    text-align: center;
 }
 
 /* Styling for when a social div is hovered */
-.social div:hover{
-background-color: rgba(255,255,255,0.47);
+.social div:hover {
+    background-color: rgba(255, 255, 255, 0.47);
 }
 
 /* Styling for the facebook social div */
-.social .fb{
-margin-left: 25px;
+.social .fb {
+    margin-left: 25px;
 }
 
 /* Styling for icons inside social divs */
-.social i{
-margin-right: 4px;
+.social i {
+    margin-right: 4px;
 }
 
 /* Styling for the title element */
 title {
-color: green;
+    color: green;
 }
 

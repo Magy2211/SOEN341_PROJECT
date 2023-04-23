@@ -1,11 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- add the white screen in the middle  -->
-    <link rel="stylesheet" type="text/css" href="ApplyForAJobPosting.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Apply</title>
+    <!-- add the white screen in the middle  -->
+    <link href="ApplyForAJobPosting.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
     <!--Stylesheet-->
     <style media="screen">
@@ -23,8 +23,8 @@
         <h1>Jobify</h1>
         <nav>
             <ul>
-      <!-- Adding a blue bar on top in our website page that will include Home, Profile, Add jobs, Interviews and About buttons -->
-            
+                <!-- Adding a blue bar on top in our website page that will include Home, Profile, Add jobs, Interviews and About buttons -->
+
                 <li><a href="viewJobPostingsServlet">Home</a></li>
                 <li><a href="viewUserProfileServlet">Profile</a></li>
                 <li><a href="viewApplicationsServlet">Applications</a></li>
@@ -41,47 +41,43 @@
     <div class="shape"></div>
     <div class="shape"></div>
 </div>
-<form action="applyForAJobPostingServlet" method="post" enctype="multipart/form-data">
-
+<form action="applyForAJobPostingServlet" enctype="multipart/form-data" method="post">
 
 
     <div class="container">
         <br/>
         <h3 style="color:orange;">Apply for the job</h3>
-        <form method="post" action="applyForAJobPostingServlet">
+        <form action="applyForAJobPostingServlet" method="post">
             <table>
-            <!-- add checkbox if user want to choose the Default resume, Default cover letter, Default transcript -->
+                <!-- add checkbox if user want to choose the Default resume, Default cover letter, Default transcript -->
                 <label>
-                    <input type="checkbox" name="default" value="defaultResume">Default resume<br>
+                    <input name="default" type="checkbox" value="defaultResume">Default resume<br>
                 </label>
                 <label>
-                    <input type="checkbox" name="default" value="defaultCoverLetter">Default cover letter<br>
+                    <input name="default" type="checkbox" value="defaultCoverLetter">Default cover letter<br>
                 </label>
                 <label>
-                    <input type="checkbox" name="default" value="defaultTranscript">Default transcript<br>
+                    <input name="default" type="checkbox" value="defaultTranscript">Default transcript<br>
                 </label>
                 <!--Let the user upload documents as resume, cover letter and unofficial transcripts  -->
                 <div class="form-group">
                     <label for="resume">Resume:</label>
-                    <input type="file" id="resume" name="resume">
+                    <input id="resume" name="resume" type="file">
                 </div>
                 <div class="form-group">
                     <label for="cover-letter">Cover Letter:</label>
-                    <input type="file" id="cover-letter" name="cover-letter">
+                    <input id="cover-letter" name="cover-letter" type="file">
                 </div>
                 <div class="form-group">
                     <label for="transcript">Unofficial Transcript:</label>
-                    <input type="file" id="transcript" name="transcript">
+                    <input id="transcript" name="transcript" type="file">
                 </div>
-                <button type="submit" class="submit-btn">Submit</button>
+                <button class="submit-btn" type="submit">Submit</button>
             </table>
         </form>
     </div>
     <script src="script.js"></script>
 </form>
-
-
-
 
 
 </div>

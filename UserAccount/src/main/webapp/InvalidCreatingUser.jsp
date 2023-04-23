@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+    <title>Error: Creating account</title>
     <link rel="stylesheet" type="text/css" href="Index.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -80,8 +80,6 @@
             </table>
         </form>
     </div>
-    }
-    </script>
 </body>
 </html>
 

@@ -52,3 +52,12 @@ https://liveconcordia-my.sharepoint.com/:v:/g/personal/m_gegres_live_concordia_c
 
 #Sprint 3 demo 
 https://liveconcordia-my.sharepoint.com/:v:/g/personal/m_gegres_live_concordia_ca/EV9qeSuNsepGqOuhVwJFE08BmQtJhg7mpNiN82je8oEb_g?e=PF80hc
+
+#Sprint 4 demo
+https://liveconcordia-my.sharepoint.com/:v:/g/personal/k_georgy_live_concordia_ca/ERlSP4FY-dxFgpNv1OxJgNIBbL8pGnUqQb_DtJb8qxorwg?e=PKiaj7
+
+#SonarLint Report - 471 issues found (before code modifications)
+https://drive.google.com/file/d/1GsVs692oIuSP6NVEbSm_ker7xbYOtuKo/view?usp=sharing
+
+#SonarLint Report - 147 issues found (after code modifications, total of 68% of issues removed)
+https://drive.google.com/file/d/1fgFs0Z3_873plRSxllbQenFQpd8uNMWv/view?usp=sharing

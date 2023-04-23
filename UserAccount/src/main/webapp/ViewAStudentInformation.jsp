@@ -1,13 +1,13 @@
 <%@ page import="com.example.useraccount.JobPostings" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page contentType="text/html;charset=UTF-8"%>
-<html>
+<%@ page contentType="text/html;charset=UTF-8" %>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 
-    
-    <!--the title of the website and the css for styling--> 
+
+    <!--the title of the website and the css for styling-->
 
     <title>Jobify</title>
     <link rel="stylesheet" type="text/css" href="viewJobPostings.css">
@@ -30,7 +30,7 @@
 
 
 <!--In job section there is applicant information which includes the name,field,email that is added and store in the backend
- Also with submit button when the student is selected for an interview--> 
+ Also with submit button when the student is selected for an interview-->
 
 <section id="jobs">
     <div class="container">
@@ -41,9 +41,12 @@
             <p><strong>Field of study:</strong> ${studentInformation.getFieldOfStudy()}</p>
             <p><strong>Email:</strong> ${studentInformation.getEmail()}</p>
             <a href="data:application/pdf;base64,${studentInformation.getResumeBase64()}" target="_blank">Resume</a><br>
-            <a href="data:application/pdf;base64,${studentInformation.getCoverLetterBase64()}" target="_blank">Cover Letter</a><br>
-            <a href="data:application/pdf;base64,${studentInformation.getTranscriptBase64()}" target="_blank">Transcript</a><br>
-            <form action="selectStudentForInterviewServlet?jobPostingID=${jobPostingID}&studentEmail=${studentInformation.getEmail()}" method="post">
+            <a href="data:application/pdf;base64,${studentInformation.getCoverLetterBase64()}" target="_blank">Cover
+                Letter</a><br>
+            <a href="data:application/pdf;base64,${studentInformation.getTranscriptBase64()}"
+               target="_blank">Transcript</a><br>
+            <form action="selectStudentForInterviewServlet?jobPostingID=${jobPostingID}&studentEmail=${studentInformation.getEmail()}"
+                  method="post">
                 <input type="submit" value="Select for an interview">
             </form>
 
@@ -59,6 +62,7 @@
         padding: 10px;
         margin-bottom: 10px;
     }
+
     input[type = submit] {
         background-color: #333;
         border: none;
@@ -71,9 +75,6 @@
 </style>
 </head>
 <body>
-
-
-
 
 
 <%--String status = (String) request.getAttribute("status");

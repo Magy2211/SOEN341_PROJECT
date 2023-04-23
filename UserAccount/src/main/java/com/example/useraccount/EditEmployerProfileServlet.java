@@ -21,16 +21,17 @@ public class EditEmployerProfileServlet extends HttpServlet {
     private Connection connection;
 
     //Establishing a connection with the database
-    public void init() {
+    @Override
+    public void init() throws ServletException {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "root1234");
-        } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new ServletException(e);
         }
     }
 
     //This method sends the existing information in the table, so the user can view the information while editing
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         //Getting parameters sent from other servlet/pages
@@ -64,11 +65,12 @@ public class EditEmployerProfileServlet extends HttpServlet {
             view.forward(request, response);
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new ServletException(e);
         }
     }
 
     //This method edits the information in the table with the new information submitted by the user
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         //Getting parameters sent from other servlet/pages
@@ -104,17 +106,18 @@ public class EditEmployerProfileServlet extends HttpServlet {
                 out.print("<H1> Error creating the profile </H1>");
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new ServletException(e);
         }
 
     }
 
     //Close the connection with the database
+    @Override
     public void destroy() {
         try {
             connection.close();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+        	e.printStackTrace();
         }
     }
 }
